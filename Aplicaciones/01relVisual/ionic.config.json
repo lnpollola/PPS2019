@@ -1,0 +1,8 @@
+{
+  "name": "01relVisual",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "01551a1d"
+}
