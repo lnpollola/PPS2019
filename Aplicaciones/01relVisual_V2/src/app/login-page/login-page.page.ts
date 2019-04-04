@@ -38,6 +38,7 @@ import { LoadingController } from '@ionic/angular';
 export class LoginPagePage implements OnInit {
   email = "";
   password = "";
+  routerLink = "";
 
   constructor(private platform: Platform, public loadingController: LoadingController,
     public alertController:AlertController,
