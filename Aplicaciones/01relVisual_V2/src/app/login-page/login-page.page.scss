@@ -35,9 +35,7 @@ ion-card-title.welcome-card
     transition: all 0.5s ease-in-out;
     transition-delay: 0.3s;
 }
-a, a:visited {
-     
-    }
+
 
 .input {
     background-color: rgb(240, 240, 240);
@@ -82,7 +80,7 @@ a, a:visited {
     justify-content: center;
 }
 .btn-transition{
-    background: linear-gradient(to right, #1f2eb1f3 14%, #8c97d360 96%);
+    background:  #1f2eb1f3;
 }
 .btn-color{
     color:#1f2eb1f3;

@@ -27,7 +27,8 @@ import { MenuController, Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 // import { utilService } from '../services/util/util.service';
 // import { AuthenticationService } from '../services/firestore/firebase-authentication.service';
-import { IfStmt } from '@angular/compiler';
+// import { IfStmt } from '@angular/compiler';
+import { Router } from "@angular/router";
 import { LoadingController } from '@ionic/angular';
 
 @Component({
@@ -46,6 +47,10 @@ export class LoginPagePage implements OnInit {
     // public util: utilService, 
     private menuCtrl: MenuController, 
     // private authServ: AuthenticationService
+    // private firebaseAuthentication: FirebaseAuthentication, 
+    // private auth: AuthService, 
+    private router: Router,
+      // public alertController: AlertController
     ) {
   }
 
@@ -53,74 +58,14 @@ export class LoginPagePage implements OnInit {
    
   }
 
-  ionViewDidEnter() {
-    this.menuCtrl.enable(false, 'start');
-    this.menuCtrl.enable(false, 'end');
-    this.splashScreen.hide();
-  }
-
-   signin() {
-
-    if (
-      // this.util.validateEmail(this.email) 
-      // && 
-      this.password != "") 
-      {
-      // this.util.openLoader();
-      // this.authServ.login(this.email, this.password).then(
-    //     userData => {
-         
-    //       this.util.navigate('home',false);
-    //       this.email= "";
-    //       this.password= "";
-    //     }
-    //   ).catch(err =>{
-    //     if (err){
-    //       this.util.presentToast(`${err}`, true, 'bottom', 2100);
-          
-    //     }
-      
-    //   } ).then( el => this.util.closeLoading())
-    // }
-    // else {
-    //   this.util.presentToast('Please enter email and password', true, 'bottom', 2100);
-    // }
-  }
-
-  // async forgotPassword() {
-  //   const alert = await this.alertController.create({
-  //     header: 'Reset Email',
-  //     backdropDismiss: false,
-  //     inputs: [
-  //       {
-  //         name: 'name1',
-  //         type: 'email',
-  //         placeholder: 'Enter your email',
-  //       }
-  //     ],
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         cssClass: 'secondary',
-  //         handler: (res) => {
-            
-  //         }
-  //       }, {
-  //         text: 'Ok',
-  //         handler: (res) => {
-  //           let value = this.util.validateEmail(res.name1); 
-  //            this.authServ.forgotPassoword(res.name1);
-             
-  //            return value;
-            
-  //         }
-  //       }
-  //     ]
-  //   });
-
-  //   await alert.present();
+  // ionViewDidEnter() {
+  //   this.menuCtrl.enable(false, 'start');
+  //   this.menuCtrl.enable(false, 'end');
+  //   this.splashScreen.hide();
   // }
 
-}
+   login() {
+        
+        this.router.navigateByUrl('/tabs');
+      }
 }
