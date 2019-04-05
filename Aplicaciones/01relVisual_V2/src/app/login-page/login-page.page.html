@@ -19,8 +19,8 @@
       <ion-card-content>
           <ion-row class="row">
               <div class="fire-logo">
-                  <img src="../../assets/imgs/fire.png" class="img-logo">
-                  <ion-text><h2 no-margin margin-vertical text-center>Sign In</h2></ion-text>
+                  <img src="../../assets/imgs/login.png" class="img-logo">
+                  <ion-text><h2 no-margin margin-vertical text-center>USUARIOS</h2></ion-text>
                 </div>
           </ion-row>
           <ion-row>
@@ -35,18 +35,13 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-text float-end color="medium" (click)="forgotPassword()"><h6 no-margin text-end class="small">Forgot Password?</h6></ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-button expand="block" (click)="signin()" color="undefined" class="btn-transition"><strong class="white">Sign In</strong></ion-button>
+                <ion-button expand="block" (click)="signin()" color="undefined" class="btn-transition"><strong class="white">Ingresar</strong></ion-button>
               </ion-col>
             </ion-row>
             <div class="line"></div>
             <ion-row>
               <ion-col>
-                <ion-button expand="block" fill="outline" color="undefined" (click)="util.navigate('signup')" class="btn-color"><strong>New? Create an Account</strong></ion-button>
+                <ion-button expand="block" fill="outline" color="undefined"  [routerLink]="['/tabs']"  class="btn-color"><strong>Registrarse</strong></ion-button>
               </ion-col>
             </ion-row>
       </ion-card-content>
