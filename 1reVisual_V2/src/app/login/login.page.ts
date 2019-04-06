@@ -36,7 +36,8 @@ export class LoginPage implements OnInit {
   private opt: string = 'signin';
 
 
-  constructor(private firebaseAuthentication: FirebaseAuthentication, private auth: AuthService, private router: Router,
+  constructor(private firebaseAuthentication: FirebaseAuthentication, 
+    private auth: AuthService, private router: Router,
               public alertController: AlertController) { }
 
   ngOnInit() {
