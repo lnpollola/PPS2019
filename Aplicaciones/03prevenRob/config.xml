@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.kidslang" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Rel. Visual</name>
-    <description>Aplicación de relevamiento visual</description>
+<widget id="io.prevenRob" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Prevención Robo</name>
+    <description>Aplicación para prevenir robo de celular</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Leandro Pollola</author>
     <content src="index.html" />
     <access origin="*" />
