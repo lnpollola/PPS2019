@@ -1,12 +1,27 @@
-<div class="form-structor">
-	<div class="signup">
-		<h2 class="form-title" id="signup"><span>or</span>LOGIN</h2>
-		<div class="form-holder">
-			<!-- <input type="text" class="input" placeholder="Name" /> -->
-			<input type="email" class="input" [(ngModel)]="email"  placeholder="Email" />
-			<input type="password" class="input" [(ngModel)]="password" placeholder="Password" />
-		</div>
-		<button class="submit-btn" (click)="login()">ENTRAR</button>
+<div class="imagenFondo">
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <!-- Tabs Titles -->
+	  <h2 class="active"> LOGIN </h2>
+	  <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+  
+	  <!-- Icon -->
+	  <div class="fadeIn first">
+		<img src="https://image.flaticon.com/icons/svg/1049/1049883.svg" id="icon" alt="User Icon" />
+	  </div>
+  
+	  <!-- Login Form -->
+	  <form>
+		<input type="text" id="login" class="fadeIn second" name="login" [(ngModel)]="email" placeholder="Usuario">
+		<input type="text" id="password" class="fadeIn third" name="login" [(ngModel)]="password" placeholder="Contraseña">
+		<input type="submit" (click)="login()"  class="fadeIn fourth" value="Log In">
+	  </form>
+  
+	  <!-- Remind Passowrd -->
+	  <div id="formFooter">
+		<a class="underlineHover" href="#">Conversación en el Aula</a>
+	  </div>
+  
 	</div>
-
+  </div>
 </div>
