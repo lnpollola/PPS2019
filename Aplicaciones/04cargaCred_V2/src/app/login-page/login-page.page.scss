@@ -19,6 +19,8 @@
 	outline: none;
 	transition: all 0.2s;
   }
+
+
   
   a:hover,
   a:focus {
@@ -41,7 +43,7 @@
 	// max-width: 350px;
 	flex-direction: column;
 
-	background-image: linear-gradient(#fe7763, #fc3a5d);
+	background-image: linear-gradient(#13547a , #80d0c7);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	// height: 100%;
@@ -66,7 +68,7 @@
   }
   
   h2 .highlight {
-	color: #fdc654;
+	color: darkslategray;
   }
   
   h2 {
@@ -82,7 +84,12 @@
   }
   
   .header {
-	margin-bottom: 5px;
+	margin-bottom: 12%;
+  }
+
+  .logo-img 
+  {
+	max-width: 70%;
   }
   
   .logo {
@@ -90,6 +97,8 @@
 	width: 200px;
 	height: 200px;
 	display: flex;
+
+    border: 0;
 	justify-content: center;
 	// margin: 0 auto 16px;
 	background: rgba(255, 255, 255, 0.1);
@@ -99,7 +108,7 @@
   button {
 	background: white;
 	display: block;
-	color: #d61e2d;
+	color: darkslategrey;
 	width: 100%;
 	border: none;
 	border-radius: 40px;
@@ -119,7 +128,7 @@
   .form-field .icon {
 	position: absolute;
 	background: white;
-	color: #d61e2d;
+	color: darkslategrey;
 	left: 0;
 	top: 0;
 	display: flex;
@@ -163,11 +172,11 @@
   .form-field input:hover,
   .form-field input:focus {
 	background: white;
-	color: #d61e2d;
+	color: darkslategrey;
 	transition: all 0.2s;
   }
   
   .form-field input:hover::placeholder {
-	color: #d61e2d;
+	color: darkslategrey;
   }
   
