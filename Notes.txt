@@ -66,3 +66,13 @@ https://medium.com/sourcebytes/how-to-build-a-responsive-login-form-using-ionic-
         2   declare components and not the modules or services.
         3   provide services and not components or modules.
 
+sacar la barra de logout como componente
+generar los botones y perfiles de acceder como / cambiar los alert por toast
+  APP1 OK
+  APP2 OK
+  APP3 OK
+  APP4 OK
+  APP5 NOK
+generar las pantallas de la app
+splash screen animado
+spinners en las cargas
