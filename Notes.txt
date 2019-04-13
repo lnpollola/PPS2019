@@ -75,4 +75,7 @@ generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP5 NOK
 generar las pantallas de la app
 splash screen animado
+
+otros
 spinners en las cargas
+mejorar los toast para pasar mensaje y color nada mas

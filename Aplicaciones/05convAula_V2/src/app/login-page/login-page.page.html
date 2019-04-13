@@ -1,20 +1,21 @@
 <div class="imagenFondo">
-<div class="wrapper fadeInDown">
+<div class="wrapper">
 	<div id="formContent">
 	  <!-- Tabs Titles -->
 	  <h2 class="active"> LOGIN </h2>
 	  <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
   
 	  <!-- Icon -->
-	  <div class="fadeIn first">
+	  <div class="first">
 		<img src="https://image.flaticon.com/icons/svg/1049/1049883.svg" id="icon" alt="User Icon" />
 	  </div>
   
 	  <!-- Login Form -->
 	  <form>
-		<input type="text" id="login" class="fadeIn second" name="login" [(ngModel)]="email" placeholder="Usuario">
-		<input type="text" id="password" class="fadeIn third" name="login" [(ngModel)]="password" placeholder="Contraseña">
-		<input type="submit" (click)="login()"  class="fadeIn fourth" value="Log In">
+		<input type="text" id="login" class="second" name="login" [(ngModel)]="email" placeholder="Usuario">
+		<input type="text" id="password" class="third" name="login" [(ngModel)]="password" placeholder="Contraseña">
+		<input type="submit" (click)="login()"  class="fourth" value="Log In">
+		<input type="submit" (click)="creoSheet()"  class="fourth" value="Acc.Rápido">
 	  </form>
   
 	  <!-- Remind Passowrd -->
