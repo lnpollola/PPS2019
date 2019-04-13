@@ -54,6 +54,9 @@ body {
 
 $input-placeholder-color: #7e8ba3;
 
+
+
+
 input {
   border: 0;
   font: inherit;
@@ -121,6 +124,7 @@ a {
     border-radius: 999px;
     background-color: transparent;
     text-align: center;
+    color: ghostwhite;
 
     // &[type="email"],
     // &[type="password"] {
