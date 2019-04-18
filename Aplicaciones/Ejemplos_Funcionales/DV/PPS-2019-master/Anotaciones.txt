@@ -1,0 +1,173 @@
+Android studio
+Ionic
+FireBase
+
+Template Ionic Super -> Login pre armado
+
+
+30/03:
+    -5 aplicaciones
+        - Primer pagina login.
+            Name, contrasena, aceptar, cancelar. Si no se conecta no importa.
+        - 5 login distintos entre si.
+            Diferentes botones, fondos, tipo de fuente, disposicion de objetos.
+        
+        - Cambiar Id de  aplicacion para que se puedan tener 5 aplicaciones distintas.
+            -config.xml widget id= <--cambiar por default
+
+06/04:
+    - Aplicaciones funcionales.
+    - FireBase
+    - Responder si es usuario valido o no.
+        > Sin Alerts
+    - Iconos + Splash.
+        > Como generar - Fotopea generador de iconos.
+        > Splash Screen
+            -Todos los splash tienen que ser distintos.
+            -Reducir en minimo el splashcreen en blanco.
+13/04
+    - Notas personales:
+        > Cambiar iconos, agregar sigla.
+            -> AntiLadri APP
+        > Splash con nombre de alumno y division, etc.
+            -> AntiLadri APP
+            -> Consorcio APP
+        > Imagenes que indique para que sirve la app.
+        > Ocupar espacios en blanco.
+            -Todas las APP
+
+    - Para Hacer:
+        
+        
+        > Splash tiene que  tener animacion.
+            * Icono como minimo.
+            * Lo mas suave posible.
+            * Al menos una cosa.
+        
+        > Pantallas presentadas para las aplicaciones.
+            * Relevamiento visual. 
+                - Fotos lindas. 
+                - Fotos Feas.
+            * Kid Tab
+                -Lista de Colores.
+                -Lista de animales.
+                -Botones de Animales
+
+
+    - Todas las aplicaciones tiene que estar funcionales.
+
+
+
+
+COMANDOS:
+    ALTA DE PROYECTO
+        -> ionic start "nombreDeProyecto"
+    CORRER    
+        -> ionic cordova run android --prod 
+    CERTIFICADO
+        -> https://medium.com/@thianlopezz/c%C3%B3mo-firmar-mis-apk-para-subir-mi-app-a-play-store-de-google-84cfe877b980
+
+
+APPS:
+   kidtab:
+        -> Login:
+            - Completar.
+    QR:
+        -> Color:
+            - QR: #8CCC75
+    
+    
+        
+
+
+LINKS:
+    FIREBASE ABM
+        https://www.youtube.com/watch?v=5e7k8T8D4Lo
+    CSS
+        https://www.cssmatic.com/
+        https://www.webfx.com/blog/web-design/responsive-background-image/
+        https://angularfirebase.com/lessons/generate-a-custom-spash-screen-and-icons-in-ionic/
+    
+    LOGO:
+        https://logomakr.com
+    
+    IONIC:
+        https://ionicframework.com/docs/v3/native/lottie-splash-screen/
+        https://github.com/timbru31/cordova-plugin-lottie-splashscreen
+        https://blog.interactius.com/lottie-para-web-de151e57aec9
+        https://medium.com/@thianlopezz/c%C3%B3mo-firmar-mis-apk-para-subir-mi-app-a-play-store-de-google-84cfe877b980
+    
+    VARIOS:
+        ANGULAR 
+        https://www.adictosaltrabajo.com/2015/07/29/docker-for-dummies/
+        
+        Make sure that we should only
+        1   import modules and not the components or services
+        2   declare components and not the modules or services.
+        3   provide services and not components or modules.
+
+    FIRMAR:     
+        JAVA - 
+        1-ionic cordova build android --prod --release
+        2-keytool -genkey -v -keystore kidtab.keystore -alias dv -keyalg RSA -keysize 2048 -validity 10000
+        3-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore C:\APK\kidtab.keystore C:\APK\app-release-unsigned.apk dv
+        
+        SDK - C:\Users\dvogel\AppData\Local\Android\Sdk\build-tools\28.0.3
+        4-.\zipalign -v 4 C:\APK\kidtabUnsigned.apk C:\APK\kidtabFirmado.apk
+    
+    
+        
+
+
+
+
+
+
+EJEMPLOS
+
+    FIRE BASE
+        <!-- <ion-button 
+            expand="full" 
+            color="success"
+            (click)="alta({email:this.email})"
+            >Alta de email
+        </ion-button> -->
+
+        <!-- <ion-list> 
+            <ion-item *ngFor="let usuario of usuarios">
+            {{usuario.email}}
+            </ion-item>
+        </ion-list> -->
+
+
+        alta(email:string){
+            //alert("estoy en el alta");
+            
+            if(email!==undefined){
+            alert("estoy en el alta");
+            let objAlta = this.ref.push()
+            objAlta.set(email);
+            }
+
+        }
+
+
+EJEMPLO DE CONFIGURACION xml
+  Sure! There is my config.xml
+
+<preference name="loadUrlTimeoutValue" value="700000"/> 
+<preference name="SplashMaintainAspectRatio" value="true" /> 
+<preference name="SplashShowOnlyFirstTime" value="false" /> 
+<preference name="SplashScreen" value="screen" /> 
+<preference name="SplashScreenDelay" value="4000" /> 
+<platform name="android"> 
+<preference name="ShowSplashScreenSpinner" value="true" /> </platform>
+
+But I solved this problem changing this command “ionic build android --release” for ‘ionic build android --prod’
+
+
+
+COLOR QR: #8CCC75
+    Fondo 84c36e
+
+OCR A Extended

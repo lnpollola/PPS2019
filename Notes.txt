@@ -67,6 +67,7 @@ https://medium.com/sourcebytes/how-to-build-a-responsive-login-form-using-ionic-
         3   provide services and not components or modules.
 
 sacar la barra de logout como componente
+  probar con los navcontroller y ionicviewdidload
 generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP1 OK
   APP2 OK

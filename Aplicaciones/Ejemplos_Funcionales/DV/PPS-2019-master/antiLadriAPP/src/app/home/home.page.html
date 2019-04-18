@@ -1,0 +1,72 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Relevamiento Visual</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content>
+  
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <br><br>
+                <ion-img [src]="rutaImagen" alt="" srcset=""></ion-img>
+                <!-- <img [src]="./antiLadriAPP/resources/icon.png"  width="200px" height="200px" alt="" srcset=""> -->
+             
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>AntiLadriApp</ion-card-subtitle>
+                  
+                </ion-card-header>
+             
+                <ion-card-content>
+                </ion-card-content>
+              </ion-card>
+
+            </div>
+            
+            <form [formGroup]="formGroup">
+            <div padding>
+                         
+              <ion-item>
+                <ion-input
+                  class="label"      
+                  formControlName="email"
+                  type="email" 
+                  placeholder="Ingrese su correo electronico...." 
+                  autofocus="true"       
+                ></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                <ion-input 
+                  class="label"
+                  formControlName="clave"
+                  type="password" 
+                  placeholder="Ingrese su contraseña"        
+                ></ion-input>
+              </ion-item>
+            </div>
+    
+            <div padding>
+              
+              <ion-button 
+                expand="full" 
+                color="success"
+                (click)="enviar()"
+                [disabled]="formGroup.invalid"
+                >Conectarse
+              </ion-button>
+      
+            </div>
+          </form>
+          <ion-card>   
+            <ion-button expand="full" (click)="mostrarUsuarios()"  >Usuarios Test</ion-button>   
+          </ion-card> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
