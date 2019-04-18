@@ -75,8 +75,14 @@ generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP4 OK
   APP5 NOK
 generar las pantallas de la app
-splash screen animado
+--splash screen animado
+    modificar el principal ponerlo blanco con icono
+    modificar el background 
+
 
 otros
 spinners en las cargas
 mejorar los toast para pasar mensaje y color nada mas
+
+
+https://medium.com/@josephat94/navegaci%C3%B3n-en-ionic-4-802d42e2d263
