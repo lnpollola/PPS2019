@@ -19,6 +19,12 @@ export class LoginPagePage implements OnInit {
   password = "";
   routerLink = "";
 
+  splash = true;
+
+  ionViewDidEnter() 
+  {
+    setTimeout(() => this.splash = false, 4000);
+  }
   constructor(
     // private platform: Platform, 
     // private splashScreen: SplashScreen,
