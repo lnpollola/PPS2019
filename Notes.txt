@@ -78,10 +78,10 @@ generar las pantallas de la app
 --splash screen animado
     --modificar el principal ponerlo blanco con icono
     --modificar el background
-    APP1 
+    APP1 FALTA
     APP2 OK
     APP3 OK
-    APP4 
+    APP4 OK
     APP5 
 
 
