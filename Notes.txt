@@ -75,14 +75,20 @@ generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP4 OK
   APP5 NOK
 generar las pantallas de la app
+  APP1 
+  APP2 
+  APP3 
+  APP4 
+  APP5 
+
 --splash screen animado
     --modificar el principal ponerlo blanco con icono
     --modificar el background
-    APP1 FALTA
+    APP1 OK
     APP2 OK
     APP3 OK
     APP4 OK
-    APP5 
+    APP5 OK
 
 
 otros

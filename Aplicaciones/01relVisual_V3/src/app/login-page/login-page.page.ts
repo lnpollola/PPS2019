@@ -18,6 +18,12 @@ export class LoginPagePage implements OnInit {
   email = "";
   password = "";
   routerLink = "";
+  splash = true;
+
+  ionViewDidEnter()      
+  {
+    setTimeout(() => this.splash = false, 4000);
+  }
 
   constructor(
     // private platform: Platform, 
