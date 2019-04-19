@@ -1,16 +1,59 @@
-// .login-card {
-// 	background-image: linear-gradient(#fe7763, #fc3a5d);
-// 	background-repeat: no-repeat;
-// 	background-attachment: fixed;
-// 	height: 100%;
-// 	margin: 0;
-// 	display: flex;
-// 	align-items: center;
-// 	color: white;
-// 	font-family: "Montserrat", sans-serif;
-// 	font-size: 14px;
-// 	justify-content: center;
-//   }
+
+#custom-overlay 
+{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	// background: #84c36e;
+	// background-image: url('../../../resources/splash.png');
+	background-color: white;
+	background-size: contain;
+}
+
+
+
+  .contenedorPresentacion {
+	display: inline-block;
+	// -webkit-transform: translateZ(1px);
+  //   transform: translateZ(1px);   
+    // width: 60px;
+    height:110px;
+    margin-left: 14%;
+    margin-top: 16%;
+	text-align: center;
+	color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size: larger;
+		font-weight: bolder;
+	// -webkit-animation: animation 5s linear infinite both;
+	// animation: animation 5s linear infinite both;
+	// -webkit-animation: animation 1500ms linear infinite both;
+	// animation: animation 1500ms linear infinite both;
+
+  }
+
+  
+  .logoPresentacion {
+		display: inline-block;
+		// -webkit-transform: translateZ(1px);
+		// 	transform: translateZ(1px);   
+			// width: 60px;
+			height:110px;
+			margin-left: 5%;
+			margin-top: 15%;
+		text-align: center;
+		color: black;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-size: larger;
+	// -webkit-animation: slideInRight 1500ms linear infinite both;
+	// animation: slideInRight 1500ms linear infinite both;
+	-webkit-animation: animation 6000ms linear infinite both;
+		animation: animation 6000ms linear infinite both;
+  }
   
   a {
 	color: white;
