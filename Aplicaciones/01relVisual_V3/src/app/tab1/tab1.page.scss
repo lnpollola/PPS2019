@@ -2,3 +2,34 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+.lindas 
+{
+
+    background-image:url("../../assets/icon/yes.jpg") !important;
+    background-repeat:no-repeat;
+    background-size:cover;
+    overflow:hidden;
+    opacity: 0.6;
+
+}
+
+.feas 
+{
+
+    background-image:url("../../assets/icon/not.jpg") !important;
+    background-repeat:no-repeat;
+    background-size:cover;
+    
+    overflow:hidden;
+    opacity: 0.6;
+
+}
+
+
+ion-grid, ion-row, ion-col{
+  height: 100%;
+}
+ion-card{
+  height: 40%;
+}
