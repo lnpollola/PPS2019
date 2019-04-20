@@ -76,6 +76,10 @@ generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP5 NOK
 generar las pantallas de la app
   APP1 
+    SUBIR       OK
+    LISTADO     OK
+    VOTACION
+    RESULTADOS
   APP2 
   APP3 
   APP4 
