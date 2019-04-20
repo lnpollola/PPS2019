@@ -81,6 +81,10 @@ generar las pantallas de la app
     VOTACION
     RESULTADOS
   APP2 
+    TEMAS
+      COLORES NUMEROS ANIMALES
+    LISTADO ANIMALES 
+      5 BOTONES
   APP3 
   APP4 
   APP5 
