@@ -86,8 +86,11 @@ generar las pantallas de la app
     LISTADO ANIMALES 
       5 BOTONES
   APP3 
+    ok boton para activar
   APP4 
+    
   APP5 
+    OK CON LISTADO DE CHATS
 
 --splash screen animado
     --modificar el principal ponerlo blanco con icono

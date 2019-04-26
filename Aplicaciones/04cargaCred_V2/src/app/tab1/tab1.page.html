@@ -1,105 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      <!-- {{ 'notice.Notices' | translate }} ({{ noticeService.noCheckNotices.length }}) -->
-      TITULO
-    </ion-title>
-
-    <ion-buttons end>
-      <button color="grey" ion-button icon-only (click)="showActionSheet()">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div padding > 
-    <!-- [hidden]="noticeService.notices.length > 0" -->
-    <!-- {{ 'notice.You Did Not Have Notices' | translate }} -->
-  CONVERSACIONES
-  </div>
+  
+  
+      <ion-chip>
+        <div id="tablero">
+        <ion-label> Su saldo: </ion-label><br>
+        <ion-label class="saldoPantalla"  name="saldoPantalla">$ 0.00</ion-label>
+      </div>
+      </ion-chip>
 
-  <ion-list id="section-notices">
-     
-            <ion-item>
-                <ion-thumbnail slot="start">
-                    <img src="../../assets/imgs/user1.png">
-                </ion-thumbnail>
-                <ion-label>
-                  <h2>Marta</h2>
-                  <p>Hola, ¿como andas?</p>
-                </ion-label>
-                <ion-button fill="outline" slot="end">Ver</ion-button>
-              </ion-item>
-              
-              <ion-item>
-                  <ion-thumbnail slot="start">
-                      <img src="../../assets/imgs/user2.png">
-                  </ion-thumbnail>
-                  <ion-label>
-                    <h2>Josefina</h2>
-                    <p>¿Como estas?</p>
-                  </ion-label>
-                  <ion-button fill="outline" slot="end">Ver</ion-button>
-                </ion-item>
-                
-                <ion-item>
-                    <ion-thumbnail slot="start">
-                        <img src="../../assets/imgs/user3.png">
-                    </ion-thumbnail>
-                    <ion-label>
-                      <h2>Pedro</h2>
-                      <p>Dale, ahora salgo.</p>
-                    </ion-label>
-                    <ion-button fill="outline" slot="end">Ver</ion-button>
-                  </ion-item>
-                  
-                  <ion-item>
-                      <ion-thumbnail slot="start">
-                          <img src="../../assets/imgs/user4.png">
-                      </ion-thumbnail>
-                      <ion-label>
-                        <h2>Pablo</h2>
-                        <p>Es un 10 seguro</p>
-                      </ion-label>
-                      <ion-button fill="outline" slot="end">Ver</ion-button>
-                    </ion-item>
+      <br><br><br><br>
+    
+             
+          <ion-toolbar>
+          <!-- <ion-button slot="start" shape="round" (click)="onClick()" > -->
+              <ion-fab-button color="primary">
+              <!-- Escanear codigo QR -->
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+             <!-- </ion-button> -->
+             <ion-fab-button color="warning" slot="end"  >
+                <!-- Limpiar creditos -->
+             <ion-icon name="trash"></ion-icon>
 
-                    <ion-item>
-                        <ion-thumbnail slot="start">
-                            <img src="../../assets/imgs/user5.png">
-                        </ion-thumbnail>
-                        <ion-label>
-                          <h2>Gerardo</h2>
-                          <p>Mañana 9 AM</p>
-                        </ion-label>
-                        <ion-button fill="outline" slot="end">Ver</ion-button>
-                      </ion-item>
-                      
-                      <ion-item>
-                          <ion-thumbnail slot="start">
-                              <img src="../../assets/imgs/user6.png">
-                          </ion-thumbnail>
-                          <ion-label>
-                            <h2>Nicolás</h2>
-                            <p>Yendo</p>
-                          </ion-label>
-                          <ion-button fill="outline" slot="end">Ver</ion-button>
-                        </ion-item>
-            
-                        <ion-item>
-                            <ion-thumbnail slot="start">
-                                <img src="../../assets/imgs/user7.png">
-                            </ion-thumbnail>
-                            <ion-label>
-                              <h2>Tin</h2>
-                              <p>OK</p>
-                            </ion-label>
-                            <ion-button fill="outline" slot="end">Ver</ion-button>
-                          </ion-item>
-              
+            </ion-fab-button>
+          </ion-toolbar>
+            <!-- </div> -->
 
 
-  </ion-list>
+
+
 </ion-content>

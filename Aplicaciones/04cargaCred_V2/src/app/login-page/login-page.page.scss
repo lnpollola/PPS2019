@@ -8,19 +8,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-	// background: #84c36e;
-	// background-image: url('../../../resources/splash.png');
 	background-color: white;
 	background-size: contain;
 }
 
+input 
+{
+  padding-left: 15px;
+}
 
 
   .contenedorPresentacion {
 	display: inline-block;
-	// -webkit-transform: translateZ(1px);
-  //   transform: translateZ(1px);   
-    // width: 60px;
     height:110px;
     margin-left: 14%;
     margin-top: 16%;
@@ -29,10 +28,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size: larger;
 		font-weight: bolder;
-	// -webkit-animation: animation 5s linear infinite both;
-	// animation: animation 5s linear infinite both;
-	// -webkit-animation: animation 1500ms linear infinite both;
-	// animation: animation 1500ms linear infinite both;
 
   }
 
@@ -47,8 +42,8 @@
 		color: black;
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			font-size: larger;
-			-webkit-animation: animation 1500ms linear infinite both;
-			animation: animation 1500ms linear infinite both;
+			-webkit-animation: animation 3000ms linear infinite both;
+			animation: animation 3000ms linear infinite both;
 	}
 	
 	
