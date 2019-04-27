@@ -10,9 +10,14 @@ import { ToastController } from "@ionic/angular";
 export class Tab1Page {
 
   private saldoPantalla: string;
+  public active;
 
   constructor(public toastController: ToastController, 
-              public router: Router){}
+              public router: Router)
+              {
+                this.active = "table";
+                
+              }
 
               async logoff(){
 

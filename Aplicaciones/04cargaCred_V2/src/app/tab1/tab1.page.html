@@ -1,32 +1,68 @@
+<ion-header>
+  <br>
+</ion-header>
+
 <ion-content>
-  
-  
-      <ion-chip>
-        <div id="tablero">
-        <ion-label> Su saldo: </ion-label><br>
-        <ion-label class="saldoPantalla"  name="saldoPantalla">$ 0.00</ion-label>
-      </div>
-      </ion-chip>
 
-      <br><br><br><br>
-    
-             
-          <ion-toolbar>
-          <!-- <ion-button slot="start" shape="round" (click)="onClick()" > -->
-              <ion-fab-button color="primary">
-              <!-- Escanear codigo QR -->
-            <ion-icon name="add-circle"></ion-icon>
-          </ion-fab-button>
-             <!-- </ion-button> -->
-             <ion-fab-button color="warning" slot="end"  >
-                <!-- Limpiar creditos -->
-             <ion-icon name="trash"></ion-icon>
+  <ion-list>
+    <!-- Cabecera -->
+    <ion-segment>
+      <ion-segment-button>
+        <ion-row>
+          <ion-col>
+            <ion-icon class="fuente-icono" name="information-circle-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-label class="fuente-titulo">SALDOS</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-segment-button>
+    </ion-segment>
 
-            </ion-fab-button>
-          </ion-toolbar>
-            <!-- </div> -->
+    <!-- LISTADO DE CUENTAS -->
+    <ion-item class="margen-item">
+      <ion-badge color="dark" class="fuente-titulo" slot="start"><ion-icon name="logo-usd"></ion-icon></ion-badge>
+        <ion-label text-wrap>CUENTA NRO 1 </ion-label>
+      <ion-badge text-wrap color="success" slot="end"> ARS $ 1000</ion-badge>
+    </ion-item>
 
+    <ion-item class="margen-item">
+        <ion-badge color="medium" class="fuente-titulo" slot="start"><ion-icon name="logo-usd"></ion-icon></ion-badge>
+          <ion-label text-wrap>CUENTA NRO 2 </ion-label>
+        <ion-badge text-wrap color="success" slot="end"> USD $ 150</ion-badge>
+      </ion-item>
 
+    <ion-item class="margen-item">
+        <ion-badge color="secondary" class="fuente-titulo" slot="start"><ion-icon name="card"></ion-icon></ion-badge>
+          <ion-label text-wrap>CUENTA NRO 3</ion-label>
+        <ion-badge text-wrap color="danger" slot="end">- USD $ 500</ion-badge>
+      </ion-item>
 
-
+      <ion-item class="margen-item">
+          <ion-badge color="tertiary" class="fuente-titulo" slot="start"><ion-icon name="card"></ion-icon></ion-badge>
+            <ion-label text-wrap>CUENTA NRO 4</ion-label>
+          <ion-badge text-wrap color="danger" slot="end">- ARS $ 300</ion-badge>
+      </ion-item>
+  </ion-list>
+  <br><br>
+    <ion-item>
+      <ion-label  class="total">TOTAL: </ion-label>
+      <ion-note  class="total" slot="end"> $200</ion-note>
+    </ion-item>
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+
+    <ion-fab-button color="primary">
+      <ion-icon name="qr-scanner"></ion-icon>
+    </ion-fab-button>   
+  
+    <ion-fab-button color="danger" slot="end"  >
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+
+  </ion-toolbar>
+</ion-footer>
+

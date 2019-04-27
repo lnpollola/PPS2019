@@ -3,63 +3,31 @@
   overflow: hidden;
 }
 
-// .hydrated{
-//   background-image: url('');
-//   background-color: transparent;
-// }
-
-
-ion-content{
-  --background: #3A435E;
-
-
+.fuente-icono 
+{
+  font-size: xx-large;
+  color: whitesmoke;
 }
 
-.io{
-
-  width: 43px;
-  height:40px; 
-  border-radius: 50%;
+.fuente-titulo
+{
+  font-size: x-large;
+  color: whitesmoke;
 }
 
-ion-chip{
-  height: 40%;
-  width: 98%;
-    /* webkit example */
-    --background: -webkit-gradient(
-      linear, left top, left bottom, from(rgba(50,50,50,0.8)),
-      to(rgba(80,80,80,0.2)), color-stop(.5,#333333)
-    );
-  border-left: 6%;
-  color: white;
-  text-align: center;
-  margin-top: 15%;
-  text-align: center;
-  font-size: 30px;
-
- 
-
-}
-.saldoPantalla{
-  // margin-left: 1%;
-//  font-size: 273%;
- text-align: center;
- width: 100%;
+.margen-item
+{
+  margin: 1.5%;
 }
 
-#tablero{
-  margin-left: 23%;
-  margin-top: 20%;
+.total 
+{
+  font-size: larger;
+  font-weight: bolder;
+  color: cornflowerblue;
 }
 
-ion-toolbar{
-
-  padding-top: 40%;
-  --background: transparent;
-  // height: 50%;
+ion-segment
+{
+  background-color: #3880ff;
 }
-
-// ion-fab-button{
-//   width: 25%;
-//   height: 20%;
-// }
