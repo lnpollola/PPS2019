@@ -23,15 +23,9 @@ export class LoginPagePage implements OnInit {
 
   ionViewDidEnter() 
   {
-    setTimeout(() => this.splash = false, 4000);
+    setTimeout(() => this.splash = false, 7000);
   }
   constructor(
-    // private platform: Platform, 
-    // private splashScreen: SplashScreen,
-    // public util: utilService, 
-    // private menuCtrl: MenuController, 
-    // private authServ: AuthenticationService,
-    // private firebaseAuthentication: FirebaseAuthentication, 
     public loadingController: LoadingController,
     public alertController:AlertController,
     private auth: AuthService, 

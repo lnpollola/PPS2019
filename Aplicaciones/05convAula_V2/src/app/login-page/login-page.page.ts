@@ -27,12 +27,6 @@ export class LoginPagePage implements OnInit {
   }
 
   constructor(
-    // private platform: Platform, 
-    // private splashScreen: SplashScreen,
-    // public util: utilService, 
-    // private menuCtrl: MenuController, 
-    // private authServ: AuthenticationService,
-    // private firebaseAuthentication: FirebaseAuthentication, 
     public loadingController: LoadingController,
     public alertController:AlertController,
     private auth: AuthService, 
