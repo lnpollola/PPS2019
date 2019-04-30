@@ -11,8 +11,8 @@
 
 <ion-content >
       <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
-        <ion-card   class="lindas" expand="full">
-          <ion-card-header color="success" ><b>EDIFICIO - OK</b></ion-card-header>
+        <ion-card (click)="sacarFoto()" class="lindas" expand="full">
+          <ion-card-header color="success" ><b></b></ion-card-header>
           <ion-card-content style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
           ">
             COSAS LINDAS
@@ -20,10 +20,12 @@
         </ion-card>
 
         <ion-card class="feas" expand="full">
-          <ion-card-header color="danger"><b>EDIFICIO - NOK</b></ion-card-header>
+          <ion-card-header color="danger"><b></b></ion-card-header>
           <ion-card-content  style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
           ">COSAS FEAS</ion-card-content>
         </ion-card>
 
+        <img [src]="image" *ngIf="image" />
+        <p>{{image}}</p>
       </ion-col>
 </ion-content>

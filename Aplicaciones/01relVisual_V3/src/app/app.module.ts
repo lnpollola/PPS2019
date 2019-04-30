@@ -16,7 +16,7 @@ import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ng
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthService } from "../app/auth.service";
 
 export const firebaseConfig = {
@@ -44,7 +44,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera
   ],
   bootstrap: [AppComponent]
 })
