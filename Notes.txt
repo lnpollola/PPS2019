@@ -73,7 +73,7 @@ generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP2 OK
   APP3 OK
   APP4 OK
-  APP5 NOK
+  APP5 OK
 generar las pantallas de la app
   APP1 
     SUBIR       OK
@@ -88,7 +88,7 @@ generar las pantallas de la app
   APP3 
     ok boton para activar
   APP4 
-    
+    OK CUENTA 
   APP5 
     OK CON LISTADO DE CHATS
 
@@ -104,6 +104,12 @@ generar las pantallas de la app
 
 otros
 spinners en las cargas
+    APP1 OK
+    APP2 nOK
+    APP3 nOK
+    APP4 nOK
+    APP5 nOK
+
 mejorar los toast para pasar mensaje y color nada mas
 
 
