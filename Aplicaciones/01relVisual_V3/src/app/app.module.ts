@@ -16,7 +16,6 @@ import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ng
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { AuthService } from "../app/auth.service";
 
