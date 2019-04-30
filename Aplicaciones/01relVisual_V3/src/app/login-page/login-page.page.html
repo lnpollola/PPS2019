@@ -21,7 +21,10 @@
 			  
 				  <ion-card>
 						<ion-card-header>
-							<div class="fire-logo">
+							<ion-spinner *ngIf="spinner" class="color-green" name="lines"></ion-spinner>
+	
+
+							<div *ngIf="!spinner" class="fire-logo">
 							<img src="../../assets/imgs/login.png" class="img-logo">
 						  </div>
 						
@@ -34,7 +37,8 @@
 				  
 				
 			</ion-row>
-			<ion-row>
+			<div *ngIf="!spinner"> 
+				<ion-row >
 				<ion-col>
 				  <ion-input clearInput type="email" placeholder="Email" [(ngModel)]="email" class="input" padding-horizontal clear-input="true"></ion-input>
 				</ion-col>
@@ -59,9 +63,12 @@
 				Acceder como...
 				</ion-button>
 			  </ion-col>
-			  </ion-row>
+				</ion-row>
+			</div>
 		</ion-card-content>
 	  </ion-card>
 	</div>
+
+
   </ion-content>
 </div>
