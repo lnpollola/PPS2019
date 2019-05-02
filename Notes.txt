@@ -105,7 +105,7 @@ generar las pantallas de la app
 otros
 spinners en las cargas
     APP1 OK
-    APP2 nOK
+    APP2 OK
     APP3 nOK
     APP4 nOK
     APP5 nOK

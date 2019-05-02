@@ -1,0 +1,59 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+    
+
+   
+  <div class="contenedorPresentacion">
+
+  <div><p>RELEVAMIENTO VISUAL 
+    <br>
+          PPS 19 UTN <br>
+          JULIAN GRAZIANO <br>
+          DIVISION 4A
+  </p></div>
+
+</div>
+  <div class="logoPresentacion">
+      <img id="imgScreen"  src="../../assets/icon/icon.png">	
+      
+    </div> 
+
+
+
+
+</div> 
+
+
+<ion-content  [style.display]=" splash ? 'none' : 'block'">
+
+<div class="wrapper">
+    <div id="content" class="container">
+      <h1>Bienvenido</h1>
+      
+      <form class="form">
+        <input type="text"  [(ngModel)]="username" name="username" placeholder="email@email.com">
+        <input type="password" [(ngModel)]="password" name="pass" placeholder="********">
+
+    
+        <div padding>
+                       
+            <ion-button color="dark"  (click)="login()">
+                INGRESAR
+             </ion-button>
+
+            <ion-button  color="tertiary"  (click)="creoSheet()">
+                Acceder como...
+            </ion-button>
+  
+          </div>
+
+        </form>
+        <img id="imgicon" src="../../assets/icon/icon.png" alt="">
+    </div>
+   
+    
+
+
+
+  </div>
+
+  </ion-content>

@@ -17,19 +17,6 @@
 }
 
 
-// .spinner {
-// 	display: inline-block;
-// 	-webkit-transform: translateZ(1px);
-//     transform: translateZ(1px);   
-//     width: 60px;
-//     height:110px;
-// 	margin-left: 45%;
-//     margin-top: 80%;
-//     // border-radius: 50%;
-//       -webkit-animation: sk-rotateplane 4s infinite ease-in-out;
-// 	animation: sk-rotateplane 4s infinite ease-in-out;
-
-//   }
 
   .contenedorPresentacion {
 	display: inline-block;
@@ -187,6 +174,26 @@ html,body {
 	font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+.form-structor-spinner {
+	background-color: #222;
+	border-radius: 15px;
+	height: 98%;
+	width: 98%; 
+	overflow: hidden;
+	
+	&::after {
+		content: '';
+		opacity: .8;
+		position: fixed;
+		top: 0;right:0;bottom:0;left:0;
+		background-repeat: repeat;
+		background-position: left bottom;
+		background-size: cover;
+		background-color: white;
+	}
 }
 
 .form-structor {

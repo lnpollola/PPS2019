@@ -12,13 +12,16 @@
 
 <div class="form-structor" [style.display]=" splash ? 'none' : 'block' ">
 	<div class="signup">
-		<h2 class="form-title" id="signup"><span>or</span>LOGIN</h2>
-		<div class="form-holder">
+
+			<ion-spinner *ngIf="spinner" class="form-title" id="signup"  style="color:white; font-size: 30px;" name="dots"></ion-spinner>
+	
+		<h2 *ngIf="!spinner" class="form-title" id="signup"><span>or</span>LOGIN</h2>
+		<div *ngIf="!spinner" class="form-holder">
 			<!-- <input type="text" class="input" placeholder="Name" /> -->
 			<input type="email" class="input" [(ngModel)]="email"  placeholder="Email" />
 			<input type="password" class="input" [(ngModel)]="password" placeholder="Password" />
 		</div>
-		<button class="submit-btn" (click)="login()">ENTRAR</button>
-		<button expand="block" class="submit-btn-acceso" fill="outline"  (click)="creoSheet()">Acc.Rápido</button>
+		<button  *ngIf="!spinner" class="submit-btn" (click)="login()">ENTRAR</button>
+		<button  *ngIf="!spinner" expand="block" class="submit-btn-acceso" fill="outline"  (click)="creoSheet()">Acc.Rápido</button>
 	</div>
 </div>

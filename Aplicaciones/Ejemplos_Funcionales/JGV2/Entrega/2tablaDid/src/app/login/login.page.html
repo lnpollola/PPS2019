@@ -1,0 +1,62 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+    
+
+        <div class="contenedorPresentacion">
+
+        <div><p>TABLA DIDACTICA 
+          <br>
+                PPS 19 UTN <br>
+                JULIAN GRAZIANO <br>
+                DIVISION 4A
+        </p></div>
+
+      </div>
+        <div class="logoPresentacion">
+            <img id="imgScreen"  src="../../assets/icon/icon.png">	
+            
+          </div> 
+
+
+   
+<!-- 
+  	 <div class="contenedorPresentacion logoPresentacion">
+     
+        <div class="fuente"><p> RELEVAMIENTO VISUAL </p></div>
+        <div class="fuente"><p> JULIAN GRAZIANO </p></div><br>
+        <div class="fuente"><p>UTN PPS 2019 </p></div>
+        <div class="fuente"><p>DIVISIÓN 4A </p></div>
+    </div>
+ 
+	<div class="logoPresentacion">
+    <img id="imgScreen"  src="../../assets/icon/icon.png">	
+    
+	</div> 
+	 -->
+</div> 
+
+
+
+
+    <ion-content [style.display]=" splash ? 'none' : 'block'">
+        <div class="login-box">
+          <h1>Login</h1>
+          <div class="textbox">
+              <ion-icon name="contact"></ion-icon>
+              <input type="email" [(ngModel)]="username" placeholder="email@email.com" >
+          </div>
+
+          <div class="textbox">
+              <ion-icon name="lock"></ion-icon>
+              <input type="password" [(ngModel)]="password" placeholder="password" >
+          </div>
+          <div id="buttons">
+          <button class="btn" (click)="login()">INGRESAR</button>
+          <button class="btn" id="creoSheetCss"  (click)="creoSheet()">
+            Acceder como...
+          </button>
+          </div>
+        </div>
+
+      
+
+      </ion-content>

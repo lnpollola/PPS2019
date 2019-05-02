@@ -4,11 +4,23 @@
 // }
 
 h1{
+  color:initial;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+  font-size: 35px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
   height: 90%;
   font-weight: bolder;
   text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
+	// position: fixed;
+		top: 50%;
+		left: 50%;
+	margin-top: 25%;
+		// width: 65%;
+		z-index: 5;
+
+}
+.alineado
+{
+  text-align: center;
 }
 
 .imgapp
@@ -17,14 +29,43 @@ h1{
   padding: 2%;
 }
 
+.botonAnimal
+{
+  background-image:url("../../assets/icon/animales.png") !important;
+  background-repeat:repeat;
+  background-size:contain;
+  margin: 0%;
+  margin-top: 25%;
+}
+
+.botonColores
+{
+  background-image:url("../../assets/icon/colores.png") !important;
+  background-repeat:repeat;
+  background-size:contain;
+  margin: 0%;
+  margin-top: 9%;
+}
+
+.botonNumeros
+{
+  background-image:url("../../assets/icon/numeros.png") !important;
+  background-repeat:repeat;
+  background-size:contain;
+  margin: 0%;
+  margin-top: 9%;
+}
 .margintop
 {
   margin-top: 10%;
 }
 
-ion-button{
-  height: 90px;
-  margin-top: 3%;
+
+
+ion-card{
+  height: 130px;
+  margin-top: 20%;
   width: 100%;
+
 }
 

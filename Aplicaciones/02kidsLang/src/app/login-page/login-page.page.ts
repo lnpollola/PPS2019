@@ -19,6 +19,8 @@ export class LoginPagePage implements OnInit {
   password = "";
   routerLink = "";
 
+  spinner:boolean ; 
+
   splash = true;
 
   ionViewDidEnter() 
@@ -40,9 +42,9 @@ export class LoginPagePage implements OnInit {
   }
 
    login() {
-        
+    this.spinner = true;
       this.auth.loginUser(this.email,this.password ).then((user) => {
-
+        setTimeout(() => this.spinner = false , 2000);
         this.creoToast(true);  
         this.router.navigateByUrl('/tabs'); 
 
