@@ -68,7 +68,30 @@ https://medium.com/sourcebytes/how-to-build-a-responsive-login-form-using-ionic-
 
 sacar la barra de logout como componente
   probar con los navcontroller y ionicviewdidload
-generar los botones y perfiles de acceder como / cambiar los alert por toast
+generar navegacion con barra de arriba
+
+-------PENDIENTES------
+APP1
+  GENERAR LA LISTA EN LA PESTAÑA DE LISTA
+  LLEVAR EL BOTON DE TOMAR FOTO A LOS DEL  PRINCIPIO
+  PONER IDENTIDAD DE USUARIO Y FECHA DE FOTO Y DEMAS
+  MOSTRAR LAS IMAGENES EN CARDS CON DATOS DE FOTOS TOMADAS
+
+APP2 
+  LINKEAR LOS SONIDOS DE TODOS LOS BOTONES
+  GENERAR NAVEGACION CON BARRA ARRIBA PARA VOLVER
+  SELECCIONAR IDIOMA Y HACER QUE FUNCIONE CON VARIABLES
+
+APP3 
+  QUE EL BOTON CAMBIE DE COLOR CUANDO LO ACTIVE
+
+APP4 
+  HACER MAS GRANDE EL TOTAL, VER QUE AGREGAR
+
+APP5
+  GENERAR CAPAS INTERMEDIAS QUE SON NECESARIAS 
+
+--generar los botones y perfiles de acceder como / cambiar los alert por toast
   APP1 OK
   APP2 OK
   APP3 OK
@@ -82,15 +105,15 @@ generar las pantallas de la app
     RESULTADOS
   APP2 
     TEMAS
-      COLORES NUMEROS ANIMALES
-    LISTADO ANIMALES 
-      5 BOTONES
+      --COLORES NUMEROS ANIMALES
+      --LISTADO ANIMALES 
+      --5 BOTONES
   APP3 
-    ok boton para activar
+    --ok boton para activar
   APP4 
-    OK CUENTA 
+    --OK CUENTA 
   APP5 
-    OK CON LISTADO DE CHATS
+    --OK CON LISTADO DE CHATS
 
 --splash screen animado
     --modificar el principal ponerlo blanco con icono
