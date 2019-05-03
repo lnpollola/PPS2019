@@ -1,25 +1,6 @@
 <ion-content>
-  
-  <a (click)="activoAcelerometro()" class="btn">ACTIVAR</a>
-
-  <ion-item> 
-    <ion-label>X orientation</ion-label>
-  <ion-input type="text" [(ngModel)]="xOrient"></ion-input>
-</ion-item>
-<ion-item> 
-    <ion-label>Y orientation</ion-label>
-    <ion-input type="text" [(ngModel)]="yOrient"></ion-input>
-  </ion-item>
-  <ion-item> 
-      <ion-label>Z orientation</ion-label>
-      <ion-input type="text" [(ngModel)]="zOrient"></ion-input>
-    </ion-item>
-    <ion-item> 
-        <ion-label>Time Stamp</ion-label>
-        <ion-input type="text" [(ngModel)]="timestamp"></ion-input>
-      </ion-item>
-
-      <button ion-button (click)="gyrascope()" full>click</button>
+  <a (click)="activoAcelerometro()" *ngIf="activar" class="btn">ACTIVAR</a>
+  <a (click)="desactivoAcelerometro()" *ngIf="!activar" class="btnRed">DESACTIVAR</a>
 
       <ion-item> 
           <ion-label>Acceleration X</ion-label>
@@ -33,6 +14,4 @@
               <ion-label>Acceleration Z</ion-label>
               <ion-input type="text" [(ngModel)]="accZ"></ion-input>
             </ion-item>
-        <button ion-button (click)="Accelerometer()" full>click</button>
-
 </ion-content>

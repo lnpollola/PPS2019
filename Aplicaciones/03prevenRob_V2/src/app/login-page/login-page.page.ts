@@ -18,7 +18,7 @@ export class LoginPagePage implements OnInit {
   email = "";
   password = "";
   routerLink = "";
-
+  spinner:boolean;
   
   splash = true;
 
@@ -48,9 +48,9 @@ export class LoginPagePage implements OnInit {
   }
 
    login() {
-        
+    this.spinner = true;
       this.auth.loginUser(this.email,this.password ).then((user) => {
-
+        setTimeout(() => this.spinner = false , 3000);
         this.creoToast(true);  
         this.router.navigateByUrl('/tabs'); 
 
