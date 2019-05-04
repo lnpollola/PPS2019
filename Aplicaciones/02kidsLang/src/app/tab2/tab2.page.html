@@ -1,3 +1,22 @@
+
+  <ion-header>
+
+  
+
+    <ion-toolbar>
+     
+          <ion-select multiple="false" slot="start" cancelText="Cancelar" okText="Ok">
+              <ion-select-option  value="ES" selected>ES</ion-select-option>
+              <ion-select-option  value="US" >US</ion-select-option>
+          </ion-select>
+<!--         
+          <ion-button color="secondary" class="io" slot="end" routerDirection="root">
+            <ion-icon name="home"></ion-icon>
+          </ion-button> -->
+
+    </ion-toolbar>
+  </ion-header>
+
 <ion-content class="margintop">
 
     <ion-item>
@@ -13,7 +32,7 @@
   
     <ion-item>
      
-        <ion-button size="large" color="medium" expand="full">
+        <ion-button size="large" (click)="playBurro()" color="medium" expand="full">
             <img class="imgapp" src="../../assets/icon/donkey.png"  >
             <ion-text>
                 <h1>BURRO</h1>
@@ -24,7 +43,7 @@
   
     <ion-item >
      
-         <ion-button size="large" color="dark"  expand="full">
+         <ion-button size="large" (click)="playPato()" color="dark"  expand="full">
             <img class="imgapp" src="../../assets/icon/duck.png">
             <ion-text>
                 <h1>PATO</h1>
@@ -35,7 +54,7 @@
   
     <ion-item >
       
-        <ion-button size="large" color="secondary" expand="full">
+        <ion-button size="large" (click)="playElefante()" color="secondary" expand="full">
             <img class="imgapp" src="../../assets/icon/elephant.png"  >
             <ion-text>
                 <h1>ELEFANTE</h1>
@@ -46,7 +65,7 @@
   
     <ion-item >
       
-        <ion-button size="large" color="tertiary" expand="full">
+        <ion-button size="large" (click)="playLeon()" color="tertiary" expand="full">
             <img class="imgapp" src="../../assets/icon/lion.png"  >
             <ion-text>
                 <h1>LEON</h1>

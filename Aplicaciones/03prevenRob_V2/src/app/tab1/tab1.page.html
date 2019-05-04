@@ -1,8 +1,9 @@
 <ion-content>
+
   <a (click)="activoAcelerometro()" *ngIf="activar" class="btn">ACTIVAR</a>
   <a (click)="desactivoAcelerometro()" *ngIf="!activar" class="btnRed">DESACTIVAR</a>
-
-      <ion-item> 
+  <ion-text>Estado: {{estado}}</ion-text> 
+      <!-- <ion-item> 
           <ion-label>Acceleration X</ion-label>
           <ion-input type="text" [(ngModel)]="accX"></ion-input>
         </ion-item>
@@ -13,5 +14,5 @@
           <ion-item> 
               <ion-label>Acceleration Z</ion-label>
               <ion-input type="text" [(ngModel)]="accZ"></ion-input>
-            </ion-item>
+            </ion-item> -->
 </ion-content>

@@ -113,6 +113,13 @@ generar las pantallas de la app
       --5 BOTONES
   APP3 
     --ok boton para activar
+    -- Al cambiar la posición (a izquierda o a derecha) emitirá un sonido distinto.
+    -- Al ponerlo vertical, se encenderá la luz por 5 segundos y emitirá un sonido.
+    -- Al ponerlo horizontal, vibrará por 5 segundos y emitirá un sonido.
+    --+ Grabar los sonidos.
+    --Ejemplo: al moverlo hacia la izquierda, “¡Están hurtando el dispositivo!”, al
+    --moverlo hacia la derecha “¡Epa! ¿Qué estás por hacer?”
+
   APP4 
     --OK CUENTA 
   APP5 

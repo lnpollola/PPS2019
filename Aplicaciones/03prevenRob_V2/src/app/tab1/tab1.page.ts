@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 // import { NavController } from 'ionic-angular';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -21,17 +24,36 @@ export class Tab1Page
   public accZ:any;
   public activar:boolean = true;
   public subscription;
+  public estado;
 
   constructor(
     private gyroscope: Gyroscope,
-    private deviceMotion: DeviceMotion) {
+    private deviceMotion: DeviceMotion,
+    private nativeAudio: NativeAudio,
+    private luzFlash: Flashlight,
+    private vibration: Vibration 
+    ) 
+    {
+      this.nativeAudio.preloadSimple('izquierda', 'assets/sounds/izquierda.mp3').then((success)=>{
+        console.log("Cargado IZQ");},(error)=>{console.log(error);});
 
-   
-  }
+      this.nativeAudio.preloadSimple('derecha', 'assets/sounds/derecha.mp3').then((success)=>{
+        console.log("Cargado DER");},(error)=>{console.log(error);});
+
+      this.nativeAudio.preloadSimple('vertical', 'assets/sounds/vertical.mp3').then((success)=>{
+        console.log("Cargado VERT");},(error)=>{console.log(error);});
+
+      this.nativeAudio.preloadSimple('horizontal', 'assets/sounds/horizontal.mp3').then((success)=>{
+        console.log("Cargado HORIZ");},(error)=>{console.log(error);});
+      }
+ 
+    playIzq(){this.nativeAudio.play('izquierda').then((success)=>{console.log("PLAY IZQ ");},(error)=>{console.log(error);});}
+    playDer(){this.nativeAudio.play('derecha').then((success)=>{console.log("PLAY DER");},(error)=>{console.log(error);});}
+    playVert(){this.nativeAudio.play('vertical').then((success)=>{console.log("PLAY VERT");},(error)=>{console.log(error);});}
+    playHoriz(){this.nativeAudio.play('horizontal').then((success)=>{console.log("PLAY HORIZ");},(error)=>{console.log(error);});}
 
   activoAcelerometro()
   {
-    // this.gyrascope();
     this.Accelerometer();
     this.activar = !this.activar;
   }
@@ -42,50 +64,54 @@ export class Tab1Page
     this.activar = !this.activar;
   }
 
-  // gyrascope(){
-
-  //   let options: GyroscopeOptions = {
-  //     frequency: 1000
-  //  };
-   
-  //  this.gyroscope.getCurrent(options)
-  //    .then((orientation: GyroscopeOrientation) => {
-  //       console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
-  //       this.xOrient=orientation.x;
-  //       this.yOrient=orientation.y;
-  //       this.zOrient=orientation.z;
-  //       this.timestamp=orientation.timestamp;
-
-  //     })
-  //    .catch()
-   
-   
-  //  this.gyroscope.watch()
-  //     .subscribe((orientation: GyroscopeOrientation) => {
-  //        console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
-  //        this.xOrient=orientation.x;
-  //       this.yOrient=orientation.y;
-  //       this.zOrient=orientation.z;
-  //       this.timestamp=orientation.timestamp;
-  //     });
-  // }
 
   Accelerometer(){
-    this.deviceMotion.getCurrentAcceleration().then(
-      (acceleration: DeviceMotionAccelerationData) =>
-       console.log(acceleration),
-   
-    //  (error: any) => console.log(error)
- 
-    );
-
-    
-    // Watch device acceleration
-    this.subscription = this.deviceMotion.watchAcceleration({frequency:1000}).subscribe((acceleration: DeviceMotionAccelerationData) => {
-      console.log(acceleration);
+    this.subscription = this.deviceMotion.watchAcceleration({frequency:6000}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+      console.log("esta es el watch: ",acceleration);
       this.accX=acceleration.x;
       this.accY=acceleration.y;
       this.accZ=acceleration.z;
+
+
+      //VERTICAL
+      if( this.accY >= 9 ) {
+         console.log("Está parado"); 
+         this.estado="PARADO";
+         this.luzFlash.switchOn();
+         setTimeout(function() {this.luzFlash.switchOff();}, 3000);
+         this.playVert();
+        }
+
+      //HORIZONTAL
+      else if ( this.accZ >= 9) { 
+        console.log("Está horizontal"); 
+        this.estado="HORIZONTAL";
+        this.playHoriz();
+        this.vibration.vibrate(5000);
+        // setTimeout(function() {this.vibration.vibrate(0);}, 5000);
+      }
+
+      //IZQ
+      else if ( this.accX >= 9) { 
+        console.log("Está de costado IZQ"); 
+        this.estado="COSTADO IZQ";
+        this.playIzq();
+      }
+ 
+      //DER
+      else if ( this.accX <= -9) {
+         console.log("Está de costado DER"); 
+         this.estado="COSTADO DER";
+         this.playDer();
+        }
+
+      //RESTO
+      else {
+        console.log("-----Registro de Watch------ ");
+        this.luzFlash.switchOff();
+        this.vibration.vibrate(0);
+      
+      }
     });
     
   }
