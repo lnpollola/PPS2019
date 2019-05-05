@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-// import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   imports: [
@@ -14,8 +13,5 @@ import { Tab1Page } from './tab1.page';
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
   declarations: [Tab1Page],
-  // providers: [
-  //   Camera
-  // ]
 })
 export class Tab1PageModule {}

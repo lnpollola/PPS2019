@@ -11,7 +11,7 @@
 
 <ion-content >
       <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
-        <ion-card (click)="sacarFoto()" class="lindas" expand="full">
+        <ion-card (click)="selectImage()"class="lindas" expand="full">
           <ion-card-header color="success" ><b></b></ion-card-header>
           <ion-card-content style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
           ">
@@ -19,12 +19,12 @@
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="feas" expand="full">
+        <ion-card (click)="selectImage()" class="feas" expand="full">
           <ion-card-header color="danger"><b></b></ion-card-header>
           <ion-card-content  style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
           ">COSAS FEAS</ion-card-content>
         </ion-card>
-        <p>{{image}}</p>
-        <img src="{{image}}">
+        <!-- <p>{{image}}</p> -->
+        <!-- <img src="{{image}}"> -->
       </ion-col>
 </ion-content>
