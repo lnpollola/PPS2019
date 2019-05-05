@@ -19,7 +19,9 @@ const STORAGE_KEY = 'my_images';
 })
 export class Tab1Page  implements OnInit {
 
-  // image: any; 
+  cosasLindas = "LINDAS";
+  cosasFeas = "FEAS";
+  clasificacion:string ;
   
   images = [];
 
@@ -40,24 +42,11 @@ export class Tab1Page  implements OnInit {
     private filePath: FilePath) { }
  
   ngOnInit() {
-    // this.plt.ready().then(() => {
-    //   this.loadStoredImages();
-    // });
+  
   }
  
-  // loadStoredImages() {
-  //   this.storage.get(STORAGE_KEY).then(images => {
-  //     if (images) {
-  //       let arr = JSON.parse(images);
-  //       this.images = [];
-  //       for (let img of arr) {
-  //         let filePath = this.file.dataDirectory + img;
-  //         let resPath = this.pathForImage(filePath);
-  //         this.images.push({ name: img, path: resPath, filePath: filePath });
-  //       }
-  //     }
-  //   });
-  // }
+ 
+  
  
   pathForImage(img) {
     if (img === null) {
@@ -77,7 +66,12 @@ export class Tab1Page  implements OnInit {
     toast.present();
   }
  
-  async selectImage() {this.takePicture(this.camera.PictureSourceType.CAMERA);}
+
+  async selectImage(clasificacionFoto:string) 
+  {
+    this.clasificacion = clasificacionFoto;
+    this.takePicture(this.camera.PictureSourceType.CAMERA);
+  }
  
   takePicture(sourceType: PictureSourceType) {
     var options: CameraOptions = {
@@ -99,7 +93,7 @@ export class Tab1Page  implements OnInit {
   createFileName() {
     var d = new Date(),
         n = d.getTime(),
-        newFileName = n + ".jpg";
+        newFileName = this.clasificacion + n + ".jpg";
     return newFileName;
 }
  
