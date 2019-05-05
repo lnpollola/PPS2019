@@ -21,6 +21,8 @@ export class Tab3Page  implements OnInit
 
 
   images = [];
+  arrayImagenes;
+  imagenLS;
  
   constructor(private camera: Camera, private file: File, private http: HttpClient, private webview: WebView,
     private actionSheetController: ActionSheetController, private toastController: ToastController,
@@ -38,17 +40,46 @@ export class Tab3Page  implements OnInit
   }
  
   loadStoredImages() {
+    // localStorage.clear();
     this.storage.get(STORAGE_KEY).then(images => {
       if (images) {
+        console.log("Imagenes:  ", images);
         let arr = JSON.parse(images);
+        console.log("Array JSON parse: ", arr);
+
         this.images = [];
+
         for (let img of arr) {
+          console.log("IMG de array: ", img);
           let filePath = this.file.dataDirectory + img;
           let resPath = this.pathForImage(filePath);
-          this.images.push({ name: img, path: resPath, filePath: filePath });
+          
+          let varHardcode = 'HARDCODE';
+
+          this.images.push(
+            { name: img,
+              path: resPath,
+              filePath: filePath,
+              harcode: varHardcode  });
         }
+
+
       }
     });
+
+    this.arrayImagenes = JSON.parse(localStorage.getItem('imagenes'));
+    for (let img of this.arrayImagenes) 
+    {
+      this.imagenLS = img;
+      console.log("Imagen Recorrida: ",img);
+    }
+    console.log("ArrayImagenes LS: ",this.arrayImagenes);
+    // console.log("ARRAY DE IMAGENES SALIENDO: ", this.images);
+    
+    // localStorage.setItem('imagen', JSON.stringify(this.images));
+    // console.log("LocalStorage: ", localStorage.getItem('imagen'));
+    // console.log("ARRAY DE IMAGENES JSON: ", JSON.parse(this.images) );
+    
   }
  
   pathForImage(img) {

@@ -14,9 +14,24 @@
       <ion-thumbnail slot="start">
         <ion-img [src]="img.path"></ion-img>
       </ion-thumbnail>
-      <ion-label>
-        {{ img.name }}
+      <ion-label text-wrap>
+        Nombre: {{ img.name }} - Hardcode: {{ img.hardcode }}
       </ion-label>
+      <ion-label text-wrap>
+        {{arrayImagenes}}
+      </ion-label>
+      <ion-label text-wrap>
+        {{imagenLS}}
+      </ion-label>
+      <!-- <ion-label>
+        {{ img.clasif }}
+      </ion-label>
+      <ion-label>
+        {{ img.harcode }}
+      </ion-label>
+      <ion-label>
+        {{ img }}
+      </ion-label> -->
       <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
