@@ -92,8 +92,12 @@ export class Tab1Page  implements OnInit {
   //FUNCIONES PARA LOGRAR DIRECTORIOS PATH
   createFileName() {
     var d = new Date(),
-        n = d.getTime(),
-        newFileName = this.clasificacion + n + ".jpg";
+        dia = d.getDate(),
+        mes = d.getMonth(),
+        año = d.getFullYear(),
+        // n = d.getTime(),
+        // newFileName = this.clasificacion + n + ".jpg";
+        newFileName = this.clasificacion + "."+ dia + mes + año + ".jpg";
     return newFileName;
 }
  
