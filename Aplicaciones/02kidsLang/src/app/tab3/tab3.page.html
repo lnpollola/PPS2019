@@ -5,14 +5,11 @@
 
     <ion-toolbar>
      
-          <ion-select multiple="false" slot="start" cancelText="Cancelar" okText="Ok">
-              <ion-select-option  value="ES" selected>ES</ion-select-option>
-              <ion-select-option  value="US" >US</ion-select-option>
-          </ion-select>
-<!--         
-          <ion-button color="secondary" class="io" slot="end" routerDirection="root">
-            <ion-icon name="home"></ion-icon>
-          </ion-button> -->
+        <ion-select multiple="false" [(ngModel)]="idiomaSeleccionado" slot="start" cancelText="Cancelar" okText="Ok">
+            <ion-select-option  value="ES" selected>ES</ion-select-option>
+            <ion-select-option  value="US" >US</ion-select-option>
+        </ion-select>
+
 
     </ion-toolbar>
   </ion-header>
@@ -21,7 +18,7 @@
 
     <ion-item>
      
-        <ion-button size="large" color="danger" expand="full" >
+        <ion-button (click)="playRojo()" size="large" color="danger" expand="full" >
             <img class="imgapp" src="../../assets/icon/rojo.png">
             <ion-text>
                 <h1>ROJO</h1>
@@ -32,7 +29,7 @@
   
     <ion-item>
      
-        <ion-button size="large" color="success" expand="full">
+        <ion-button  (click)="playVerde()" size="large" color="success" expand="full">
             <img class="imgapp" src="../../assets/icon/verde.png"  >
             <ion-text>
                 <h1>VERDE</h1>
@@ -43,7 +40,7 @@
   
     <ion-item >
      
-         <ion-button size="large" color="warning"  expand="full">
+         <ion-button  (click)="playAmarillo()" size="large" color="warning"  expand="full">
             <img class="imgapp" src="../../assets/icon/amarillo.png">
             <ion-text>
                 <h1>AMARILLO</h1>
@@ -54,7 +51,7 @@
   
     <ion-item >
       
-        <ion-button size="large" color="secondary" expand="full">
+        <ion-button  (click)="playCeleste()" size="large" color="secondary" expand="full">
             <img class="imgapp" src="../../assets/icon/celeste.png"  >
             <ion-text>
                 <h1>CELESTE</h1>
@@ -65,7 +62,7 @@
   
     <ion-item >
       
-        <ion-button size="large" color="tertiary" expand="full">
+        <ion-button  (click)="playVioleta()" size="large" color="tertiary" expand="full">
             <img class="imgapp" src="../../assets/icon/violeta.png"  >
             <ion-text>
                 <h1>VIOLETA</h1>

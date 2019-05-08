@@ -93,7 +93,7 @@ export class Tab1Page  implements OnInit {
   createFileName() {
     var d = new Date(),
         dia = d.getDate(),
-        mes = d.getMonth(),
+        mes = d.getMonth()+1,
         año = d.getFullYear(),
         // n = d.getTime(),
         // newFileName = this.clasificacion + n + ".jpg";
@@ -127,15 +127,15 @@ export class Tab1Page  implements OnInit {
         let newEntry = {
             name: name,
             path: resPath,
-            filePath: filePath,
-            clasif: 'HCCLASIF'
+            filePath: filePath
+            // clasif: 'HCCLASIF'
         };
  
-        this.images = [newEntry, ...this.images];
-        console.log("IMAGENES DEL UPLOAD: ", this.images);
-        localStorage.setItem('imagenes', JSON.stringify(this.images));
-        console.log("LocalStorage de subida GET: ", localStorage.getItem('imagenes'));
-        this.ref.detectChanges(); // trigger change detection cycle
+        // this.images = [newEntry, ...this.images];
+        // console.log("IMAGENES DEL UPLOAD: ", this.images);
+        // localStorage.setItem('imagenes', JSON.stringify(this.images));
+        // console.log("LocalStorage de subida GET: ", localStorage.getItem('imagenes'));
+        // this.ref.detectChanges(); // trigger change detection cycle
     });
   }
 }

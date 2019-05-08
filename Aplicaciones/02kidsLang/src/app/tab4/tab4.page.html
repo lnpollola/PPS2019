@@ -5,14 +5,11 @@
 
     <ion-toolbar>
      
-          <ion-select multiple="false" slot="start" cancelText="Cancelar" okText="Ok">
-              <ion-select-option  value="ES" selected>ES</ion-select-option>
-              <ion-select-option  value="US" >US</ion-select-option>
-          </ion-select>
-<!--         
-          <ion-button color="secondary" class="io" slot="end" routerDirection="root">
-            <ion-icon name="home"></ion-icon>
-          </ion-button> -->
+      <ion-select multiple="false" [(ngModel)]="idiomaSeleccionado" slot="start" cancelText="Cancelar" okText="Ok">
+        <ion-select-option  value="ES" selected>ES</ion-select-option>
+        <ion-select-option  value="US" >US</ion-select-option>
+    </ion-select>
+
 
     </ion-toolbar>
   </ion-header>
@@ -21,7 +18,7 @@
 
   <ion-item>
    
-      <ion-button size="large" color="danger" expand="full" >
+      <ion-button (click)="playUno()" size="large" color="danger" expand="full" >
           <img class="imgapp" src="../../assets/icon/uno.png">
           <ion-text>
               <h1>UNO</h1>
@@ -32,7 +29,7 @@
 
   <ion-item>
    
-      <ion-button size="large" color="transparent" expand="full">
+      <ion-button (click)="playDos()"  size="large" color="transparent" expand="full">
           <img class="imgapp" src="../../assets/icon/dos.png"  >
           <ion-text>
               <h1>DOS</h1>
@@ -43,7 +40,7 @@
 
   <ion-item >
    
-       <ion-button size="large" color="secondary"  expand="full">
+       <ion-button (click)="playTres()" size="large" color="secondary"  expand="full">
           <img class="imgapp" src="../../assets/icon/tres.png">
           <ion-text>
               <h1>TRES</h1>
@@ -54,7 +51,7 @@
 
   <ion-item >
     
-      <ion-button size="large" color="medium" expand="full">
+      <ion-button (click)="playCuatro()"  size="large" color="medium" expand="full">
           <img class="imgapp" src="../../assets/icon/cuatro.png"  >
           <ion-text>
               <h1>CUATRO</h1>
@@ -65,7 +62,7 @@
 
   <ion-item >
     
-      <ion-button size="large" color="dark" expand="full">
+      <ion-button (click)="playCinco()"  size="large" color="dark" expand="full">
           <img class="imgapp" src="../../assets/icon/cinco.png"  >
           <ion-text>
               <h1>CINCO</h1>

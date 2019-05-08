@@ -15,28 +15,14 @@
         <ion-img [src]="img.path"></ion-img>
       </ion-thumbnail>
       <ion-label text-wrap>
-        Nombre: {{ img.name }} - Hardcode: {{ img.harcode }}
+        <!-- Nombre: {{ img.name }} -  -->
+        Clasificacion: {{ img.clasificacion }} 
+        Fecha: {{img.fecha}} 
+        Usuario: {{img.usuario}}
       </ion-label>
-      <!-- <ion-label>
-        {{ img.clasif }}
-      </ion-label>
-      <ion-label>
-        {{ img.harcode }}
-      </ion-label>
-      <ion-label>
-        {{ img }}
-      </ion-label> -->
       <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
-<!--  
-<ion-footer>
-  <ion-toolbar color="primary">
-    <ion-button fill="clear" expand="full" color="light" >
-      <ion-icon slot="start" name="camera"></ion-icon>
-      Subir Imágen</ion-button>
-  </ion-toolbar>
-</ion-footer> -->
