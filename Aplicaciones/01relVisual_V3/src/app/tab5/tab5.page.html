@@ -28,14 +28,14 @@
 
 
   <ion-list>
-    <ion-item-sliding *ngFor="let img of images.slice().reverse()">
+    <ion-item-sliding *ngFor="let img of images.slice().reverse(); index as pos">
       <ion-item>
         <ion-card>
             <ion-fab right bottom>
               <ion-button *ngIf="img.clasificacion == 'FEAS'" slot="end" fill="clear" (click)="deleteImage(img, pos)">
                 <ion-icon slot="icon-only" name="trash"></ion-icon>
               </ion-button>
-                <ion-icon name="brush"></ion-icon>
+                <!-- <ion-icon name="brush"></ion-icon> -->
               </ion-fab>
               <!-- <div class="card-title"></div> -->
               <ion-card-title> Fecha: {{img.fecha}}  </ion-card-title>

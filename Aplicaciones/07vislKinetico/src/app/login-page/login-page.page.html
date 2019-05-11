@@ -1,0 +1,42 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+	<div class="logoPresentacion">
+		<img  src="../../assets/icon/favicon2.png">	
+	</div>
+		<div class="contenedorPresentacion">
+		<div> LEANDRO POLLOLA </div><br>
+		<div> PRACTICA PROFESIONAL</div>
+		<div> SUPERVISADA 4A</div>
+	</div>
+</div>
+
+
+<div [style.display]=" splash ? 'none' : 'contents' ">
+<div class="imagenFondo">
+<div class="wrapper">
+	<div id="formContent">
+	  <!-- Tabs Titles -->
+	  <h2 class="active"> LOGIN </h2>
+	  <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+  
+	  <!-- Icon -->
+	  <div class="first">
+		<img src="https://image.flaticon.com/icons/svg/1049/1049883.svg" id="icon" alt="User Icon" />
+	  </div>
+  
+	  <!-- Login Form -->
+	  <form>
+		<input type="text" id="login" class="second" name="login" [(ngModel)]="email" placeholder="Usuario">
+		<input type="text" id="password" class="third" name="password" [(ngModel)]="password" placeholder="Contraseña">
+		<input type="submit" (click)="login()"  class="fourth" value="Log In">
+		<input type="submit" (click)="creoSheet()"  class="fourth" value="Acc.Rápido">
+	  </form>
+  
+	  <!-- Remind Passowrd -->
+	  <div id="formFooter">
+		<a class="underlineHover" href="#">Vis Kinético</a>
+	  </div>
+  
+	</div>
+  </div>
+</div>
+</div>

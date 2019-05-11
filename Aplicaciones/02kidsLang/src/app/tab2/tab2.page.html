@@ -1,19 +1,16 @@
-
   <ion-header>
-
-  
-
     <ion-toolbar>
-     
-          <ion-select multiple="false" [(ngModel)]="idiomaSeleccionado" slot="start" cancelText="Cancelar" okText="Ok">
-              <ion-select-option  value="ES" selected>ES</ion-select-option>
-              <ion-select-option  value="US" >US</ion-select-option>
-          </ion-select>
-<!--         
-          <ion-button color="secondary" class="io" slot="end" routerDirection="root">
-            <ion-icon name="home"></ion-icon>
-          </ion-button> -->
+      <ion-buttons slot="primary">
+          <ion-thumbnail slot="start">
+            <img *ngIf="idiomaSeleccionado == 'ES'" src="../../assets/icon/es.svg">
+            <img *ngIf="idiomaSeleccionado == 'US'" src="../../assets/icon/gb.svg">
+          </ion-thumbnail>
+      </ion-buttons>
 
+          <ion-select multiple="false" [(ngModel)]="idiomaSeleccionado" slot="start" cancelText="Cancelar" okText="Ok">
+              <ion-select-option  value="ES" selected>ESPAÑOL</ion-select-option>
+              <ion-select-option  value="US" >INGLES</ion-select-option>
+          </ion-select>
     </ion-toolbar>
   </ion-header>
 

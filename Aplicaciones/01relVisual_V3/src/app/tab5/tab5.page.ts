@@ -53,9 +53,22 @@ export class Tab5Page implements OnInit {
           let filePath = this.file.dataDirectory + img;
           let resPath = this.pathForImage(filePath);
           let varclasificacion =  img.substr(0,img.indexOf('.'));
-          let varfecha =  img.substr(img.indexOf('.')+1,img.lastIndexOf('.')-1);
-          let varUsuario = "admin";
+          let varfecha =  
+          // img.substring(img.indexOf('.')+1,img.length -4).substr(0,2) ;
+          
+          img.substring(img.indexOf('.')+1,img.length -4).substr(0,2)    //DIA
+          +"/"+
+          img.substring(img.indexOf('.')+1,img.length -4).substr(2,1)    //MES
+          +"/"+
+          img.substring(img.indexOf('.')+1,img.length -4).substr(3,4)  //AÑO
+          ;
 
+
+          let varUsuario = "admin";
+          
+          // localStorage.getItem('imagen').substring(localStorage.getItem('imagen').indexOf('.')+1,localStorage.getItem('imagen').length -4)
+         
+          
           this.images.push(
             { name: img,
               path: resPath,
