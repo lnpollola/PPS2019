@@ -54,7 +54,7 @@ export class Tab3Page  implements OnInit
           let filePath = this.file.dataDirectory + img;
           let resPath = this.pathForImage(filePath);
           let varclasificacion =  img.substr(0,img.indexOf('.'));
-          let varfecha =  img.substr(img.indexOf('.')+1,img.indexOf('.jpg'));
+          let varfecha =  img.substr(img.indexOf('.')+1,img.lastIndexOf('.')-1);
           let varUsuario = "admin";
 
           this.images.push(

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Listado de Imágenes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <ion-spinner  class="center-spinner" *ngIf="images.length == 0" > </ion-spinner>
+ 
+  <!-- <ion-list>
+    <ion-item  *ngFor="let img of images; index as pos" text-wrap>
+      <ion-thumbnail  *ngIf="img.clasificacion == 'FEAS'" slot="start">
+        <ion-img [src]="img.path"></ion-img>
+      </ion-thumbnail>
+      <ion-label *ngIf="img.clasificacion == 'FEAS'" text-wrap>
+       
+        Clasificacion: {{ img.clasificacion }} 
+        Fecha: {{img.fecha}} 
+        Usuario: {{img.usuario}}
+      </ion-label>
+      <ion-button *ngIf="img.clasificacion == 'FEAS'" slot="end" fill="clear" (click)="deleteImage(img, pos)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list> -->
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let img of images.slice().reverse()">
+      <ion-item>
+        <ion-card>
+            <ion-fab right bottom>
+              <ion-button *ngIf="img.clasificacion == 'FEAS'" slot="end" fill="clear" (click)="deleteImage(img, pos)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+                <ion-icon name="brush"></ion-icon>
+              </ion-fab>
+              <!-- <div class="card-title"></div> -->
+              <ion-card-title> Fecha: {{img.fecha}}  </ion-card-title>
+              <ion-card-subtitle>Clasificacion: {{ img.clasificacion }}  </ion-card-subtitle>
+              <ion-card-content>
+                Usuario: {{img.usuario}}
+                <ion-img [src]="img.path"></ion-img>
+              </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+
+</ion-content>

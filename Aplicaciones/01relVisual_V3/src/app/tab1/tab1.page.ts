@@ -95,7 +95,7 @@ export class Tab1Page  implements OnInit {
         dia = d.getDate(),
         mes = d.getMonth()+1,
         año = d.getFullYear(),
-        // n = d.getTime(),
+        // n = d.getTime(),,
         // newFileName = this.clasificacion + n + ".jpg";
         newFileName = this.clasificacion + "."+ dia + mes + año + ".jpg";
     return newFileName;
