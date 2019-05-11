@@ -8,8 +8,9 @@
    
   <ion-content padding>
   <div class="images" >
-      <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]">
-        <img src="../../assets/imgs/{{image}}.jpg">
+      <!-- <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]"> -->
+      <div class="one-image">
+        <img [src]="imagenActual">
       </div>
     </div>
   </ion-content>

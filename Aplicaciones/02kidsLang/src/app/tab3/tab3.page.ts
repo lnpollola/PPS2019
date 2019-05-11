@@ -34,27 +34,27 @@ export class Tab3Page
   }
 
   playRojo(){
-    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('rojo').then((success)=>{this.nativeAudio.unload('rojo');},(error)=>{console.log(error);});}
-    else if (this.idiomaSeleccionado == 'US') {this.nativeAudio.play('rojo_EN').then((success)=>{this.nativeAudio.unload('rojo_EN');},(error)=>{console.log(error);});}
+    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('rojo').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
+    else if (this.idiomaSeleccionado == 'US') {this.nativeAudio.play('rojo_EN').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
   }
   playVerde(){
-    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('verde').then((success)=>{this.nativeAudio.unload('verde');},(error)=>{console.log(error);});}
-    else if (this.idiomaSeleccionado == 'US')  {this.nativeAudio.play('verde_EN').then((success)=>{this.nativeAudio.unload('verde_EN');},(error)=>{console.log(error);});}
+    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('verde').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
+    else if (this.idiomaSeleccionado == 'US')  {this.nativeAudio.play('verde_EN').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
   }
  
   playAmarillo(){
-    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('amarillo').then((success)=>{this.nativeAudio.unload('amarillo');},(error)=>{console.log(error);});}
-    else if (this.idiomaSeleccionado == 'US')   {this.nativeAudio.play('amarillo_EN').then((success)=>{this.nativeAudio.unload('amarillo_EN');},(error)=>{console.log(error);});}
+    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('amarillo').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
+    else if (this.idiomaSeleccionado == 'US')   {this.nativeAudio.play('amarillo_EN').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
   }
   
   playCeleste(){
-    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('celeste').then((success)=>{this.nativeAudio.unload('celeste');},(error)=>{console.log(error);});}
-    else if (this.idiomaSeleccionado == 'US') {this.nativeAudio.play('celeste_EN').then((success)=>{this.nativeAudio.unload('celeste_EN');},(error)=>{console.log(error);});}
+    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('celeste').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
+    else if (this.idiomaSeleccionado == 'US') {this.nativeAudio.play('celeste_EN').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
   }
 
   playVioleta(){
-    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('violeta').then((success)=>{this.nativeAudio.unload('violeta');},(error)=>{console.log(error);});}
-    else if (this.idiomaSeleccionado == 'US')  {this.nativeAudio.play('violeta_EN').then((success)=>{this.nativeAudio.unload('violeta_EN');},(error)=>{console.log(error);});}
+    if (this.idiomaSeleccionado == 'ES') {this.nativeAudio.play('violeta').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
+    else if (this.idiomaSeleccionado == 'US')  {this.nativeAudio.play('violeta_EN').then((success)=>{console.log("success playing");},(error)=>{console.log(error);});}
   }
 }
 
