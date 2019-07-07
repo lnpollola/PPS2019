@@ -1,0 +1,139 @@
+IONIC
+Instalar nodeJS
+En CMD:
+npm install -g ionic
+
+Para crear una app:
+ionic start oneapp super --type=ionic-angular (elegir entre: tabs/blank/sidemenu/super)
+
+Para correrla:
+cd "nombreAPP"
+ionic serve --lab
+
+Para buildear:
+ionic cordova build android
+o
+ionic cordova run android (directamente)
+
+Para instalar los componentes de otra app:
+Ir a la carpeta de la app
+npm install 
+
+
+------------------
+Name: config.xml -- id: cambiar el id
+
+------------------
+Firebase
+https://github.com/ionicthemes/ionic-firebase-authentication
+otra pagina:
+https://reviblog.net/2017/08/05/tutorial-de-ionic-firebase-parte-1-autenticacion-con-correo-y-contrasena/
+
+Firebase authentication
+https://ionicframework.com/docs/native/firebase-authentication
+ionic cordova plugin add cordova-plugin-firebase-authentication
+npm install @ionic-native/firebase-authentication
+
+Dentro de enviroments.ts
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyD4EV28tAjiq_k2sqf_lYzjP7elor5eqOE",
+    authDomain: "ppslogindata.firebaseapp.com",
+    databaseURL: "https://ppslogindata.firebaseio.com",
+    projectId: "ppslogindata",
+    storageBucket: "ppslogindata.appspot.com",
+    messagingSenderId: "794910733526"
+  }
+};
+https://medium.com/learn-ionic-framework/construye-una-app-con-ionic-y-firebase-paso-a-paso-218105b77263
+
+
+Login:
+https://medium.com/sourcebytes/how-to-build-a-responsive-login-form-using-ionic-4-7a74b776884d
+
+    CERTIFICADO
+        -> https://medium.com/@thianlopezz/c%C3%B3mo-firmar-mis-apk-para-subir-mi-app-a-play-store-de-google-84cfe877b980
+
+ IONIC:
+        https://ionicframework.com/docs/v3/native/lottie-splash-screen/
+        https://github.com/timbru31/cordova-plugin-lottie-splashscreen
+        https://blog.interactius.com/lottie-para-web-de151e57aec9
+
+    VARIOS:
+        Make sure that we should only
+        1   import modules and not the components or services
+        2   declare components and not the modules or services.
+        3   provide services and not components or modules.
+
+sacar la barra de logout como componente
+  probar con los navcontroller y ionicviewdidload
+generar navegacion con barra de arriba
+
+
+
+https://medium.com/@josephat94/navegaci%C3%B3n-en-ionic-4-802d42e2d263
+
+
+----------------------------------2DA REVISION ---------------------------------------
+GENERAL
+hacer andar servicio de firebase
+
+
+
+6 obligatorias + 1 opcional
+------------------------------------REL VISUAL------------------------------------
+relevamiento visual --> CORREGIR
+  generar las pantallas de la app
+      APP1 
+        VOTACION
+        RESULTADOS
+  cambiar servicio por firebase y subir foto como corresponde
+  verificar como guarda la fecha
+  Permitir votar la cosa más linda y la más fea del edificio (un voto por foto). 
+  Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
+  Al seleccionar un resultado del gráfico, mostrar la foto correspondiente. 
+  ------------------------------------TABLA DIDACTICA------------------------------------
+tabla didactica de idiomas --> OK 
+  corregir que no se cuelgue --> no esta pasando
+  corregir al dar vuelta que lo muestre bien
+  corregir 
+    colores --> ingles todos 
+                español violeta
+    numeros todos 
+------------------------------------ALARMA ROBO------------------------------------
+alarma de robo --> OK 
+------------------------------------CARGA QR - OPCIONAL ------------------------------------
+carga QR --> FALTA EL BACK 
+  LEER CODIGO QR
+  TIENE QUE VERIFICAR SI ESTA CARGADO 
+    NO --> CARGA CREDITO CORRESPONDIENE, VISUALIZADOR DE CREDITOS
+    SI --> MENSAJE QUE YA ESTA CARGADO
+  BOTON PARA LIMPIAR LOS CREDITOS DEL USUARIO
+------------------------------------CONV AULA------------------------------------
+convAula --> FALTA EL BACK QUE FUNCIONE
+------------------------------------VIS KINETICO - OPCIONAL------------------------------------
+visKinetico --> VERIFICAR
+------------------------------------JUEGO MOV KINETICO------------------------------------
+juego de movimiento kinetico --> NADA
+
+
+
+tengo
+relvisual --> Votación y visualización de imagenes
+tabla didactiva --> OK
+prevencion robo --> OK
+cargaCred QR --> a medio terminar
+convAula --> a medio terminar
+falta juego de movimiento kinetico 
+
+
+PENDIENTES
+juego movimiento kinetico
+conv Aula
+OPCIONALES - CONSTR
+CARGA QR
+vis.kinetico imagenes
+CORREGIR 
+relvisual
+TABLA DIDACTICA
