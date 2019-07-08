@@ -31,11 +31,17 @@
       </ion-col>
       <!-- guardaImg(clasificacionFoto); -->
 
+
+<div *ngIf="captureDataUrl.length != 0" expand="full">
+    <ion-title>Vista Previa</ion-title>
+    <h3> Cant. Fotos: {{captureDataUrl.length}}</h3>
       <ion-slides>
-          <ion-slide *ngFor="let foto of captureDataUrl">
-            <img class="vistaprevia" [src]="foto" *ngIf="captureDataUrl" />
-          </ion-slide>
-        </ion-slides>
+        <ion-slide *ngFor="let foto of captureDataUrl">
+          <img class="vistaprevia" [src]="foto" *ngIf="captureDataUrl" />
+        </ion-slide>
+      </ion-slides>
+</div>
+         
       
 </ion-content>
 
