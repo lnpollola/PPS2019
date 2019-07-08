@@ -95,6 +95,8 @@ export class LoginPagePage implements OnInit {
             this.creoToast(true);
      
             this.router.navigateByUrl('/tabs'); 
+
+            
           }
           else{
             this.creoToast(false);

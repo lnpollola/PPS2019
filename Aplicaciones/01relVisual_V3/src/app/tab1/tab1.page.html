@@ -9,7 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content *ngIf="spinner" >
+  <ion-spinner  name="lines"></ion-spinner>
+</ion-content>
+
+<ion-content  *ngIf="!spinner" >
       <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
         <ion-card (click)="selectImage(cosasLindas)"class="lindas" expand="full">
           <ion-card-header color="success" ><b></b></ion-card-header>
@@ -25,4 +29,19 @@
           ">COSAS FEAS</ion-card-content>
         </ion-card>
       </ion-col>
+      <!-- guardaImg(clasificacionFoto); -->
+
+
+      
 </ion-content>
+
+<ion-footer>
+
+    <ion-toolbar>
+  
+     
+        <ion-fab-button (click)="guardaImg()" color="dark">
+            SAVE
+          </ion-fab-button>   
+    </ion-toolbar>
+  </ion-footer>
