@@ -1,0 +1,68 @@
+
+
+  <ion-header>
+
+  
+
+    <ion-toolbar>
+     
+          <!-- <ion-select multiple="false" slot="start" cancelText="Cancelar" okText="Ok">
+              <ion-select-option  value="US" selected>US
+  
+             
+  
+              </ion-select-option>
+              <ion-select-option  value="ES" >ES</ion-select-option>
+              
+          </ion-select>
+         -->
+  
+  
+      
+      <ion-button class="io" color="danger"  slot="end" (click)="logoff()" routerDirection="root">
+        
+        <ion-icon name="power"></ion-icon>
+      </ion-button>
+    
+    </ion-toolbar>
+  </ion-header>
+  
+
+  <ion-content>
+  
+    
+    <br>
+     <ion-item>
+      
+         <ion-button color="outline" (click)="animalB()" expand="full" >
+             <img id="imgapp" src="../../assets/icon/dog.png"   alt="" srcset="">
+             <ion-text class="fuente" color="light">
+                 <!-- <h1>Animals</h1> -->
+               </ion-text>
+         </ion-button>
+       
+     </ion-item>
+  
+     <ion-item>
+     
+         <ion-button color="outline" (click)="colorsB()" expand="full">
+             <img id="imgapp" src="../../assets/icon/colors.png"   alt="" srcset="">
+             <ion-text class="fuente" color="light">
+                 <!-- <h1>Colors</h1> -->
+               </ion-text>
+            
+           </ion-button>
+     </ion-item>
+
+     <ion-item>
+      
+      <ion-button color="outline" (click)="numbersB()" expand="full">
+          <img id="imgapp" src="../../assets/icon/numbers.png"   alt="" srcset="">
+          <ion-text class="fuente" color="light">
+              <!-- <h1>Numbers</h1> -->
+            </ion-text>
+         
+        </ion-button>
+  </ion-item>
+
+     </ion-content>

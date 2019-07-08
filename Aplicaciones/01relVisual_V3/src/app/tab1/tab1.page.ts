@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { FirebaseService } from "../services/firebase.service";
 
+import * as firebase from 'firebase';
 
 const STORAGE_KEY = 'my_images';
 
@@ -37,6 +39,7 @@ export class Tab1Page  implements OnInit {
     private toastController: ToastController,
     private storage: Storage, 
     private plt: Platform, 
+    public baseService: FirebaseService,
     private loadingController: LoadingController,
     private ref: ChangeDetectorRef, 
     private filePath: FilePath) { }
@@ -111,6 +114,20 @@ export class Tab1Page  implements OnInit {
 
   
   updateStoredImages(name) {
+
+    let objetoEnviar = {
+      "nombreFile": name
+      // ,
+      // "correo": usuarioLogueado.correo,
+      // "fechaSubida": fechaSubida,
+      // "tipo": "cosalinda",
+      // "url": foto,
+      // "likes": 0
+      
+    }
+
+    this.baseService.addItem('cosasEdificio', objetoEnviar);
+
     this.storage.get(STORAGE_KEY).then(images => {
         let arr = JSON.parse(images);
         if (!arr) {
@@ -131,6 +148,7 @@ export class Tab1Page  implements OnInit {
             // clasif: 'HCCLASIF'
         };
  
+        
         // this.images = [newEntry, ...this.images];
         // console.log("IMAGENES DEL UPLOAD: ", this.images);
         // localStorage.setItem('imagenes', JSON.stringify(this.images));

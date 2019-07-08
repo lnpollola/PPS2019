@@ -1,0 +1,58 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+    
+
+   
+  <div class="contenedorPresentacion">
+
+  <div><p>JUEGO MOVIMIENTO KINETICO
+    <br>
+          PPS 19 UTN <br>
+          JULIAN GRAZIANO <br>
+          DIVISION 4A
+  </p></div>
+
+</div>
+  <div class="logoPresentacion">
+      <img id="imgScreen"  src="../../assets/icon/icon.png">	
+      
+    </div> 
+
+
+
+
+</div> 
+
+<ion-content>
+
+  <div class="wrapper">
+    <div class="rec-prism">
+   
+      <div class="face face-front">
+        <div class="content">
+          <h2 *ngIf="!spinner" >Log in</h2>
+        
+            <div *ngIf="!spinner"  class="field-wrapper">
+              <input type="text" name="username" [(ngModel)]="cuenta.usuario" placeholder="Usuario">
+              <label>Usuario</label>
+            </div>
+            <ion-spinner *ngIf="spinner" name="circles"></ion-spinner>                
+            <div *ngIf="!spinner"  class="field-wrapper">
+              <input type="password" name="password" [(ngModel)]="cuenta.password" placeholder="Contraseña" autocomplete="new-password">
+              <label>Contraseña</label>
+            </div>
+            <div *ngIf="!spinner"  class="field-wrapper">
+              <!-- <input type="submit" (click)="login()"> -->
+              <ion-button color=light (click)="login()" routerDirection="root">INGRESAR</ion-button>
+            </div>
+            <ion-button *ngIf="!spinner"  expand="full" color="dark" (click)="creoSheet()">
+              Acceder como...
+              </ion-button>
+           
+         
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+</ion-content>

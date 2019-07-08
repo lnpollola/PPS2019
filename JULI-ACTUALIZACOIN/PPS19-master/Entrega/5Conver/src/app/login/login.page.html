@@ -1,0 +1,48 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+    
+
+   
+  <div class="contenedorPresentacion">
+
+  <div><p>CONVERSANDO EN EL AULA
+    <br>
+          PPS 19 UTN <br>
+          JULIAN GRAZIANO <br>
+          DIVISION 4A
+  </p></div>
+
+</div>
+  <div class="logoPresentacion">
+      <img id="imgScreen"  src="../../assets/icon/icon.png">	
+      
+    </div> 
+
+
+
+
+</div> 
+
+
+
+
+
+
+<ion-content [style.display]=" splash ? 'none' : 'block'">
+
+<div class="body"></div>
+		<div class="grad"></div>
+		<div  class="header">
+        
+        <img  id="imgicon" src="../../assets/icon/icon.png" alt="">
+		</div>
+		<br>
+		<div class="login">
+        <ion-spinner *ngIf="spinner" name="circles"></ion-spinner>   
+        <button *ngIf="!spinner" class="acces" (click)="creoSheet()" >Acceder como...</button>
+             
+        <input type="text" *ngIf="!spinner"  [(ngModel)]="cuenta.usuario" name="username" placeholder="email@email.com">
+        <input type="password" *ngIf="!spinner" [(ngModel)]="cuenta.password" name="pass" placeholder="********">
+				<button class="loginB" *ngIf="!spinner" (click)="login()" >Ingresar</button>
+    </div>
+    
+    </ion-content>

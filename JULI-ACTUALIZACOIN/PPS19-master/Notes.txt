@@ -1,0 +1,110 @@
+IONIC
+Instalar nodeJS
+En CMD:
+npm install -g ionic
+
+Para crear una app:
+ionic start oneapp super --type=ionic-angular (elegir entre: tabs/blank/sidemenu/super)
+
+ionic start oneapp super --type=ionic-angular
+
+Para correrla:
+cd "nombreAPP"
+ionic serve --lab
+
+Para agregar plataforma para Android:
+ionic cordova platform add android
+ionic cordova platform remove android (desinstalarla)
+
+Para buildear:
+ionic cordova build android
+o
+ionic cordova run android (directamente)
+
+Para instalar los componentes de otra app:
+Ir a la carpeta de la app
+npm install 
+
+
+------------------
+Name: config.xml -- id: cambiar el id
+
+------------------
+Firebase
+https://github.com/ionicthemes/ionic-firebase-authentication
+otra pagina:
+https://reviblog.net/2017/08/05/tutorial-de-ionic-firebase-parte-1-autenticacion-con-correo-y-contrasena/
+
+Firebase authentication
+https://ionicframework.com/docs/native/firebase-authentication
+ionic cordova plugin add cordova-plugin-firebase-authentication
+npm install @ionic-native/firebase-authentication
+npm install angularfire2 firebase --save
+
+
+Dentro de enviroments.ts
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyD4EV28tAjiq_k2sqf_lYzjP7elor5eqOE",
+    authDomain: "ppslogindata.firebaseapp.com",
+    databaseURL: "https://ppslogindata.firebaseio.com",
+    projectId: "ppslogindata",
+    storageBucket: "ppslogindata.appspot.com",
+    messagingSenderId: "794910733526"
+  }
+};
+Copiar archivo auth.service
+Modificar app.module.ts imports y providers
+
+
+https://medium.com/learn-ionic-framework/construye-una-app-con-ionic-y-firebase-paso-a-paso-218105b77263
+
+
+Login:
+https://medium.com/sourcebytes/how-to-build-a-responsive-login-form-using-ionic-4-7a74b776884d
+
+Ionic Camera:
+https://ionicframework.com/docs/native/camera
+Instalar:
+ionic cordova plugin add cordova-plugin-camera
+npm install @ionic-native/camera
+ts:
+import { Camera, CameraOptions } from "@ionic-native/Camera/ngx";
+
+
+Ionic File:
+https://ionicframework.com/docs/native/file
+Instalar:
+ionic cordova plugin add cordova-plugin-file
+npm install @ionic-native/file
+import { File } from '@ionic-native/File/ngx';
+Ionic WebView:
+Instalar:
+ionic cordova plugin add cordova-plugin-ionic-webview
+Ionic WebView:
+https://ionicframework.com/docs/native/ionic-webview
+ionic cordova plugin add cordova-plugin-ionic-webview
+npm install @ionic-native/ionic-webview
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
+Ionic File-path:
+https://ionicframework.com/docs/native/file-path
+Instalar:
+ionic cordova plugin add cordova-plugin-filepath
+npm install @ionic-native/file-path
+
+Ionic storage:
+https://ionicframework.com/docs/building/storage
+Instalar:
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic/storage
+
+
+
+
+branch github
+git checkout jngraziano      # gets you "on branch jngraziano"
+git fetch origin        # gets you up to date with origin
+git merge origin/master
+

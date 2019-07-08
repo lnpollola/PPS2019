@@ -1,0 +1,51 @@
+
+
+.io{
+
+  width: 43px;
+  height:40px; 
+  border-radius: 50%;
+}
+
+ion-header,  ion-list, ion-item, ion-toolbar{
+    --background: #22333B;
+  }
+ 
+
+
+ion-content {
+  //
+  //
+  --background: #22333B;
+
+  h3{
+    color: white;
+  }
+  p{
+    color: lightgrey;
+  }
+
+  #section-notices {
+    background-color: #22333B;
+
+    ion-item {
+ 
+
+      &.checked {
+        opacity: 0.6;
+      }
+
+      .pic {
+        height: 45px;
+        max-width: 80px;
+        overflow: hidden;
+        margin-right: 0;
+        line-height: 45px;
+
+        img {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

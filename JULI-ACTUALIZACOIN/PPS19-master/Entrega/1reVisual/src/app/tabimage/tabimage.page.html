@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-toolbar>
+      <!-- <ion-title style=" text-align: center"> -->
+      <ion-title slot="start">
+      Galeria    
+      </ion-title>
+   
+      <!-- <ion-button  color="danger" class="io" slot="end" (click)="logoff()" routerDirection="root">
+        
+        <ion-icon name="power"></ion-icon>
+      </ion-button> -->
+    
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+                
+
+
+                  <ion-grid  *ngIf="!spinner" shape="round" >
+                  <ion-row>
+                    <ion-col shape="round" >
+                        <!-- [style.backgroundColor]=“cardColor” -->
+                        <!-- [color]="cardColor" -->
+                      <ion-card color="dark" *ngFor="let foto of imagenesTodas" >
+                          <ion-card-header>
+                              <ion-card-subtitle>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}}-{{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-subtitle>
+                              <!-- <ion-card-title></ion-card-title> -->
+                            </ion-card-header>
+                          
+                            <ion-card-content >
+                              <label>Tipo {{foto.tipo}}</label>
+                                <label> Enviado por: {{foto.correo}}</label>
+                                <img [src]="foto.url" >
+                                <label>Likes: {{foto.likes}}</label>
+                                <ion-button  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
+                               
+                                  <ion-icon name="heart"></ion-icon>
+                               
+                                </ion-button>
+                            </ion-card-content>
+
+                         
+                        </ion-card>
+                       
+
+                        </ion-col>
+                      </ion-row>  
+                  </ion-grid>
+
+                  <!-- <ion-grid shape="round" *ngFor="let fotofea of imagenesFeas">
+                  <ion-row>
+                    <ion-col shape="round">
+                      <ion-card color="danger" *ngIf="!spinner">
+                          <ion-card-header>
+                              <ion-card-subtitle>Fecha: {{fotofea.fechaSubida.dia}}/{{fotofea.fechaSubida.mes}}-{{fotofea.fechaSubida.hora}}:{{fotofea.fechaSubida.minuto}}</ion-card-subtitle>
+                              <ion-card-title>Por: {{fotofea.correo}}</ion-card-title>
+                            </ion-card-header>
+                          
+                            <ion-card-content >
+                                <img [src]="fotofea.url">
+                                <label>Likes: {{fotofea.likes}}</label>
+                                <ion-button color="dark"  shape="round" fill="outline" expand="block" (click)="like(fotofea.nombreFile)">
+                                 
+                                <ion-icon name="heart"></ion-icon>
+                                </ion-button>
+                            </ion-card-content>
+
+                         
+                        </ion-card>
+                       
+
+                        </ion-col>
+                      </ion-row>  
+                  </ion-grid> -->
+
+                  <ion-grid  *ngIf="spinner" style="height: 100%">
+                      <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+                      <ion-spinner name="lines"></ion-spinner>
+                      <ion-spinner name="ios"></ion-spinner>
+                        </ion-row>
+                      </ion-grid>
+
+
+
+
+
+      </ion-content>

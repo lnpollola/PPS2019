@@ -1,0 +1,69 @@
+<div id="custom-overlay" [style.display]=" splash ? 'block' : 'none' ">
+    
+
+   
+    <div class="contenedorPresentacion">
+
+    <div><p>ALARMA DE ROBO
+      <br>
+            PPS 19 UTN <br>
+            JULIAN GRAZIANO <br>
+            DIVISION 4A
+    </p></div>
+
+  </div>
+    <div class="logoPresentacion">
+        <img id="imgScreen"  src="../../assets/icon/icon.png">	
+        
+      </div> 
+
+
+
+
+</div> 
+
+
+
+
+
+
+
+
+
+<ion-content [style.display]=" splash ? 'none' : 'block'">
+
+<div class="wrapper">
+  <div id="formContent">
+    <ion-spinner *ngIf="spinner" name="bubbles"></ion-spinner>
+
+    <br>
+    <img *ngIf="!spinner" src="https://myslu.slu.edu/res/images/cas-padlock-icon.png"  width="130px" height="130aapx" alt="" srcset="">
+   
+   
+    <!-- Icon -->
+    <div *ngIf="!spinner" class="fadeIn first">
+        <h2 class="active"> Bienvenido </h2>
+     
+    </div>
+
+  
+      <input type="text" *ngIf="!spinner" id="login"  [(ngModel)]="cuenta.usuario" placeholder="email@email.com">
+      <input type="password" *ngIf="!spinner" id="password" [(ngModel)]="cuenta.password" placeholder="********">
+
+      
+ 
+      
+       <div *ngIf="!spinner" padding>
+          
+          <ion-button color="danger" size="full"  (click)="login()">
+             INGRESAR
+          </ion-button>
+          <ion-button color="dark" size="full" (click)="creoSheet()">
+              Acceder como...
+          </ion-button>
+
+        </div>
+
+  </div>
+</div>
+</ion-content>
