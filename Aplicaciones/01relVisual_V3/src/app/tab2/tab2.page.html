@@ -43,7 +43,7 @@
     </ion-refresher>
   
     <ion-list *ngIf="!spinner">
-        <ion-item class="item-text-wrap card" *ngFor="let foto of imagenesTodas">
+        <ion-item class="item-text-wrap card" *ngFor="let foto of imagenesTodas.reverse()">
         <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
            
           <ion-card *ngIf="foto.tipo == 'LINDAS'"  expand="full">
@@ -76,11 +76,13 @@
               </ion-card-header>
 
               <ion-card-content class="cardContent" style="color: black; font-weight: bolder;">
-                  <h5 class="fuenteNew"> <b style="color:lightgray" >Tipo:</b>  Lindas </h5>
+                  <h5 class="fuenteNew"> <b style="color:lightgray" >Tipo:</b>  Feas </h5>
                   <h3 class="fuenteNew"> <b style="color:lightgray">Enviado por:</b> {{foto.correo}}</h3>
                  
                   <img [src]="foto.url" >
-                  <h1 class="fuenteNew">Likes: {{foto.likes}}</h1>
+                  <h1 class="fuenteNew" *ngIf="foto.likes==0">   <b style="color:lightgray">  <ion-icon name="heart-half"></ion-icon>  </b>     Likes: {{foto.likes}}</h1>
+                  <h1 class="fuenteNew" *ngIf="foto.likes!=0" >   <b style="color:green">   <ion-icon name="thumbs-up"></ion-icon>     </b>     Likes: {{foto.likes}}</h1>
+
                   <ion-button  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
                  
                     <ion-icon name="heart"></ion-icon>
