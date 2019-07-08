@@ -1,15 +1,76 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
       <ion-title>
-        IMAGENES
+        Listado de Imagenes
       </ion-title>
     </ion-toolbar>
   </ion-header>
-   
-  <ion-content padding>
-  <div class="images" >
-      <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]">
-        <img src="../../assets/imgs/{{image}}.jpg">
-      </div>
-    </div>
+  
+  <ion-content *ngIf="!hayLista">
+    <ion-refresher slot="fixed" 
+    (ionRefresh)="ionRefresh($event)" 
+    (ionPull)="ionPull($event)" 
+    (ionStart)="ionStart($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Estire para actualizar"
+        refreshingSpinner="circles"
+        refreshingText="Actualizando...">
+      </ion-refresher-content>
+    </ion-refresher>   
+  <ion-card *ngIf="!hayLista">
+  <ion-card-content>
+    No hay imagenes para mostrar.
+  </ion-card-content>
+  </ion-card>
   </ion-content>
+  
+  <ion-content *ngIf="hayLista" >
+    <ion-refresher slot="fixed" 
+    (ionRefresh)="ionRefresh($event)"
+    >
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Estire para actualizar"
+        refreshingSpinner="circles"
+        refreshingText="Actualizando...">
+  
+  
+      </ion-refresher-content>
+    </ion-refresher>
+  
+    <ion-list *ngIf="!spinner">
+        <ion-item class="item-text-wrap card" *ngFor="let foto of imagenesTodas">
+        <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+            <ion-card class="lindas" expand="full">
+
+              <ion-card-header  color="medium" >
+                  <ion-card-subtitle>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}}-{{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-subtitle>
+              </ion-card-header>
+
+              <ion-card-content class="cardContent" style="color: black; font-weight: bolder; font-size: xx-large;">
+                  <label>Tipo {{foto.tipo}}</label>
+                  <label> Enviado por: {{foto.correo}}</label>
+                  <img [src]="foto.url" >
+                  <label>Likes: {{foto.likes}}</label>
+                  <ion-button  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
+                 
+                    <ion-icon name="heart"></ion-icon>
+                 
+                  </ion-button>
+
+              </ion-card-content>
+            </ion-card>
+  
+           
+          
+          </ion-col>
+  
+        
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  

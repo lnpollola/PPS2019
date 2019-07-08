@@ -123,7 +123,7 @@ export class Tab1Page  implements OnInit {
     .then( imageData => {
       // this.imagen=(<any>window).Ionic.WebView.convertFileSrc(imageData);
       this.captureDataUrl.push('data:image/jpeg;base64,' + imageData);
-      console.log("caputeradata", this.captureDataUrl);
+      // console.log("caputeradata", this.captureDataUrl);
       this.hayFotos = true;
       this.cantidadFotos += 1;
 
@@ -175,7 +175,7 @@ export class Tab1Page  implements OnInit {
       hora: date.getHours(),
       minuto: date.getMinutes()
     }
-    console.log("captureData 2", this.captureDataUrl);
+    // console.log("captureData 2", this.captureDataUrl);
 
       this.captureDataUrl.forEach(foto => {
         let numeroRandom = Math.floor(Math.random() * Math.floor(1000000));
@@ -196,7 +196,7 @@ export class Tab1Page  implements OnInit {
   
         this.baseService.addItem('cosasEdificio', objetoEnviar);
 
-      console.log(imageRef);
+      // console.log(imageRef);
       imageRef.putString(foto, firebase.storage.StringFormat.DATA_URL).then((snapshot) => {
 
       })

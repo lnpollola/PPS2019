@@ -31,16 +31,22 @@
       </ion-col>
       <!-- guardaImg(clasificacionFoto); -->
 
-
+      <ion-slides>
+          <ion-slide *ngFor="let foto of captureDataUrl">
+            <img class="vistaprevia" [src]="foto" *ngIf="captureDataUrl" />
+          </ion-slide>
+        </ion-slides>
       
 </ion-content>
+
+
 
 <ion-footer>
 
     <ion-toolbar>
   
      
-        <ion-fab-button (click)="guardaImg()" color="dark">
+        <ion-fab-button vertical="bottom" horizontal="end" slot="fixed" (click)="guardaImg()" color="dark">
             SAVE
           </ion-fab-button>   
     </ion-toolbar>

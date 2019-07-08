@@ -84,15 +84,14 @@ hacer andar servicio de firebase
 6 obligatorias + 1 opcional
 ------------------------------------REL VISUAL------------------------------------
 relevamiento visual --> CORREGIR
-  generar las pantallas de la app
-      APP1 
-        VOTACION
+  generar las pantallas de la app 
+        --VOTACION
         RESULTADOS
   --cambiar servicio por firebase y subir foto como corresponde
   --cambiar login como servicio correcto
   --guardar datos correcto de la imagen y el base 64
       --verificar como guarda la fecha
-  mostrar imagen 
+  --mostrar imagen 
   Permitir votar la cosa más linda y la más fea del edificio (un voto por foto). 
   Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
   Al seleccionar un resultado del gráfico, mostrar la foto correspondiente. 
