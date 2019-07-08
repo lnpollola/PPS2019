@@ -1,0 +1,47 @@
+{
+  "-LhMzSeEnWkz3GrCejYq" : {
+    "clave" : "mozo1234",
+    "correo" : "mozo2@gmail.com",
+    "perfil" : "mozo"
+  },
+  "-LhOIATxVrK8ctcGnB7Z" : {
+    "clave" : "1111",
+    "correo" : "supervisor@gmail.com",
+    "perfil" : "supervisor"
+  },
+  "-LhOJU7fb3CtUStVM81M" : {
+    "clave" : "3333",
+    "correo" : "dueno@gmail.com",
+    "perfil" : "dueño"
+  },
+  "-LhOMPIiehXBEDcaN19s" : {
+    "clave" : "5555",
+    "correo" : "bartender@gmail.com",
+    "perfil" : "bartender"
+  },
+  "-LhOMyJVZLed6FS86z8Z" : {
+    "clave" : "2222",
+    "correo" : "cocinero@gmail.com",
+    "perfil" : "cocinero"
+  },
+  "-LhONHEn2OgwoHWGW1-U" : {
+    "clave" : "6666",
+    "correo" : "mozo@gmail.com",
+    "perfil" : "mozo"
+  },
+  "-LhONWTXWavv0HSUqhAH" : {
+    "clave" : "7777",
+    "correo" : "delivery@gmail.com",
+    "perfil" : "delivery"
+  },
+  "-LhONqoJqbbj28Xr2dDB" : {
+    "clave" : "8888",
+    "correo" : "cliente2@gmail.com",
+    "perfil" : "cliente"
+  },
+  "-LiYNL_du1ya3fwcMLxE" : {
+    "clave" : "1234",
+    "correo" : "sotomayormatias1@gmail.com",
+    "perfil" : "cliente"
+  }
+}

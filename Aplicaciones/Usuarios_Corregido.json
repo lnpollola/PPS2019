@@ -1,0 +1,27 @@
+{
+  "-LhMzSeEnWkz3GrCejYq" : {
+    "clave" : "admin1111",
+    "correo" : "admin@gmail.com",
+    "perfil" : "admin"
+  },
+  "-LhOIATxVrK8ctcGnB7Z" : {
+    "clave" : "invitado2222",
+    "correo" : "invitado@gmail.com",
+    "perfil" : "invitado"
+  },
+  "-LhOJU7fb3CtUStVM81M" : {
+    "clave" : "usuario3333",
+    "correo" : "usuario@gmail.com",
+    "perfil" : "usuario"
+  },
+  "-LhOMPIiehXBEDcaN19s" : {
+    "clave" : "anonimo4444",
+    "correo" : "anonimo@gmail.com",
+    "perfil" : "anonimo"
+  },
+  "-LhOMyJVZLed6FS86z8Z" : {
+    "clave" : "tester5555",
+    "correo" : "tester@gmail.com",
+    "perfil" : "tester"
+  }
+}

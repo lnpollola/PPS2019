@@ -88,7 +88,8 @@ relevamiento visual --> CORREGIR
       APP1 
         VOTACION
         RESULTADOS
-  cambiar servicio por firebase y subir foto como corresponde
+  --cambiar servicio por firebase y subir foto como corresponde
+  --cambiar login como servicio correcto
   verificar como guarda la fecha
   Permitir votar la cosa más linda y la más fea del edificio (un voto por foto). 
   Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
@@ -110,9 +111,11 @@ carga QR --> FALTA EL BACK
     NO --> CARGA CREDITO CORRESPONDIENE, VISUALIZADOR DE CREDITOS
     SI --> MENSAJE QUE YA ESTA CARGADO
   BOTON PARA LIMPIAR LOS CREDITOS DEL USUARIO
+   cambiar login como servicio correcto
 ------------------------------------CONV AULA------------------------------------
 convAula --> FALTA EL BACK QUE FUNCIONE
   2 canales con mensajes por usuario
+   cambiar login como servicio correcto
 ------------------------------------VIS KINETICO - OPCIONAL------------------------------------
 visKinetico --> VERIFICAR
   esta ok la base, falta lo demover la imagen con el celular
