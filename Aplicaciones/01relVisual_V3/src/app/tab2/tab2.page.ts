@@ -167,7 +167,7 @@ ionRefresh(event) {
 
     this.baseService.updateItem('cosasEdificio', imagenElegida.key, objetoEnviar);  
 
-
+    this.traerImagenesTodas();
    });
 
 }

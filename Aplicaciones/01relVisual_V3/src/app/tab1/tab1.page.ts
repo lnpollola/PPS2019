@@ -188,7 +188,7 @@ export class Tab1Page  implements OnInit {
           "nombreFile": filename,
           "correo": usuarioLogueado.correo,
           "fechaSubida": fechaSubida,
-          // "tipo": clasificacion,
+          "tipo": this.clasificacion,
           "url": foto,
           "likes": 0
           
