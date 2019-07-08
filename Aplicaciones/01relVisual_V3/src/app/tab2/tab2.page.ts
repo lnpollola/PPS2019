@@ -102,7 +102,7 @@ ionRefresh(event) {
 
       for (let i = 0; i < this.imagenesTodas.length; i++) {
         const element = this.imagenesTodas[i];
-        if(this.imagenesTodas[i].tipo == "cosalinda")
+        if(this.imagenesTodas[i].tipo == "LINDAS")
         {
 
           this.cardColor = "success";
