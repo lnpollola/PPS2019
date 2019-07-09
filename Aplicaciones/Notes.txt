@@ -98,14 +98,18 @@ relevamiento visual --> CORREGIR
 
   --Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
   --Al seleccionar un resultado del gráfico, mostrar la foto correspondiente. 
+  
+  PULL TO REFRESH 
+  AGREGAR LA FUNCION EN ONINIT
+  MODIFICAR QUE TOME DESDE EL GETITEMS EN VEZ DEL LOCAL 
   ------------------------------------TABLA DIDACTICA------------------------------------
-tabla didactica de idiomas --> OK 
-  corregir que no se cuelgue --> no esta pasando
+--tabla didactica de idiomas --> OK 
+  --corregir que no se cuelgue --> no esta pasando
   corregir al dar vuelta que lo muestre bien
-  corregir 
-    colores --> ingles todos 
-                español violeta
-    numeros todos 
+  --corregir 
+    --colores --> ingles todos 
+      --          español violeta
+    --numeros todos 
 ------------------------------------ALARMA ROBO------------------------------------
 alarma de robo --> OK 
 ------------------------------------CARGA QR - OPCIONAL ------------------------------------

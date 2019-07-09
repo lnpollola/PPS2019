@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 
@@ -7,28 +7,47 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
 
   idiomaSeleccionado = "ES";
 
   constructor(private nativeAudio: NativeAudio) {
     //ANIMALES
    
-      //ES
-      this.nativeAudio.preloadSimple('vaca', 'assets/sounds/vaca_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-      this.nativeAudio.preloadSimple('burro', 'assets/sounds/burro_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-      this.nativeAudio.preloadSimple('pato', 'assets/sounds/pato_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-      this.nativeAudio.preloadSimple('elefante', 'assets/sounds/elefante_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-      this.nativeAudio.preloadSimple('leon', 'assets/sounds/leon_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    //   //ES
+    //   this.nativeAudio.preloadSimple('vaca', 'assets/sounds/vaca_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    //   this.nativeAudio.preloadSimple('burro', 'assets/sounds/burro_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    //   this.nativeAudio.preloadSimple('pato', 'assets/sounds/pato_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    //   this.nativeAudio.preloadSimple('elefante', 'assets/sounds/elefante_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    //   this.nativeAudio.preloadSimple('leon', 'assets/sounds/leon_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
     
    
-    //EN
-    this.nativeAudio.preloadSimple('vaca_EN', 'assets/sounds/vaca_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-    this.nativeAudio.preloadSimple('burro_EN', 'assets/sounds/burro_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-    this.nativeAudio.preloadSimple('pato_EN', 'assets/sounds/pato_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-    this.nativeAudio.preloadSimple('elefante_EN', 'assets/sounds/elefante_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
-    this.nativeAudio.preloadSimple('leon_EN', 'assets/sounds/leon_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    // //EN
+    // this.nativeAudio.preloadSimple('vaca_EN', 'assets/sounds/vaca_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    // this.nativeAudio.preloadSimple('burro_EN', 'assets/sounds/burro_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    // this.nativeAudio.preloadSimple('pato_EN', 'assets/sounds/pato_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    // this.nativeAudio.preloadSimple('elefante_EN', 'assets/sounds/elefante_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+    // this.nativeAudio.preloadSimple('leon_EN', 'assets/sounds/leon_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
      
+  }
+
+  ngOnInit () {
+   //ES
+   this.nativeAudio.preloadSimple('vaca', 'assets/sounds/vaca_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+   this.nativeAudio.preloadSimple('burro', 'assets/sounds/burro_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+   this.nativeAudio.preloadSimple('pato', 'assets/sounds/pato_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+   this.nativeAudio.preloadSimple('elefante', 'assets/sounds/elefante_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+   this.nativeAudio.preloadSimple('leon', 'assets/sounds/leon_ES.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+ 
+
+ //EN
+ this.nativeAudio.preloadSimple('vaca_EN', 'assets/sounds/vaca_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+ this.nativeAudio.preloadSimple('burro_EN', 'assets/sounds/burro_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+ this.nativeAudio.preloadSimple('pato_EN', 'assets/sounds/pato_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+ this.nativeAudio.preloadSimple('elefante_EN', 'assets/sounds/elefante_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+ this.nativeAudio.preloadSimple('leon_EN', 'assets/sounds/leon_EN.mp3').then((success)=>{console.log("success");},(error)=>{console.log(error);});
+  
+
   }
 
   playVaca(){
