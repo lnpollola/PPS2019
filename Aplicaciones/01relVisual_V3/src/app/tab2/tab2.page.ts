@@ -30,6 +30,7 @@ export class Tab2Page implements OnInit
    
  listaRecorreAux: any;
  hayLista: any; 
+ usuarioLogueado: any; 
 
  
 
@@ -50,6 +51,7 @@ export class Tab2Page implements OnInit
 
   ngOnInit() {
     this.traerImagenesTodas();
+    this.usuarioLogueado = JSON.parse(sessionStorage.getItem('Usuarios'));
     // this.traerProductosPerfil();
     // this.traerPedidosActivosPorPerfil();
   }
@@ -126,7 +128,9 @@ ionRefresh(event) {
       this.hayLista = true;
     }
 
-    this.spinner = false;
+    setTimeout(() => {
+      this.spinner = false;
+    }, 3000);
 
   }
 
@@ -155,6 +159,42 @@ ionRefresh(event) {
 
     let imagenElegida = lista.find(imagen => imagen.nombreFile == nombreFile);
     let likes : number = parseInt(imagenElegida.likes)+1;
+    let objetoVotos = imagenElegida.votacion;
+    
+
+    switch (this.usuarioLogueado.correo) {
+      case 'admin@gmail.com':
+            objetoVotos.votaAdmin = true; 
+        break;
+        case 'invitado@gmail.com':
+            //  objetoVotos = {
+            //   "votaInvitado": true,  
+            // }
+            objetoVotos.votaInvitado = true; 
+          break;
+          case 'usuario@gmail.com':
+              // objetoVotos = {
+              //   "votaUsuario": true,  
+              // }
+              objetoVotos.votaUsuario = true; 
+            break;
+            case 'anonimo@gmail.com':
+                // objetoVotos = {
+                //   "votaAnonimo": true,  
+                // }
+                objetoVotos.votaAnonimo = true; 
+              break;
+              case 'tester@gmail.com':
+                  // objetoVotos = {
+                  //   "votaTester": true,  
+                  // }
+                  objetoVotos.votaTester = true; 
+                break;
+    
+      default:
+        break;
+    }
+
     // console.log(likes);
      let objetoEnviar = {
         // "correo": imagenElegida.correo,
@@ -162,6 +202,7 @@ ionRefresh(event) {
         // "nombreFile": imagenElegida.nombreFile,
         // "url":imagenElegida.url,
         // "tipo": imagenElegida.tipo,
+        "votacion": objetoVotos,
         "likes": likes
       }
 

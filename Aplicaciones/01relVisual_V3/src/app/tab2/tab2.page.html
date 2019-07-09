@@ -60,11 +60,52 @@
                   <h1 class="fuenteNew" *ngIf="foto.likes==0">   <b style="color:lightgray">  <ion-icon name="heart-half"></ion-icon>  </b>     Likes: {{foto.likes}}</h1>
                   <h1 class="fuenteNew" *ngIf="foto.likes!=0" >   <b style="color:green">   <ion-icon name="thumbs-up"></ion-icon>     </b>     Likes: {{foto.likes}}</h1>
 
-                  <ion-button  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
-                 
+
+
+                  <!-- ADMIN  -->
+                  <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                     <ion-icon name="heart"></ion-icon>
-                 
                   </ion-button>
+
+                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == true" shape="round" fill="outline" expand="block" >                
+                      <ion-icon name="heart-dislike"></ion-icon>
+                    </ion-button>
+
+                  <!-- INVITADO  -->
+                  <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                    <ion-icon name="heart"></ion-icon>
+                  </ion-button>
+
+                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
+                    <ion-icon name="heart-dislike"></ion-icon>
+                  </ion-button>  
+                  <!-- USUARIO  -->
+                  <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                    <ion-icon name="heart"></ion-icon>
+                  </ion-button>
+
+                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == true" shape="round" fill="outline" expand="block" >                
+                    <ion-icon name="heart-dislike"></ion-icon>
+                  </ion-button>  
+                  
+                  <!-- TESTER  -->
+                    <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaUsuario == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-button>
+
+                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaUsuario == true"  shape="round" fill="outline" expand="block" >                
+                      <ion-icon name="heart-dislike"></ion-icon>
+                    </ion-button>  
+                          
+                  <!-- ANONIMO  -->
+                    <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-button>
+
+                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaUsuario == true"  shape="round" fill="outline" expand="block" >                
+                    <ion-icon name="heart-dislike"></ion-icon>
+                  </ion-button>
+
 
               </ion-card-content>
             </ion-card>
@@ -83,11 +124,51 @@
                   <h1 class="fuenteNew" *ngIf="foto.likes==0">   <b style="color:lightgray">  <ion-icon name="heart-half"></ion-icon>  </b>     Likes: {{foto.likes}}</h1>
                   <h1 class="fuenteNew" *ngIf="foto.likes!=0" >   <b style="color:green">   <ion-icon name="thumbs-up"></ion-icon>     </b>     Likes: {{foto.likes}}</h1>
 
-                  <ion-button  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
                  
-                    <ion-icon name="heart"></ion-icon>
-                 
-                  </ion-button>
+                  <!-- ADMIN  -->
+                  <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-button>
+  
+                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == true" shape="round" fill="outline" expand="block" >                
+                        <ion-icon name="heart-dislike"></ion-icon>
+                      </ion-button>
+  
+                    <!-- INVITADO  -->
+                    <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-button>
+  
+                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
+                      <ion-icon name="heart-dislike"></ion-icon>
+                    </ion-button>  
+                    <!-- USUARIO  -->
+                    <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-button>
+  
+                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == true" shape="round" fill="outline" expand="block" >                
+                      <ion-icon name="heart-dislike"></ion-icon>
+                    </ion-button>  
+                    
+                    <!-- TESTER  -->
+                      <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaUsuario == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                        <ion-icon name="heart"></ion-icon>
+                      </ion-button>
+  
+                      <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaUsuario == true"  shape="round" fill="outline" expand="block" >                
+                        <ion-icon name="heart-dislike"></ion-icon>
+                      </ion-button>  
+                            
+                    <!-- ANONIMO  -->
+                      <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
+                        <ion-icon name="heart"></ion-icon>
+                      </ion-button>
+  
+                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaUsuario == true"  shape="round" fill="outline" expand="block" >                
+                      <ion-icon name="heart-dislike"></ion-icon>
+                    </ion-button>
+  
 
               </ion-card-content>
             </ion-card>

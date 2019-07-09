@@ -128,6 +128,13 @@ export class Tab1Page  implements OnInit {
       hora: date.getHours(),
       minuto: date.getMinutes()
     }
+    let votacion = {
+      votaAdmin: false,
+      votaInvitado: false,
+      votaUsuario: false,
+      votaAnonimo: false,
+      votaTester: false
+    }
     // console.log("captureData 2", this.captureDataUrl);
 
       this.captureDataUrl.forEach(foto => {
@@ -143,8 +150,8 @@ export class Tab1Page  implements OnInit {
           "fechaSubida": fechaSubida,
           "tipo": this.clasificacion,
           "url": foto,
-          "likes": 0
-          
+          "likes": 0,
+          "votacion": votacion
         }
   
         this.baseService.addItem('cosasEdificio', objetoEnviar);
