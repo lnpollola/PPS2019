@@ -1,28 +1,30 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      Listado de Imágenes
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content padding>
-  <ion-spinner class="center-spinner" *ngIf="images.length == 0" > </ion-spinner>
- 
-  <ion-list>
-    <ion-item *ngFor="let img of images; index as pos" text-wrap>
-      <ion-thumbnail slot="start">
-        <ion-img [src]="img.path"></ion-img>
-      </ion-thumbnail>
-      <ion-label text-wrap>
-        <!-- Nombre: {{ img.name }} -  -->
-        Clasificacion: {{ img.clasificacion }} 
-        Fecha: {{img.fecha}} 
-        Usuario: {{img.usuario}}
-      </ion-label>
-      <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
-</ion-content>
+    <ion-toolbar color="medium">
+      <ion-title>Estadisticas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  
+  
+  <ion-content padding>
+  
+      <ion-card color = "medium" class="fuente" >
+          <ion-card-header>
+            Ranking cosas lindas
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #canvasLindas></canvas>
+          </ion-card-content>
+        </ion-card>
+        <ion-card color = "medium" class="fuente">
+          <ion-card-header>
+              Ranking cosas feas          
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #canvasFeas></canvas>
+          </ion-card-content>
+        </ion-card>
+       
+  
+  </ion-content>

@@ -96,8 +96,8 @@ relevamiento visual --> CORREGIR
 
   --hacer un listado de los que ya votaron, para deshabiliarle el boton si ya voto 
 
-  Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
-  Al seleccionar un resultado del gráfico, mostrar la foto correspondiente. 
+  --Permitir ver los resultados en gráficos de torta (para las lindas) y de barra (para las feas).
+  --Al seleccionar un resultado del gráfico, mostrar la foto correspondiente. 
   ------------------------------------TABLA DIDACTICA------------------------------------
 tabla didactica de idiomas --> OK 
   corregir que no se cuelgue --> no esta pasando
