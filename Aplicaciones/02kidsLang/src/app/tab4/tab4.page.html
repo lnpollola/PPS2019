@@ -14,60 +14,81 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="margintop">
 
-  <ion-item>
-   
-      <ion-button (click)="playUno()" size="large" color="danger" expand="full" >
-          <img class="imgapp" src="../../assets/icon/uno.png">
+
+<ion-content no-padding no-margin>
+  <ion-grid no-padding no-margin>
+  
+
+    <ion-row no-padding no-margin >
+      <ion-col no-padding no-margin>
+        <ion-button size="large" (click)="playUno()" color="danger" expand="full"  no-margin responsive-lg >
+          <!-- <img class="imgapp" src="../../assets/icon/cow.png"> -->
+          <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/uno.png">
           <ion-text>
               <h1>UNO</h1>
             </ion-text>
       </ion-button>
-    
-  </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-item>
-   
-      <ion-button (click)="playDos()"  size="large" color="transparent" expand="full">
-          <img class="imgapp" src="../../assets/icon/dos.png"  >
-          <ion-text>
-              <h1>DOS</h1>
-            </ion-text>
-         
-        </ion-button>
-  </ion-item>
 
-  <ion-item >
-   
-       <ion-button (click)="playTres()" size="large" color="secondary"  expand="full">
-          <img class="imgapp" src="../../assets/icon/tres.png">
-          <ion-text>
-              <h1>TRES</h1>
-            </ion-text>
-         
-        </ion-button>
-  </ion-item>
 
-  <ion-item >
-    
-      <ion-button (click)="playCuatro()"  size="large" color="medium" expand="full">
-          <img class="imgapp" src="../../assets/icon/cuatro.png"  >
-          <ion-text>
-              <h1>CUATRO</h1>
-            </ion-text>
-         
-        </ion-button>
-  </ion-item>
 
-  <ion-item >
-    
-      <ion-button (click)="playCinco()"  size="large" color="dark" expand="full">
-          <img class="imgapp" src="../../assets/icon/cinco.png"  >
+    <ion-row no-padding no-margin >
+      <ion-col no-padding no-margin>
+    <ion-button size="large" (click)="playDos()" color="transparent" expand="full"  no-margin responsive-lg>
+      <!-- <img class="imgapp" src="../../assets/icon/donkey.png"  > -->
+      <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/dos.png">
+      <ion-text>
+          <h1>DOS</h1>
+        </ion-text>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+
+
+    <ion-row no-padding no-margin >
+      <ion-col no-padding no-margin>
+        <ion-button size="large" (click)="playTres()" color="warning"  expand="full"  no-margin responsive-lg>
+          <!-- <img class="imgapp" src="../../assets/icon/duck.png"> -->
+      <img class="listaAnimales" no-margin no-padding src="../../assets/icon/tres.png">
           <ion-text>
-              <h1>CINCO</h1>
-            </ion-text>
-         
+            <h1>TRES</h1>
+          </ion-text>
         </ion-button>
-  </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row no-padding no-margin >
+      <ion-col no-padding no-margin>
+  <ion-button size="large" (click)="playCuatro()" color="medium" expand="full"  no-margin responsive-lg>
+      <!-- <img class="imgapp" src="../../assets/icon/elephant.png"  > -->
+      <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/cuatro.png">
+      <ion-text>
+          <h1>CUATRO</h1>
+        </ion-text>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+
+
+    <ion-row no-padding no-margin >
+      <ion-col no-padding no-margin>
+  <ion-button size="large" (click)="playCinco()" color="dark" expand="full"  no-margin responsive-lg>
+      <!-- <img class="imgapp" src="../../assets/icon/lion.png"  > -->
+      <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/cinco.png">
+      <ion-text>
+          <h1>CINCO</h1>
+        </ion-text>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+
+
+  </ion-grid>
 </ion-content>
