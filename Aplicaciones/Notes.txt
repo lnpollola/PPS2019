@@ -105,7 +105,7 @@ relevamiento visual --> CORREGIR
   ------------------------------------TABLA DIDACTICA------------------------------------
 --tabla didactica de idiomas --> OK 
   --corregir que no se cuelgue --> no esta pasando
-  corregir al dar vuelta que lo muestre bien
+  --corregir al dar vuelta que lo muestre bien
   --corregir 
     --colores --> ingles todos 
       --          español violeta

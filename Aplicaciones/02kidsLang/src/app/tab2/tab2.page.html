@@ -14,7 +14,268 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content class="margintop">
+
+  <ion-content no-padding no-margin>
+    <ion-grid no-padding no-margin>
+      <!-- <ion-row  no-padding no-margin>
+        <ion-col no-padding no-margin>
+          <ion-button 
+            (click)="cambiarOpcion()"
+            size="large" 
+            expand="full" 
+            no-margin
+            no-padding 
+            y
+            color="secondary"
+          >
+            <img class="animales"  no-margin no-padding src="../../assets/Animales.PNG">
+            <img *ngIf="listaNumeros" no-margin no-padding src="../../assets/numeros.jpg">
+            <img *ngIf="listaColores" no-margin no-padding src="../../assets/colores.jpg">
+            
+          </ion-button>
+         
+        
+        
+        </ion-col>
+      </ion-row> -->
+  
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+          <ion-button size="large" (click)="playVaca()" color="success" expand="full"  no-margin responsive-lg >
+            <!-- <img class="imgapp" src="../../assets/icon/cow.png"> -->
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/cow.png">
+            <ion-text>
+                <h1>VACA</h1>
+              </ion-text>
+        </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+      <ion-button size="large" (click)="playBurro()" color="medium" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/donkey.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/donkey.png">
+        <ion-text>
+            <h1>BURRO</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+          <ion-button size="large" (click)="playPato()" color="dark"  expand="full"  no-margin responsive-lg>
+            <!-- <img class="imgapp" src="../../assets/icon/duck.png"> -->
+        <img class="listaAnimales" no-margin no-padding src="../../assets/icon/duck.png">
+            <ion-text>
+              <h1>PATO</h1>
+            </ion-text>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+    <ion-button size="large" (click)="playElefante()" color="secondary" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/elephant.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/elephant.png">
+        <ion-text>
+            <h1>ELEFANTE</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+    <ion-button size="large" (click)="playLeon()" color="tertiary" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/lion.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/lion.png">
+        <ion-text>
+            <h1>LEON</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+      
+      <!-- <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+            <ion-card (click)="colorsB()" class="botonColores"  expand="full" >
+                <ion-text class="alineado">
+                    <h1>COLORES</h1>
+                </ion-text>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+            <ion-card  (click)="numbersB()"  class="botonNumeros"  expand="full" >
+                <ion-text class="alineado">
+                    <h1>NUMEROS</h1>
+                </ion-text>
+            </ion-card>
+        </ion-col>
+      </ion-row> -->
+
+      
+      <!--COLORES-->
+      <!-- <ion-row  *ngIf="listaColores">
+        <ion-col no-padding no-margin>
+          <ion-button 
+            (click)="reproducir('azul')"
+          size="large" color="primary" expand="full" no-margin responsive-lg></ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row  *ngIf="listaColores">
+        <ion-col no-padding no-margin>
+          <ion-button color="danger" (click)="reproducir('rojo')"  size="large" expand="full" no-margin responsive-lg></ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row  *ngIf="listaColores">
+        <ion-col no-padding no-margin>
+          <ion-button color="success" (click)="reproducir('verde')"  size="large" expand="full" no-margin responsive-lg></ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row  *ngIf="listaColores">
+        <ion-col no-padding no-margin>
+          <ion-button color="warning" (click)="reproducir('amarillo')"  size="large" expand="full" no-margin responsive-lg></ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row  *ngIf="listaColores">
+        <ion-col no-padding no-margin>
+          <ion-button color="tertiary" (click)="reproducir('violeta')"  size="large" expand="full" no-margin responsive-lg></ion-button>
+        </ion-col>
+      </ion-row> -->
+  
+  
+  
+  
+  
+      <!--NUMEROS-->
+      <!-- <ion-row  *ngIf="listaNumeros">
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('uno')" color="secondary" size="large" expand="full" no-margin responsive-lg> 1</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row  *ngIf="listaNumeros">
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('dos')" color="secondary" size="large" expand="full" no-margin responsive-lg> 2</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row  *ngIf="listaNumeros">
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('tres')" color="secondary" size="large" expand="full" no-margin responsive-lg> 3</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row  *ngIf="listaNumeros">
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('cuatro')" color="secondary" size="large" expand="full" no-margin responsive-lg> 4</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row  *ngIf="listaNumeros">
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('cinco')" color="secondary" size="large" expand="full" no-margin responsive-lg> 5</ion-button>
+        </ion-col>
+      </ion-row> -->
+  
+  
+  
+  
+  
+      <!--ANIMALES-->
+      <!-- <ion-row class="botones" >
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('vaca')" color="tertiary" size="large" expand="full" no-margin responsive-lg>
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/Vaca.png">
+          </ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="botones"  >
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('caballo')" color="tertiary" size="large" expand="full" no-margin responsive-lg>
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/Caballo.png">
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row class="botones" >
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('gallo')" color="tertiary" size="large" expand="full" no-margin responsive-lg>
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/Gallo.png">
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row class="botones" >
+        <ion-col no-padding no-margin>
+          <ion-button (click)="reproducir('oveja')"  color="tertiary" size="large" expand="full" no-margin responsive-lg>
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/Oveja.png">
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row class="botones"  >
+        <ion-col no-padding no-margin>
+          <ion-button class="listaAnimales" (click)="reproducir('pato')" color="tertiary" size="large" expand="full" no-margin responsive-lg>
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/Pato.png">
+          </ion-button>
+        </ion-col>
+      </ion-row> -->
+  
+       
+    
+    
+    
+    
+    </ion-grid>
+  
+    <!-- <ion-button size="large" expand="full" no-margin responsive-lg>Colores</ion-button>
+    <ion-button size="large" expand="full" no-margin responsive-lg>Numeros</ion-button>
+    <ion-button size="large" expand="full" no-margin responsive-lg>Animales</ion-button>
+    <ion-button size="large" expand="full" no-margin responsive-lg>Idioma</ion-button> -->
+    
+  </ion-content>
+
+<!--   
+<ion-content >
+
+  <ion-item >
+    <ion-card (click)="animalB()" class="botonAnimal" expand="full" >
+        <ion-text class="alineado">
+            <h1>ANIMALES</h1>
+        </ion-text>
+    </ion-card>
+  </ion-item>
+
+  <ion-item >
+        <ion-card (click)="colorsB()" class="botonColores"  expand="full" >
+            <ion-text class="alineado">
+                <h1>COLORES</h1>
+            </ion-text>
+        </ion-card>
+      </ion-item>
+
+    
+
+    <ion-item >
+        <ion-card  (click)="numbersB()"  class="botonNumeros"  expand="full" >
+            <ion-text class="alineado">
+                <h1>NUMEROS</h1>
+            </ion-text>
+        </ion-card>
+    </ion-item>
+
+</ion-content> -->
+
+
+<!-- <ion-content class="margintop">
 
     <ion-item>
      
@@ -70,5 +331,5 @@
            
           </ion-button>
     </ion-item>
-  </ion-content>
+  </ion-content> -->
   
