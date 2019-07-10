@@ -27,13 +27,13 @@
 		  <div class="icon">
 			<ion-icon name="person"></ion-icon>
 		  </div>
-		  <input type="text" [(ngModel)]="email" placeholder="Usuario">
+		  <input type="text" [(ngModel)]="cuenta.usuario" placeholder="Usuario">
 		</div>
 		<div class="form-field password">
 		  <div class="icon">
 			<ion-icon name="lock"></ion-icon>	
 		  </div>
-		  <input type="password" [(ngModel)]="password" placeholder="Contraseña">
+		  <input type="password" [(ngModel)]="cuenta.password" placeholder="Contraseña">
 		</div>
   
 		<button (click)="login()" type="submit">

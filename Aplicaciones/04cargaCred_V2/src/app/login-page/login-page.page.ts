@@ -7,6 +7,10 @@ import { LoadingController } from '@ionic/angular';
 import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
 import { AuthService } from "../auth.service";
 
+import { FirebaseService } from "../services/firebase.service";
+
+import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-login-page',
@@ -19,10 +23,16 @@ export class LoginPagePage implements OnInit {
   password = "";
   routerLink = "";
   splash = true;
+  spinner:boolean ; 
+  usuarios: any[];
+  cuenta: { usuario: string, password: string } = {
+    usuario: '',
+    password: ''
+  };
 
   ionViewDidEnter() 
   {
-    setTimeout(() => this.splash = false, 7000);
+    setTimeout(() => this.splash = false, 4000);
   }
 
   constructor(
@@ -32,6 +42,8 @@ export class LoginPagePage implements OnInit {
     // private menuCtrl: MenuController, 
     // private authServ: AuthenticationService,
     // private firebaseAuthentication: FirebaseAuthentication, 
+    
+    private baseService: FirebaseService,
     public loadingController: LoadingController,
     public alertController:AlertController,
     private auth: AuthService, 
@@ -45,22 +57,51 @@ export class LoginPagePage implements OnInit {
    
   }
 
-   login() {
+  //  login() {
         
-      this.auth.loginUser(this.email,this.password ).then((user) => {
+  //     this.auth.loginUser(this.email,this.password ).then((user) => {
 
-        this.creoToast(true);  
-        this.router.navigateByUrl('/tabs'); 
+  //       this.creoToast(true);  
+  //       this.router.navigateByUrl('/tabs'); 
 
-        }
-        ) 
-        .catch(err=>{
+  //       }
+  //       ) 
+  //       .catch(err=>{
           
-          this.creoToast(false);  
+  //         this.creoToast(false);  
+  //       });
+
+  //     }
+
+  login()
+      {
+        // console.log(this.cuenta);
+        this.spinner = true; 
+        this.baseService.getItems("Usuarios").then(users => {
+          setTimeout(() => this.spinner = false, 2000);
+          // console.log(this.usuarios);
+          // console.log(users);
+    
+          this.usuarios = users;
+    
+          let usuarioLogueado = this.usuarios.find(elem => (elem.correo == this.cuenta.usuario && elem.clave == this.cuenta.password));
+          // console.log(usuarioLogueado);
+          // console.log(this.cuenta);
+          if (usuarioLogueado !== undefined) {
+            sessionStorage.setItem('Usuarios', JSON.stringify(usuarioLogueado));
+    
+            // this.events.publish('usuarioLogueado', usuarioLogueado.perfil);
+            this.creoToast(true);
+     
+            this.router.navigateByUrl('/tabs'); 
+
+            
+          }
+          else{
+            this.creoToast(false);
+          }
         });
-
       }
-
 
       
   async creoSheet() {
@@ -72,37 +113,37 @@ export class LoginPagePage implements OnInit {
         icon: 'finger-print',
         handler: () => {
           
-          this.email = "admin@gmail.com";
-          this.password= "admin1111";
+          this.cuenta.usuario = "admin@gmail.com";
+          this.cuenta.password= "admin1111";
 
         }
       }, {
         text: 'invitado',
         icon: 'information-circle-outline',
         handler: () => {
-          this.email = "invitado@gmail.com";
-          this.password= "invitado2222";
+          this.cuenta.usuario = "invitado@gmail.com";
+          this.cuenta.password= "invitado2222";
         }
       }, {
         text: 'usuario',
         icon: 'person',
         handler: () => {
-          this.email = "usuario@gmail.com";
-          this.password= "usuario3333";
+          this.cuenta.usuario = "usuario@gmail.com";
+          this.cuenta.password= "usuario3333";
         }
       }, {
         text: 'anonimo',
         icon: 'help',
         handler: () => {
-          this.email = "anonimo@gmail.com";
-          this.password= "anonimo4444";
+          this.cuenta.usuario = "anonimo@gmail.com";
+          this.cuenta.password= "anonimo4444";
         }
       },{
         text: 'tester',
         icon: 'desktop',
         handler: () => {
-          this.email = "tester@gmail.com";
-          this.password= "tester5555";
+          this.cuenta.usuario = "tester@gmail.com";
+          this.cuenta.password= "tester5555";
         }
       }, {
         text: 'Cancelar',
@@ -117,6 +158,7 @@ export class LoginPagePage implements OnInit {
     await actionSheet.present();
   }
   
+    
       async creoToast(rta: boolean) {
 
         if(rta == true)
