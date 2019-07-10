@@ -15,61 +15,80 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content class="margintop">
 
-    <ion-item>
-     
-        <ion-button (click)="playRojo()" size="large" color="danger" expand="full" >
-            <img class="imgapp" src="../../assets/icon/rojo.png">
+  <ion-content no-padding no-margin>
+    <ion-grid no-padding no-margin>
+    
+  
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+          <ion-button size="large" (click)="playRojo()" color="danger" expand="full"  no-margin responsive-lg >
+            <!-- <img class="imgapp" src="../../assets/icon/cow.png"> -->
+            <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/rojo.png">
             <ion-text>
                 <h1>ROJO</h1>
               </ion-text>
         </ion-button>
-      
-    </ion-item>
-  
-    <ion-item>
-     
-        <ion-button  (click)="playVerde()" size="large" color="success" expand="full">
-            <img class="imgapp" src="../../assets/icon/verde.png"  >
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+      <ion-button size="large" (click)="playVerde()" color="success" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/donkey.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/verde.png">
+        <ion-text>
+            <h1>VERDE</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+          <ion-button size="large" (click)="playAmarillo()" color="warning"  expand="full"  no-margin responsive-lg>
+            <!-- <img class="imgapp" src="../../assets/icon/duck.png"> -->
+        <img class="listaAnimales" no-margin no-padding src="../../assets/icon/amarillo.png">
             <ion-text>
-                <h1>VERDE</h1>
-              </ion-text>
-           
+              <h1>AMARILLO</h1>
+            </ion-text>
           </ion-button>
-    </ion-item>
-  
-    <ion-item >
-     
-         <ion-button  (click)="playAmarillo()" size="large" color="warning"  expand="full">
-            <img class="imgapp" src="../../assets/icon/amarillo.png">
-            <ion-text>
-                <h1>AMARILLO</h1>
-              </ion-text>
-           
-          </ion-button>
-    </ion-item>
-  
-    <ion-item >
-      
-        <ion-button  (click)="playCeleste()" size="large" color="secondary" expand="full">
-            <img class="imgapp" src="../../assets/icon/celeste.png"  >
-            <ion-text>
-                <h1>CELESTE</h1>
-              </ion-text>
-           
-          </ion-button>
-    </ion-item>
-  
-    <ion-item >
-      
-        <ion-button  (click)="playVioleta()" size="large" color="tertiary" expand="full">
-            <img class="imgapp" src="../../assets/icon/violeta.png"  >
-            <ion-text>
-                <h1>VIOLETA</h1>
-              </ion-text>
-           
-          </ion-button>
-    </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+    <ion-button size="large" (click)="playCeleste()" color="secondary" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/elephant.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/celeste.png">
+        <ion-text>
+            <h1>CELESTE</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+      <ion-row no-padding no-margin >
+        <ion-col no-padding no-margin>
+    <ion-button size="large" (click)="playVioleta()" color="tertiary" expand="full"  no-margin responsive-lg>
+        <!-- <img class="imgapp" src="../../assets/icon/lion.png"  > -->
+        <img class="listaAnimales"  no-margin no-padding src="../../assets/icon/violeta.png">
+        <ion-text>
+            <h1>VIOLETA</h1>
+          </ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+    </ion-grid>
   </ion-content>
+
+
+
+
+
   
