@@ -4,6 +4,7 @@
 
 <ion-content>
 
+  
   <ion-list>
     <!-- Cabecera -->
     <ion-segment>
@@ -21,33 +22,28 @@
 
     <!-- LISTADO DE CUENTAS -->
     <ion-item class="margen-item">
-      <ion-badge color="dark" class="fuente-titulo" slot="start"><ion-icon name="logo-usd"></ion-icon></ion-badge>
-        <ion-label text-wrap>CUENTA NRO 1 </ion-label>
-      <ion-badge text-wrap color="success" slot="end"> ARS $ 1000</ion-badge>
+      <ion-badge color="dark" class="fuente-titulo" slot="start"><ion-icon name="barcode"></ion-icon></ion-badge>
+        <ion-label text-wrap>CUENTA QR-10</ion-label>
+      <ion-badge text-wrap color="success" slot="end"> ${{cargaDiez}}</ion-badge>
     </ion-item>
 
     <ion-item class="margen-item">
-        <ion-badge color="medium" class="fuente-titulo" slot="start"><ion-icon name="logo-usd"></ion-icon></ion-badge>
-          <ion-label text-wrap>CUENTA NRO 2 </ion-label>
-        <ion-badge text-wrap color="success" slot="end"> USD $ 150</ion-badge>
+        <ion-badge color="medium" class="fuente-titulo" slot="start"><ion-icon name="git-compare"></ion-icon></ion-badge>
+          <ion-label text-wrap>CUENTA QR-50</ion-label>
+        <ion-badge text-wrap color="success" slot="end"> ${{cargaCincuenta}}</ion-badge>
       </ion-item>
 
     <ion-item class="margen-item">
         <ion-badge color="secondary" class="fuente-titulo" slot="start"><ion-icon name="card"></ion-icon></ion-badge>
-          <ion-label text-wrap>CUENTA NRO 3</ion-label>
-        <ion-badge text-wrap color="danger" slot="end">- USD $ 500</ion-badge>
+          <ion-label text-wrap>CUENTA QR-100</ion-label>
+        <ion-badge text-wrap color="success" slot="end"> ${{cargaCien}}</ion-badge>
       </ion-item>
 
-      <ion-item class="margen-item">
-          <ion-badge color="tertiary" class="fuente-titulo" slot="start"><ion-icon name="card"></ion-icon></ion-badge>
-            <ion-label text-wrap>CUENTA NRO 4</ion-label>
-          <ion-badge text-wrap color="danger" slot="end">- ARS $ 300</ion-badge>
-      </ion-item>
   </ion-list>
   <br><br>
     <ion-item>
       <ion-label  class="total">TOTAL: </ion-label>
-      <ion-note  class="total" slot="end"> $200</ion-note>
+      <ion-note  class="total" slot="end"> {{saldoPantalla}}</ion-note>
     </ion-item>
 </ion-content>
 
@@ -55,11 +51,11 @@
 
   <ion-toolbar>
 
-    <ion-fab-button color="primary">
+    <ion-fab-button color="primary" (click)="escaneoQR()">
       <ion-icon name="qr-scanner"></ion-icon>
     </ion-fab-button>   
   
-    <ion-fab-button color="danger" slot="end"  >
+    <ion-fab-button color="danger" slot="end" (click)="borroQR()"  >
       <ion-icon name="trash"></ion-icon>
     </ion-fab-button>
 

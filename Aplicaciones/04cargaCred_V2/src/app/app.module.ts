@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AuthService } from "../app/auth.service";
 
+import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCgZJJ4U7kzVVSbY8u2wODFSmUQCSEg36Y",
   authDomain: "ppsappvecinal.firebaseapp.com",
@@ -44,6 +46,9 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseAuthentication,
+    AuthService,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

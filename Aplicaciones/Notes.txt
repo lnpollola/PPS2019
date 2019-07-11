@@ -111,18 +111,17 @@ relevamiento visual --> CORREGIR
       --          español violeta
     --numeros todos 
 ------------------------------------ALARMA ROBO------------------------------------
-alarma de robo --> OK 
+--alarma de robo --> OK 
 ------------------------------------CARGA QR - OPCIONAL ------------------------------------
  cambiar login como servicio correcto
  ---dejar servicio de FB funcionando
  --instalar qr service
-carga QR --> FALTA EL BACK 
-  LEER CODIGO QR
-  TIENE QUE VERIFICAR SI ESTA CARGADO 
-    NO --> CARGA CREDITO CORRESPONDIENE, VISUALIZADOR DE CREDITOS
-    SI --> MENSAJE QUE YA ESTA CARGADO
-  BOTON PARA LIMPIAR LOS CREDITOS DEL USUARIO
-  
+--carga QR --> FALTA EL BACK 
+  --LEER CODIGO QR
+  --TIENE QUE VERIFICAR SI ESTA CARGADO 
+    --NO --> CARGA CREDITO CORRESPONDIENE, VISUALIZADOR DE CREDITOS
+    --SI --> MENSAJE QUE YA ESTA CARGADO
+  --BOTON PARA LIMPIAR LOS CREDITOS DEL USUARIO
 ------------------------------------CONV AULA------------------------------------
 convAula --> FALTA EL BACK QUE FUNCIONE
   2 canales con mensajes por usuario

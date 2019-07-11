@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
     "@firebase/app": "^0.3.14",
+    "@ionic-native/barcode-scanner": "^5.9.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/firebase-authentication": "^5.3.0",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -87,7 +88,8 @@
       "cordova-plugin-firebase-authentication": {
         "FIREBASE_AUTH_VERSION": "16.1.+"
       },
-      "cordova-support-google-services": {}
+      "cordova-support-google-services": {},
+      "phonegap-plugin-barcodescanner": {}
     },
     "platforms": [
       "android"
