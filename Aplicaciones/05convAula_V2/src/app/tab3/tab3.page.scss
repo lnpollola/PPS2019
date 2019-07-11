@@ -1,1 +1,159 @@
+// .toolbar-background {
+//     background-color: #30adde;
+//   }
+//   .toolbar-title-md {
+//     padding: 0 12px;
+//     font-size: 2rem;
+//     font-weight: 500;
+//     color: #ffffff;
+//   }
+//   .chat-message {
+//     border-radius: 5px;
+//     display: inline-block;
+//     padding: 10px 18px;
+//     position: relative;
+//     margin: 10px;
+//     max-width: 80%;
+//   }
+//   .chat-message:before {
+//     content: "\00a0";
+//     display: block;
+//     height: 16px;
+//     width: 9px;
+//     position: absolute;
+//     bottom: -7.5px;
+//   }
+//   .chat-message.right { 
+//     background-color: #488aff;
+//     color: #fff;
+//     float: right;
+//   }
+//   .chat-message.right:before {
+//     background-color: #488aff;
+//     right: 10px;
+//     -webkit-transform: rotate(118deg) skew(-5deg);
+//     transform: rotate(118deg) skew(-5deg);
+//   }
+//   .chat-message.left {
+//     background-color: #e6e5eb;
+//     float: left;
+//   }
+//   .chat-message.left:before {
+//     background-color: #e6e5eb;
+//     left: 10px;
+//     -webkit-transform: rotate(70deg) skew(5deg);
+//     transform: rotate(70deg) skew(5deg);
+//   }
+
+
+@import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
+.io{
+
+  width: 43px;
+  height:40px; 
+  border-radius: 50%;
+}
+
+// ion-header,  ion-list, ion-item{
+//     --background: #22333B;
+//   }
+ 
+
+
+ion-card {
+  --color: #000000;
+}
+
+.input{
+  padding: 1%;
+  border-radius: 25px;
+  background:  #000000;
+  font-size: 16px;
+  color: white;
+}
+
+.text-input-md{
+  margin: 0 !important;
+}
+
+.toolbarText .toolbar-background-md{
+  background-color: transparent !important;
+}
+
+.grid {
+  padding: 0;
+}
+
+.caja {
+//   border-radius: 5px;
+//   margin: 0;
+  
+  border-radius: 5px;
+      display: inline-block;
+      padding: 10px 18px;
+      position: relative;
+      margin: 10px;
+      max-width: 80%;
+}
+
+.sender .caja{
+  font-family: 'Inconsolata', monospace;
+  background-color:  #000000;
+  padding: 12px 10px;
+  color: white;
+  font-size: 100%;
+}
+
+.body {
+    
+    background-image: url('../../assets/imgs/fondo_aula.jpg') repeat transparent;
+}
+
+.me .caja {
+//   background-color: #8cb3f7;
+  color: white;
+  padding: 12px 10px;
+  background-color: #000000;
+      float: left;
+}
+
+.me .caja:before{
+    background-color:  #000000;
+        left: 10px;
+        -webkit-transform: rotate(70deg) skew(5deg);
+        transform: rotate(70deg) skew(5deg);
+}
+
+.mensaje {
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.remitente {
+  font-weight: bold;
+  color: whitesmoke;
+  font-family: 'Poppins', sans-serif;
+}
+
+.fecha {
+  text-align: right;
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
+.es-enviador{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  width: 57%;
+  margin-left: 65%;
+  
+
+}
 

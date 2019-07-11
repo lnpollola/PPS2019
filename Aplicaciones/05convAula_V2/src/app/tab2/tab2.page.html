@@ -1,19 +1,8 @@
-<ion-header>
 
   
-
-    <ion-toolbar color="dark">
-     <ion-title>PPS-4A</ion-title>
-          <ion-button color="danger" class="io" slot="end" (click)="mainM()" routerDirection="root">
-            <ion-icon name="home"></ion-icon>
-          </ion-button>
-    
-    </ion-toolbar>
-  </ion-header>
   
-  
-  <ion-content color="medium">
-  
+  <ion-content color="dark">
+  <div class="body">
   
     <div class="message-wrap">
       <div *ngFor="let chat of chats">
@@ -41,12 +30,13 @@
         </div>
         </div>
         </div>
+      </div>
   </ion-content>
   
   <!-- <ion-footer no-border *ngIf="esClienteConPedido || esDeliveryBoy"> -->
   <ion-footer no-border>
   
-    <ion-toolbar color="primary" class="toolbarText">
+    <ion-toolbar color="dark" class="toolbarText">
         <!-- [disabled]="esDeliveryBoy && cliente == ''" -->
       <ion-textarea [(ngModel)]="inputText"  placeholder="Ingrese su mensaje" name="message" class="input" maxlength="21"></ion-textarea>
       <ion-buttons slot="end">

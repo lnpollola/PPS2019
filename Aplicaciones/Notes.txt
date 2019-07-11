@@ -123,9 +123,9 @@ relevamiento visual --> CORREGIR
     --SI --> MENSAJE QUE YA ESTA CARGADO
   --BOTON PARA LIMPIAR LOS CREDITOS DEL USUARIO
 ------------------------------------CONV AULA------------------------------------
-convAula --> FALTA EL BACK QUE FUNCIONE
-  2 canales con mensajes por usuario
-   cambiar login como servicio correcto
+--convAula --> FALTA EL BACK QUE FUNCIONE
+  --2 canales con mensajes por usuario
+   --cambiar login como servicio correcto
 ------------------------------------VIS KINETICO - OPCIONAL------------------------------------
 visKinetico --> VERIFICAR
   esta ok la base, falta lo demover la imagen con el celular

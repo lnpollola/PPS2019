@@ -47,7 +47,9 @@
 
 
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
-
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 
 .io{
 
@@ -61,12 +63,13 @@
 //   }
  
 
+
 ion-card {
   --color: #FFFFFF;
 }
 
 .input{
-  padding: 15px 20px;
+  padding: 1%;
   border-radius: 25px;
   background: #FFFFFF;
   font-size: 16px;
@@ -86,8 +89,15 @@ ion-card {
 }
 
 .caja {
+//   border-radius: 5px;
+//   margin: 0;
+  
   border-radius: 5px;
-  margin: 0;
+      display: inline-block;
+      padding: 10px 18px;
+      position: relative;
+      margin: 10px;
+      max-width: 80%;
 }
 
 .sender .caja{
@@ -98,24 +108,41 @@ ion-card {
   font-size: 100%;
 }
 
+.body {
+    
+    background-image: url('../../assets/imgs/fondo_aula.jpg') repeat transparent;
+}
+
 .me .caja {
-  background-color: #8cb3f7;
+//   background-color: #8cb3f7;
   color: #000000;
   padding: 12px 10px;
+  background-color: #e6e5eb;
+      float: left;
+}
+
+.me .caja:before{
+    background-color: #e6e5eb;
+        left: 10px;
+        -webkit-transform: rotate(70deg) skew(5deg);
+        transform: rotate(70deg) skew(5deg);
 }
 
 .mensaje {
-  font-size: 16px;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .remitente {
   font-weight: bold;
-  color: blue;
+  color: darkgreen;
+  font-family: 'Poppins', sans-serif;
 }
 
 .fecha {
   text-align: right;
   color: grey;
+  font-family: 'Lobster', cursive;
 }
 
 .es-enviador{
@@ -123,7 +150,9 @@ ion-card {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+
+  width: 57%;
+  margin-left: 65%;
   
-  width: 81%;
-  margin-left: 40%;
+
 }
