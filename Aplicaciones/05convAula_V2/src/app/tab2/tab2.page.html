@@ -1,35 +1,59 @@
 <ion-header>
-    <!-- <ion-navbar> -->
-      <!-- <ion-title>
-        Chat Room
-      </ion-title> -->
-    <!-- </ion-navbar> -->
+
+  
+
+    <ion-toolbar color="dark">
+     <ion-title>PPS-4A</ion-title>
+          <ion-button color="danger" class="io" slot="end" (click)="mainM()" routerDirection="root">
+            <ion-icon name="home"></ion-icon>
+          </ion-button>
+    
+    </ion-toolbar>
   </ion-header>
-  <ion-content padding>
-    <!-- <div *ngFor="let message of chats">     -->
-        <div> 
-
-        <div class="chat-message right">      
-          <div class="message-detail">
-            <!-- {{message.msgStr}} -->
-            Detalle del primer mensaje
-          </div>
+  
+  
+  <ion-content color="medium">
+  
+  
+    <div class="message-wrap">
+      <div *ngFor="let chat of chats">
+        <!-- <div class="sender" *ngIf="chat.usuario != usuario.correo"> -->
+        <div class="sender">
+  
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10">
+                <div class="caja" [ngClass]="{
+                  'es-enviador': chat.usuario == usuarioLOG.correo}">
+                  <div class="remitente" *ngIf="chat.usuario != usuarioLOG.correo">
+                    {{chat.usuario}}
+                  </div>
+                  <div class="mensaje">
+                    {{chat.texto}}
+                  </div>
+                  <div class="fecha">
+                    {{chat.hora}}
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
-
-        <div class="chat-message left">      
-            <div class="message-detail">
-              <!-- {{message.msgStr}} -->
-              Detalle del segundo mensaje
-            </div>
-          </div>
-
-
-    </div>
+        </div>
+        </div>
   </ion-content>
-  <ion-footer>
-    <ion-item>
-      <ion-input type="text" placeholder="Ingrese menesaje"></ion-input>
-      <ion-icon name="md-send" item-right></ion-icon>
-    </ion-item>
+  
+  <!-- <ion-footer no-border *ngIf="esClienteConPedido || esDeliveryBoy"> -->
+  <ion-footer no-border>
+  
+    <ion-toolbar color="primary" class="toolbarText">
+        <!-- [disabled]="esDeliveryBoy && cliente == ''" -->
+      <ion-textarea [(ngModel)]="inputText"  placeholder="Ingrese su mensaje" name="message" class="input" maxlength="21"></ion-textarea>
+      <ion-buttons slot="end">
+          <!-- [disabled]="esDeliveryBoy && cliente == ''" -->
+        <ion-button (click)="doSend()" >
+          <ion-icon name="send" color="light" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
   </ion-footer>
-
