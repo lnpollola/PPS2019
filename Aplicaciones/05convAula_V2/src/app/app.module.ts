@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AuthService } from "../app/auth.service";
 
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCgZJJ4U7kzVVSbY8u2wODFSmUQCSEg36Y",
   authDomain: "ppsappvecinal.firebaseapp.com",
@@ -44,6 +45,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseAuthentication,
+    AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
