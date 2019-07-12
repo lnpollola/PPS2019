@@ -14,7 +14,22 @@
 }
 
 
+ion-content  {
+	--background: black;
+}
 
+ion-card {
+	background-color: black;
+}
+
+ion-card-header {
+	background-color: black;
+}
+
+
+ion-card {
+	--background: black;
+}
 
   .contenedorPresentacion {
 	display: inline-block;
@@ -136,10 +151,10 @@ ion-card-title.welcome-card
 	flex-direction: row;
 	justify-content: center;
 }
-.img-logo{
-	height:150px;
-	width:150px;
-}
+// .img-logo{
+// 	height:150px;
+// 	width:150px;
+// }
 .fire-logo{
 	display: flex;
 	// flex-direction: column;
