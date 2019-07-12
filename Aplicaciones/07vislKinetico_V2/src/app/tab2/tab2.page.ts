@@ -156,10 +156,10 @@ ionRefresh(event) {
   for (let i = 0; i < this.imagenesLindas.length; i++) {
     const element = this.imagenesLindas[i];
     
-    console.log(this.imagenesLindas[i]);
+    // console.log(this.imagenesLindas[i]);
 
     this.imagenActual = this.imagenesLindas[i].url;
-    console.log("imagen actual", this.imagenActual);
+    // console.log("imagen actual", this.imagenActual);
     
 }
 
