@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from "../services/firebase.service";
+import { BestScoreManager } from '../app.storage.service';
+import { CONTROLS, COLORS, BOARD_SIZE, GAME_MODES } from '../app.constants';
 
 
 import * as firebase from 'firebase';
@@ -13,189 +15,287 @@ const STORAGE_KEY = 'my_images';
   selector: 'app-tab5',
   templateUrl: './tab5.page.html',
   styleUrls: ['./tab5.page.scss'],
-})
-export class Tab5Page implements OnInit {
-  
-  someTextUrl;
-  selectedPhoto;
-  loading;
-  imagen : any;
-  imagenes: [] = [];
-  // imgInfo: Array<string>;
-  imagenesLindas : any;
-  imagenesTodas : any;
-  imagenesFeas : any;
-  spinner:boolean ; 
-
- isenabled:boolean= false;
- cardColor: string;
-
-   
- listaRecorreAux: any;
- hayLista: any; 
- usuarioLogueado: any; 
-
  
+})
+export class Tab5Page {
+  private interval: number;
+  private tempDirection: number;
+  private default_mode = 'classic';
+  private isGameOver = false;
 
+  public all_modes = GAME_MODES;
+  public getKeys = Object.keys;
+  public board = [];
+  public obstacles = [];
+  public score = 0;
+  public showMenuChecker = false;
+  public gameStarted = false;
+  public newBestScore = false;
+  public best_score = this.bestScoreService.retrieve();
 
-  constructor(public navCtrl: NavController,
-              public baseService: FirebaseService
-              ) {
-
-                // this.spinner = true;
-                // this.traerImagenesTodas();
-                // this.traerImagenesLindas();
-                // this.traerImagenesFeas();
-                // setTimeout(() => this.spinner = false , 3000);
-
-               }
-  galleryType = 'pinterest';
-
-
-  ngOnInit() {
-    this.traerImagenesTodas();
-    this.usuarioLogueado = JSON.parse(sessionStorage.getItem('Usuarios'));
-    // this.traerProductosPerfil();
-    // this.traerPedidosActivosPorPerfil();
-  }
-
-
-// REFRESHER 
-
-
-
-ionRefresh(event) {
-  // console.log('Pull Event Triggered!');
-  setTimeout(() => {
-    // console.log('Async operation has ended');
-
-    // complete()  signify that the refreshing has completed and to close the refresher
-    event.target.complete();
-    // this.pedidosMostrarFil = [];
-    // this.listIdPedidosAceptados = null ;
-    // this.listProductos  = [];
-    this.traerImagenesTodas();
-  }, 2000);
-  }
-  ionPull(event) {
-    // Emitted while the user is pulling down the content and exposing the refresher.
-    // console.log('ionPull Event Triggered!');
-   
-  }
-  ionStart(event) {
-    // Emitted when the user begins to start pulling down.
-    // console.log('ionStart Event Triggered!');
-    // this.pedidosMostrarBarFil = [];
-    // this.listIdPedidosAceptadosBar = null ;
-    // this.listProductosBar  = [];
-    // this.traerPedidosPerfilBar();
-  }
-
-
-
-
-
-  async traerImagenesTodas() {
-
-    this.spinner  = true; 
-
-    await this.baseService.getItems('cosasEdificio').then(async ped => {
-      // this.imagenesLindas = ped;
-      this.imagenesTodas = ped;
-
-
-
-      for (let i = 0; i < this.imagenesTodas.length; i++) {
-        const element = this.imagenesTodas[i];
-        if(this.imagenesTodas[i].tipo == "LINDAS")
-        {
-
-          this.cardColor = "success";
-          console.log(this.imagenesTodas[i].tipo);
-        }
-        else{
-
-          this.cardColor = "danger";
-          console.log(this.imagenesTodas[i].tipo);
-
-  
-        }
-        
-        
+  private snake = {
+    direction: CONTROLS.LEFT,
+    parts: [
+      {
+        x: -1,
+        y: -1
       }
-    });  
+    ]
+  };
 
-    if (this.imagenesTodas.length == 0) {
-      this.hayLista = false;
-    } else {
-      this.hayLista = true;
+  private fruit = {
+    x: -1,
+    y: -1
+  };
+
+  constructor(
+    private bestScoreService: BestScoreManager
+  ) {
+    this.setBoard();
+  }
+
+  // handleKeyboardEvents(e: KeyboardEvent) {
+  //   if (e.keyCode === CONTROLS.LEFT && this.snake.direction !== CONTROLS.RIGHT) {
+  //     this.tempDirection = CONTROLS.LEFT;
+  //   } else if (e.keyCode === CONTROLS.UP && this.snake.direction !== CONTROLS.DOWN) {
+  //     this.tempDirection = CONTROLS.UP;
+  //   } else if (e.keyCode === CONTROLS.RIGHT && this.snake.direction !== CONTROLS.LEFT) {
+  //     this.tempDirection = CONTROLS.RIGHT;
+  //   } else if (e.keyCode === CONTROLS.DOWN && this.snake.direction !== CONTROLS.UP) {
+  //     this.tempDirection = CONTROLS.DOWN;
+  //   }
+  // }
+
+  handleKeyboardEvents(tecla) {
+    console.log(tecla);
+    if (tecla == 'IZQ' ) {
+      this.tempDirection = CONTROLS.LEFT;
+    } else if (tecla == 'ARRIBA') {
+      this.tempDirection = CONTROLS.UP;
+    } else if (tecla == 'DER' ) {
+      this.tempDirection = CONTROLS.RIGHT;
+    } else if (tecla == 'ABAJO') {
+      this.tempDirection = CONTROLS.DOWN;
+    }
+  }
+
+  setColors(col: number, row: number): string {
+    if (this.isGameOver) {
+      return COLORS.GAME_OVER;
+    } else if (this.fruit.x === row && this.fruit.y === col) {
+      return COLORS.FRUIT;
+    } else if (this.snake.parts[0].x === row && this.snake.parts[0].y === col) {
+      return COLORS.HEAD;
+    } else if (this.board[col][row] === true) {
+      return COLORS.BODY;
+    } else if (this.default_mode === 'obstacles' && this.checkObstacles(row, col)) {
+      return COLORS.OBSTACLE;
+    }
+
+    return COLORS.BOARD;
+  };
+
+  updatePositions(): void {
+    let newHead = this.repositionHead();
+    let me = this;
+
+    if (this.default_mode === 'classic' && this.boardCollision(newHead)) {
+      return this.gameOver();
+    } else if (this.default_mode === 'no_walls') {
+      this.noWallsTransition(newHead);
+    } else if (this.default_mode === 'obstacles') {
+      this.noWallsTransition(newHead);
+      if (this.obstacleCollision(newHead)) {
+        return this.gameOver();
+      }
+    }
+
+    if (this.selfCollision(newHead)) {
+      return this.gameOver();
+    } else if (this.fruitCollision(newHead)) {
+      this.eatFruit();
+    }
+
+    let oldTail = this.snake.parts.pop();
+    this.board[oldTail.y][oldTail.x] = false;
+
+    this.snake.parts.unshift(newHead);
+    this.board[newHead.y][newHead.x] = true;
+
+    this.snake.direction = this.tempDirection;
+
+    setTimeout(() => {
+      me.updatePositions();
+    }, this.interval);
+  }
+
+
+// CAMBIAR FUNCION
+
+  repositionHead(): any {
+    let newHead = Object.assign({}, this.snake.parts[0]);
+
+    if (this.tempDirection === CONTROLS.LEFT) {
+      newHead.x -= 1;
+    } else if (this.tempDirection === CONTROLS.RIGHT) {
+      newHead.x += 1;
+    } else if (this.tempDirection === CONTROLS.UP) {
+      newHead.y -= 1;
+    } else if (this.tempDirection === CONTROLS.DOWN) {
+      newHead.y += 1;
+    }
+
+    return newHead;
+  }
+
+  noWallsTransition(part: any): void {
+    if (part.x === BOARD_SIZE) {
+      part.x = 0;
+    } else if (part.x === -1) {
+      part.x = BOARD_SIZE - 1;
+    }
+
+    if (part.y === BOARD_SIZE) {
+      part.y = 0;
+    } else if (part.y === -1) {
+      part.y = BOARD_SIZE - 1;
+    }
+  }
+
+  addObstacles(): void {
+    let x = this.randomNumber();
+    let y = this.randomNumber();
+
+    if (this.board[y][x] === true || y === 8) {
+      return this.addObstacles();
+    }
+
+    this.obstacles.push({
+      x: x,
+      y: y
+    });
+  }
+
+  checkObstacles(x, y): boolean {
+    let res = false;
+
+    this.obstacles.forEach((val) => {
+      if (val.x === x && val.y === y) {
+        res = true;
+      }
+    });
+
+    return res;
+  }
+
+  obstacleCollision(part: any): boolean {
+    return this.checkObstacles(part.x, part.y);
+  }
+
+  boardCollision(part: any): boolean {
+    return part.x === BOARD_SIZE || part.x === -1 || part.y === BOARD_SIZE || part.y === -1;
+  }
+
+  selfCollision(part: any): boolean {
+    return this.board[part.y][part.x] === true;
+  }
+
+  fruitCollision(part: any): boolean {
+    return part.x === this.fruit.x && part.y === this.fruit.y;
+  }
+
+  resetFruit(): void {
+    let x = this.randomNumber();
+    let y = this.randomNumber();
+
+    if (this.board[y][x] === true || this.checkObstacles(x, y)) {
+      return this.resetFruit();
+    }
+
+    this.fruit = {
+      x: x,
+      y: y
+    };
+  }
+
+  eatFruit(): void {
+    this.score++;
+
+    let tail = Object.assign({}, this.snake.parts[this.snake.parts.length - 1]);
+
+    this.snake.parts.push(tail);
+    this.resetFruit();
+
+    if (this.score % 5 === 0) {
+      this.interval -= 15;
+    }
+  }
+
+  gameOver(): void {
+    this.isGameOver = true;
+    this.gameStarted = false;
+    let me = this;
+
+    if (this.score > this.best_score) {
+      this.bestScoreService.store(this.score);
+      this.best_score = this.score;
+      this.newBestScore = true;
     }
 
     setTimeout(() => {
-      this.spinner = false;
-    }, 3000);
+      me.isGameOver = false;
+    }, 500);
 
+    this.setBoard();
   }
 
-  traerImagenesLindas() {
+  randomNumber(): any {
+    return Math.floor(Math.random() * BOARD_SIZE);
+  }
 
-    this.baseService.getItems('cosasEdificio').then(ped => {
-     this.imagenesLindas = ped;
-     this.imagenesLindas = this.imagenesLindas.filter(imagen => imagen.tipo == "cosalinda");
-   
-   });  
- }
- traerImagenesFeas() {
+  setBoard(): void {
+    this.board = [];
 
-   this.baseService.getItems('cosasEdificio').then(ped => {
-    this.imagenesFeas = ped;
-    this.imagenesFeas = this.imagenesFeas.filter(imagen => imagen.tipo == "cosafea");
-  
-  });  
-}
+    for (let i = 0; i < BOARD_SIZE; i++) {
+      this.board[i] = [];
+      for (let j = 0; j < BOARD_SIZE; j++) {
+        this.board[i][j] = false;
+      }
+    }
+  }
 
+  showMenu(): void {
+    this.showMenuChecker = !this.showMenuChecker;
+  }
 
-   async like(nombreFile: any){
-  //  alert(nombreFile);
+  newGame(mode: string): void {
+    this.default_mode = mode || 'classic';
+    this.showMenuChecker = false;
+    this.newBestScore = false;
+    this.gameStarted = true;
+    this.score = 0;
+    this.tempDirection = CONTROLS.RIGHT;
+    this.isGameOver = false;
+    this.interval = 200;
+    this.snake = {
+      direction: CONTROLS.LEFT,
+      parts: []
+    };
 
-   await this.baseService.getItems('cosasEdificio').then(async lista => {
-
-    let imagenElegida = lista.find(imagen => imagen.nombreFile == nombreFile);
-    let likes : number = parseInt(imagenElegida.likes)+1;
-    let objetoVotos = imagenElegida.votacion;
-    
-
-    switch (this.usuarioLogueado.correo) {
-      case 'admin@gmail.com':
-            objetoVotos.votaAdmin = true; 
-        break;
-        case 'invitado@gmail.com':
-            objetoVotos.votaInvitado = true; 
-          break;
-          case 'usuario@gmail.com':
-              objetoVotos.votaUsuario = true; 
-            break;
-            case 'anonimo@gmail.com':
-                objetoVotos.votaAnonimo = true; 
-              break;
-              case 'tester@gmail.com':
-                  objetoVotos.votaTester = true; 
-                break;
-    
-      default:
-        break;
+    for (let i = 0; i < 3; i++) {
+      this.snake.parts.push({ x: 8 + i, y: 8 });
     }
 
-     let objetoEnviar = {
-        "votacion": objetoVotos,
-        "likes": likes
-      }
+    if (mode === 'obstacles') {
+      this.obstacles = [];
+      let j = 1;
+      do {
+        this.addObstacles();
+      } while (j++ < 9);
+    }
 
-    this.baseService.updateItem('cosasEdificio', imagenElegida.key, objetoEnviar);  
-
-    this.traerImagenesTodas();
-   });
-
-}
+    this.resetFruit();
+    this.updatePositions();
+  }
  
 }

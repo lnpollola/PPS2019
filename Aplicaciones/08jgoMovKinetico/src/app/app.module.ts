@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { AuthService } from "../app/auth.service";
 
+import { BestScoreManager } from '../app/app.storage.service';
+
 //COMPONENTES CAMARA Y FILE 
 import { HttpClientModule } from '@angular/common/http';
 import { File } from '@ionic-native/File/ngx';
@@ -61,6 +63,7 @@ export const firebaseConfig = {
     Camera,
     File,
     Gyroscope,
+    BestScoreManager,
     DeviceMotion,
     FilePath,
     WebView
