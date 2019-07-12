@@ -33,6 +33,8 @@ export class Tab2Page implements OnInit
  usuarioLogueado: any; 
 
  
+ galleryType = 'pinterest';
+ imagenActual;
 
 
   constructor(public navCtrl: NavController,
@@ -46,7 +48,7 @@ export class Tab2Page implements OnInit
                 // setTimeout(() => this.spinner = false , 3000);
 
                }
-  galleryType = 'pinterest';
+  // galleryType = 'pinterest';
 
 
   ngOnInit() {
@@ -72,7 +74,7 @@ ionRefresh(event) {
     // this.pedidosMostrarFil = [];
     // this.listIdPedidosAceptados = null ;
     // this.listProductos  = [];
-    this.traerImagenesTodas();
+    // this.traerImagenesTodas();
     this.traerImagenesLindas();
   }, 2000);
   }
@@ -143,17 +145,30 @@ ionRefresh(event) {
      this.imagenesLindas = this.imagenesLindas.filter(imagen => imagen.tipo == "LINDAS");
    
    });  
+
    if (this.imagenesLindas.length == 0) {
     this.hayLista = false;
   } else {
     this.hayLista = true;
+
   }
+  
+  for (let i = 0; i < this.imagenesLindas.length; i++) {
+    const element = this.imagenesLindas[i];
+    
+    console.log(this.imagenesLindas[i]);
+
+    this.imagenActual = this.imagenesLindas[i].url;
+    console.log("imagen actual", this.imagenActual);
+    
+}
 
   setTimeout(() => {
     this.spinner = false;
-  }, 3000);
+  }, 1000);
 
  }
+
  traerImagenesFeas() {
 
    this.baseService.getItems('cosasEdificio').then(ped => {
@@ -161,6 +176,7 @@ ionRefresh(event) {
     this.imagenesFeas = this.imagenesFeas.filter(imagen => imagen.tipo == "FEAS");
   
   });  
+
   if (this.imagenesFeas.length == 0) {
     this.hayLista = false;
   } else {

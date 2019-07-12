@@ -8,8 +8,30 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
+<!-- 
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        IMAGENES
+      </ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+   
+  <ion-content padding>
+
+      <ion-spinner *ngIf="spinner" name="lines"></ion-spinner>
+     
+
+        
+  <div *ngIf="!spinner" class="images" >
+      <!-- <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]"> -->
+      <div class="one-image">
+        <img [src]="imagenActual">
+      </div>
+    </div>
+  </ion-content>
   
-  <ion-content *ngIf="!hayLista">
+  <!-- <ion-content *ngIf="!hayLista">
     <ion-refresher slot="fixed" 
     (ionRefresh)="ionRefresh($event)" 
     (ionPull)="ionPull($event)" 
@@ -66,7 +88,7 @@
 
 
 
-                  <!-- ADMIN  -->
+                  ADMIN 
                   <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                     <ion-icon name="heart"></ion-icon>
                   </ion-button>
@@ -75,7 +97,7 @@
                       <ion-icon name="heart-dislike"></ion-icon>
                     </ion-button>
 
-                  <!-- INVITADO  -->
+                  INVITADO 
                   <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                     <ion-icon name="heart"></ion-icon>
                   </ion-button>
@@ -83,7 +105,7 @@
                   <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
                     <ion-icon name="heart-dislike"></ion-icon>
                   </ion-button>  
-                  <!-- USUARIO  -->
+                  USUARIO 
                   <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                     <ion-icon name="heart"></ion-icon>
                   </ion-button>
@@ -92,7 +114,7 @@
                     <ion-icon name="heart-dislike"></ion-icon>
                   </ion-button>  
                   
-                  <!-- TESTER  -->
+                  TESTER 
                     <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
@@ -101,7 +123,7 @@
                       <ion-icon name="heart-dislike"></ion-icon>
                     </ion-button>  
                           
-                  <!-- ANONIMO  -->
+                  ANONIMO 
                     <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
@@ -131,7 +153,7 @@
                  
                
 
-                  <!-- ADMIN  -->
+                  ADMIN 
                   <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
@@ -140,7 +162,7 @@
                         <ion-icon name="heart-dislike"></ion-icon>
                       </ion-button>
   
-                    <!-- INVITADO  -->
+                    INVITADO 
                     <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
@@ -148,7 +170,7 @@
                     <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
                       <ion-icon name="heart-dislike"></ion-icon>
                     </ion-button>  
-                    <!-- USUARIO  -->
+                    USUARIO 
                     <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
@@ -157,7 +179,7 @@
                       <ion-icon name="heart-dislike"></ion-icon>
                     </ion-button>  
                     
-                    <!-- TESTER  -->
+                    TESTER 
                       <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                         <ion-icon name="heart"></ion-icon>
                       </ion-button>
@@ -166,7 +188,7 @@
                         <ion-icon name="heart-dislike"></ion-icon>
                       </ion-button>  
                             
-                    <!-- ANONIMO  -->
+                    ANONIMO 
                       <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
                         <ion-icon name="heart"></ion-icon>
                       </ion-button>
@@ -184,5 +206,5 @@
         
       </ion-item>
     </ion-list>
-  </ion-content>
+  </ion-content> -->
   
