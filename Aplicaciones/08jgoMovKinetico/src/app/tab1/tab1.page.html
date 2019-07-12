@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+   
+    <ion-title>
+        <ion-button color="light">
+            <ion-icon name="cloud-upload"></ion-icon>
+          </ion-button>
+          Subir Fotos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="spinner" >
+  <ion-spinner  name="lines"></ion-spinner>
+</ion-content>
+
+<ion-content  *ngIf="!spinner" >
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card (click)="selectImage(cosasLindas)"class="lindas" expand="full">
+          <ion-card-header color="success" ><b></b></ion-card-header>
+          <ion-card-content style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
+          ">
+            COSAS LINDAS
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card (click)="selectImage(cosasFeas)" class="feas" expand="full">
+          <ion-card-header color="danger"><b></b></ion-card-header>
+          <ion-card-content  style="color: white; font-weight: bolder; font-size: xx-large;    text-shadow: 1px 0 0 darkgray, -1px 0 0 darkgray, 0 1px 0 darkgray, 0 -1px 0 darkgray, 1px 1px darkgray, -1px -1px 0 darkgray, 1px -1px 0 darkgray, -1px 1px 0 darkgray;
+          ">COSAS FEAS</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- guardaImg(clasificacionFoto); -->
+
+
+<div *ngIf="captureDataUrl.length != 0" expand="full">
+    <ion-title>Vista Previa</ion-title>
+    <h3> Cant. Fotos: {{captureDataUrl.length}}</h3>
+      <ion-slides>
+        <ion-slide *ngFor="let foto of captureDataUrl">
+          <img class="vistaprevia" [src]="foto" *ngIf="captureDataUrl" />
+        </ion-slide>
+      </ion-slides>
+</div>
+         
+      
+</ion-content>
+
+
+
+<ion-footer>
+
+    <ion-toolbar>
+  
+     
+        <ion-fab-button slot="end" (click)="guardaImg()" color="dark">
+            SAVE
+          </ion-fab-button>   
+
+    </ion-toolbar>
+  </ion-footer>

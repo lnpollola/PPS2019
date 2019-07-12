@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        FEAS
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+      <ion-refresher slot="fixed" (ionRefresh)="ionRefresh($event)" (ionPull)="ionPull($event)"
+                        (ionStart)="ionStart($event)">
+          <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Estire para actualizar" refreshingSpinner="circles"
+                        refreshingText="Actualizando...">
+          </ion-refresher-content>
+      </ion-refresher>
+
+  <ion-slides *ngIf="!spinner" pager="true" [options]="slideOpts" #slideWithNav>
+      <ion-slide *ngFor="let foto of imagenesFeas.reverse()">
+            <!-- <ion-list  shape="round"> -->
+              <ion-item  class="item-text-wrap card" >
+              <!-- <ion-item class="item-text-wrap card"> -->
+                  <!-- <ion-col col-12 col-md-6 col-lg-4 col-xl-3> -->
+                      <!-- *ngIf="foto.tipo == 'cosalinda'"  -->
+
+                      
+                      <div *ngIf="!spinner" class="images" >
+                          <!-- <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]"> -->
+                          <div class="one-image">
+                            <!-- <img [src]="imagenActual"> -->
+                            <img [src]="foto.url" >
+                          </div>
+                        </div>
+
+                      
+                      <!-- <ion-card color="medium" >
+                          <ion-card-header>
+                              <ion-card-title>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}} - {{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-title>
+                        
+                            </ion-card-header>
+                          
+                            <ion-card-content >
+                              <label>Tipo {{foto.tipo}}</label><br>
+                                <label> Enviado por: {{foto.correo}}</label>
+                                <img [src]="foto.url" >
+                                <br>
+                                <label>Likes: {{foto.likes}}</label>
+                                <br>
+                                <ion-button color="dark"   shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
+                                  <ion-icon name="heart"></ion-icon>
+                                
+                                </ion-button>
+                            </ion-card-content>
+                        </ion-card> -->
+                     
+                       
+
+              </ion-item>
+              
+          </ion-slide>        
+        </ion-slides>
+
+        <ion-grid  *ngIf="spinner" style="height: 100%">
+            <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+            <ion-spinner name="lines"></ion-spinner>
+            <ion-spinner name="ios"></ion-spinner>
+              </ion-row>
+            </ion-grid>
+
+      </ion-content>
