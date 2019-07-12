@@ -346,21 +346,24 @@ ionRefresh(event) {
      
         }
 
-      //HORIZONTAL
-      // else if ( this.accZ >= 9) { 
-      //   console.log("Está horizontal"); 
-      //   this.estado="ACOSTADO";
-      //   // timer(3000).subscribe(() => {
-      //     // if(this.accY > 3){
-            
-      //     //YO LE AGREGO ESTA FUNCION, ES LA EXTRA QUE PIDE
-      //       this.slideWithNav.slideTo(0);
-         
-      //     // }
-      
-      //   // });
-      // }
+      // HORIZONTAL
+      else if ( this.accZ >= 9) { 
 
+        console.log("Está horizontal"); 
+        this.estado="ACOSTADO";
+            
+          //YO LE AGREGO ESTA FUNCION, ES LA EXTRA QUE PIDE
+          if(!this.slideWithNav || this.slideWithNav.length === undefined ) {
+            console.log('not ready');
+            setTimeout(() => {
+                this.Accelerometer();
+            }, 100);
+          }
+          else {
+            this.slideWithNav.slideTo(0);
+        }
+      }
+   
       //IZQ
       else if ( this.accX >= 9) { 
         console.log("Está de costado IZQ"); 

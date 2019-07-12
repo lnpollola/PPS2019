@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from "../services/firebase.service";
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
 
+import { ToastController,NavParams } from "@ionic/angular";
+
+
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-tab4',
@@ -9,7 +17,20 @@ import { FirebaseService } from "../services/firebase.service";
   styleUrls: ['tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+  @ViewChild('slideWithNav') slideWithNav: IonSlides;
 
+  public xOrient:any;
+  public yOrient:any;
+  public zOrient:any;
+  public timestamp:any;
+  public accX:any;
+  public accY:any;
+  public accZ:any;
+
+
+  public activar: boolean = true;
+  public subscription;
+  public estado;
   
   someTextUrl;
   selectedPhoto;
@@ -30,13 +51,34 @@ export class Tab4Page implements OnInit {
  hayLista: any; 
  usuarioLogueado: any; 
 
- 
+ galleryType = 'pinterest';
+ imagenActual;
+
+ options: GyroscopeOptions = {
+  frequency: 1000
+};
+
+
+imagenMuestro: string;
+listaImagenes: any;
+slideOpts = {
+  initialSlide: 0,
+  speed: 200,
+  slidesPerView: 1
+  // autoplay:true
+};
+
+slideEspecifico: number = 0;
+
 
 
   constructor(public navCtrl: NavController,
-              public baseService: FirebaseService
+              public baseService: FirebaseService,
+              private gyroscope: Gyroscope,
+              private deviceMotion: DeviceMotion,
+              public toastController: ToastController
               ) {
-
+                this.Accelerometer();
                 // this.spinner = true;
                 // this.traerImagenesTodas();
                 // this.traerImagenesLindas();
@@ -44,13 +86,14 @@ export class Tab4Page implements OnInit {
                 // setTimeout(() => this.spinner = false , 3000);
 
                }
-  galleryType = 'pinterest';
+  // galleryType = 'pinterest';
 
 
   ngOnInit() {
-    this.traerImagenesTodas();
-    this.traerImagenesFeas();
+    // this.traerImagenesTodas();
     this.usuarioLogueado = JSON.parse(sessionStorage.getItem('Usuarios'));
+    this.traerImagenesFeas();
+    this.Accelerometer();
     // this.traerProductosPerfil();
     // this.traerPedidosActivosPorPerfil();
   }
@@ -58,7 +101,12 @@ export class Tab4Page implements OnInit {
 
 // REFRESHER 
 
-
+activoWatch() {
+  this.gyroscope.watch()
+ .subscribe((orientation: GyroscopeOrientation) => {
+    console.log("Orientación Watch: ", orientation.x, orientation.y, orientation.z, orientation.timestamp);
+ });
+}
 
 ionRefresh(event) {
   // console.log('Pull Event Triggered!');
@@ -70,7 +118,7 @@ ionRefresh(event) {
     // this.pedidosMostrarFil = [];
     // this.listIdPedidosAceptados = null ;
     // this.listProductos  = [];
-    this.traerImagenesTodas();
+    // this.traerImagenesTodas();
     
     this.traerImagenesFeas();
   }, 2000);
@@ -155,22 +203,27 @@ ionRefresh(event) {
 
  }
  async traerImagenesFeas() {
-
+  this.spinner  = true; 
   await this.baseService.getItems('cosasEdificio').then(ped => {
     this.imagenesFeas = ped;
     this.imagenesFeas = this.imagenesFeas.filter(imagen => imagen.tipo == "FEAS");
   
   });  
 
-  if (this.imagenesFeas.length == 0) {
-    this.hayLista = false;
-  } else {
-    this.hayLista = true;
-  }
+  for (let i = 0; i < this.imagenesFeas.length; i++) {
+    const element = this.imagenesFeas[i];
+    
+    // console.log(this.imagenesLindas[i]);
+
+    this.imagenActual = this.imagenesFeas[i].url;
+    // console.log("imagen actual", this.imagenActual);
+    
+}
 
   setTimeout(() => {
     this.spinner = false;
   }, 3000);
+
 
 }
 
@@ -235,5 +288,107 @@ ionRefresh(event) {
    });
 
 }
+desactivoAcelerometro()
+  {
+    this.subscription.unsubscribe();
+    this.activar = !this.activar;
+  }
+
+
+  Accelerometer(){
+    this.activar=false;
+    var flag = true;
+    // var flagIzq =  true;
+    // var flagDer = true;
+
+    this.deviceMotion.getCurrentAcceleration().then(
+      (acceleration: DeviceMotionAccelerationData) =>
+       console.log(acceleration),
+   
+    //  (error: any) => console.log(error)
+ 
+    );
+
+
+
+
+
+
+    this.subscription = this.deviceMotion.watchAcceleration({frequency:1500}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+      console.log("esta es el watch: ",acceleration);
+      this.accX=acceleration.x;
+      this.accY=acceleration.y;
+      this.accZ=acceleration.z;
+      let tap;
+      this.slideEspecifico;
+
+
+      //VERTICAL
+      if( this.accY >= 9 ) {
+         console.log("Está parado"); 
+         this.estado="PARADO";
+       
+        //  setTimeout(function() {this.luzFlash.switchOff();}, 3000);
+
+      
+     
+        }
+
+      // HORIZONTAL
+      else if ( this.accZ >= 9) { 
+
+        console.log("Está horizontal"); 
+        this.estado="ACOSTADO";
+            
+          //YO LE AGREGO ESTA FUNCION, ES LA EXTRA QUE PIDE
+          if(!this.slideWithNav || this.slideWithNav.length === undefined ) {
+            console.log('not ready');
+            setTimeout(() => {
+                this.Accelerometer();
+            }, 100);
+          }
+          else {
+            this.slideWithNav.slideTo(0);
+        }
+      }
+   
+      //IZQ
+      else if ( this.accX >= 9) { 
+        console.log("Está de costado IZQ"); 
+        this.estado="IZQUIERDA";
+
+        this.slideWithNav.slidePrev(500).then(() => {
+          //this.checkIfNavDisabled(object, slideView);
+        });
+        // this.slideWithNav.slideTo(this.slideEspecifico-1);
+      
+      }
+ 
+      //DER
+      else if ( this.accX <= -9) {
+         console.log("Está de costado DER"); 
+         this.estado="DERECHA";
+         this.slideWithNav.slideNext(500).then(() => {
+          //this.checkIfNavDisabled(object, slideView);
+        });
+        // this.slideWithNav.slideTo(this.slideEspecifico+1);
+        }
+
+      //RESTO
+      else {
+        console.log("-----Registro de Watch------ ");
+    
+      
+      }
+    });
+    
+  }
+   
+  Frenar(){
+    this.subscription.unsubscribe();
+    this.activar = true;
+  }
+
+
 
 }

@@ -127,8 +127,8 @@ relevamiento visual --> CORREGIR
   --2 canales con mensajes por usuario
    --cambiar login como servicio correcto
 ------------------------------------VIS KINETICO - OPCIONAL------------------------------------
-visKinetico --> VERIFICAR
-  esta ok la base, falta lo demover la imagen con el celular
+--visKinetico --> VERIFICAR
+  --esta ok la base, falta lo demover la imagen con el celular
 ------------------------------------JUEGO MOV KINETICO------------------------------------
 juego de movimiento kinetico --> NADA
 

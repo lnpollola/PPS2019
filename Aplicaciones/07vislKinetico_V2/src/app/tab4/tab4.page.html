@@ -1,187 +1,72 @@
 <ion-header>
-  <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      FEAS
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content *ngIf="!hayLista">
-  <ion-refresher slot="fixed" 
-  (ionRefresh)="ionRefresh($event)" 
-  (ionPull)="ionPull($event)" 
-  (ionStart)="ionStart($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Estire para actualizar"
-      refreshingSpinner="circles"
-      refreshingText="Actualizando...">
-    </ion-refresher-content>
-  </ion-refresher>   
-<ion-card *ngIf="!hayLista">
-<ion-card-content>
-  No hay imagenes para mostrar.
-</ion-card-content>
-</ion-card>
-</ion-content>
-
-<ion-content *ngIf="hayLista" >
-  <ion-refresher slot="fixed" 
-  (ionRefresh)="ionRefresh($event)"
-  >
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Estire para actualizar"
-      refreshingSpinner="circles"
-      refreshingText="Actualizando...">
-
-
-    </ion-refresher-content>
-  </ion-refresher>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        FEAS
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
   
+  <ion-content padding>
+      <ion-refresher slot="fixed" (ionRefresh)="ionRefresh($event)" (ionPull)="ionPull($event)"
+                        (ionStart)="ionStart($event)">
+          <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Estire para actualizar" refreshingSpinner="circles"
+                        refreshingText="Actualizando...">
+          </ion-refresher-content>
+      </ion-refresher>
 
-      <ion-spinner *ngIf="spinner" name="lines"></ion-spinner>
-   
+  <ion-slides *ngIf="!spinner" pager="true" [options]="slideOpts" #slideWithNav>
+      <ion-slide *ngFor="let foto of imagenesFeas.reverse()">
+            <!-- <ion-list  shape="round"> -->
+              <ion-item  class="item-text-wrap card" >
+              <!-- <ion-item class="item-text-wrap card"> -->
+                  <!-- <ion-col col-12 col-md-6 col-lg-4 col-xl-3> -->
+                      <!-- *ngIf="foto.tipo == 'cosalinda'"  -->
 
-  <ion-list *ngIf="!spinner">
-      <ion-item class="item-text-wrap card" *ngFor="let foto of imagenesFeas.reverse()">
-      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
-         
-        <ion-card *ngIf="foto.tipo == 'LINDAS'"  expand="full">
+                      
+                      <div *ngIf="!spinner" class="images" >
+                          <!-- <div class="one-image" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10]"> -->
+                          <div class="one-image">
+                            <!-- <img [src]="imagenActual"> -->
+                            <img [src]="foto.url" >
+                          </div>
+                        </div>
 
-            <ion-card-header  color="success" >
-                <ion-card-subtitle>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}}-{{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content class="cardContent" style="color: black; font-weight: bolder;">
-                <h5 class="fuenteNew"> <b style="color:lightgray" >Tipo:</b>  Lindas </h5>
-                <h3 class="fuenteNew"> <b style="color:lightgray">Enviado por:</b> {{foto.correo}}</h3>
-          
-                <img [src]="foto.url" >
-                <h1 class="fuenteNew" *ngIf="foto.likes==0">   <b style="color:lightgray">  <ion-icon name="heart-half"></ion-icon>  </b>     Likes: {{foto.likes}}</h1>
-                <h1 class="fuenteNew" *ngIf="foto.likes!=0" >   <b style="color:green">   <ion-icon name="thumbs-up"></ion-icon>     </b>     Likes: {{foto.likes}}</h1>
-
-
-
-                <!-- ADMIN  -->
-                <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                  <ion-icon name="heart"></ion-icon>
-                </ion-button>
-
-                <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == true" shape="round" fill="outline" expand="block" >                
-                    <ion-icon name="heart-dislike"></ion-icon>
-                  </ion-button>
-
-                <!-- INVITADO  -->
-                <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                  <ion-icon name="heart"></ion-icon>
-                </ion-button>
-
-                <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
-                  <ion-icon name="heart-dislike"></ion-icon>
-                </ion-button>  
-                <!-- USUARIO  -->
-                <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                  <ion-icon name="heart"></ion-icon>
-                </ion-button>
-
-                <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == true" shape="round" fill="outline" expand="block" >                
-                  <ion-icon name="heart-dislike"></ion-icon>
-                </ion-button>  
-                
-                <!-- TESTER  -->
-                  <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-
-                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == true"  shape="round" fill="outline" expand="block" >                
-                    <ion-icon name="heart-dislike"></ion-icon>
-                  </ion-button>  
+                      
+                      <!-- <ion-card color="medium" >
+                          <ion-card-header>
+                              <ion-card-title>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}} - {{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-title>
                         
-                <!-- ANONIMO  -->
-                  <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-
-                <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == true"  shape="round" fill="outline" expand="block" >                
-                  <ion-icon name="heart-dislike"></ion-icon>
-                </ion-button>
-
-
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card *ngIf="foto.tipo == 'FEAS'"  expand="full">
-
-            <ion-card-header  color="danger" >
-                <ion-card-subtitle>Fecha: {{foto.fechaSubida.dia}}/{{foto.fechaSubida.mes}}-{{foto.fechaSubida.hora}}:{{foto.fechaSubida.minuto}}</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content class="cardContent" style="color: black; font-weight: bolder;">
-                <h5 class="fuenteNew"> <b style="color:lightgray" >Tipo:</b>  Feas </h5>
-                <h3 class="fuenteNew"> <b style="color:lightgray">Enviado por:</b> {{foto.correo}}</h3>
-               
-                <img [src]="foto.url" >
-                <h1 class="fuenteNew" *ngIf="foto.likes==0">   <b style="color:lightgray">  <ion-icon name="heart-half"></ion-icon>  </b>     Likes: {{foto.likes}}</h1>
-                <h1 class="fuenteNew" *ngIf="foto.likes!=0" >   <b style="color:green">   <ion-icon name="thumbs-up"></ion-icon>     </b>     Likes: {{foto.likes}}</h1>
-
-               
-             
-
-                <!-- ADMIN  -->
-                <ion-button *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-
-                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'admin@gmail.com' && foto.votacion.votaAdmin == true" shape="round" fill="outline" expand="block" >                
-                      <ion-icon name="heart-dislike"></ion-icon>
-                    </ion-button>
-
-                  <!-- INVITADO  -->
-                  <ion-button *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-
-                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'invitado@gmail.com' && foto.votacion.votaInvitado == true" shape="round" fill="outline" expand="block" >                
-                    <ion-icon name="heart-dislike"></ion-icon>
-                  </ion-button>  
-                  <!-- USUARIO  -->
-                  <ion-button *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                    <ion-icon name="heart"></ion-icon>
-                  </ion-button>
-
-                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'usuario@gmail.com' && foto.votacion.votaUsuario == true" shape="round" fill="outline" expand="block" >                
-                    <ion-icon name="heart-dislike"></ion-icon>
-                  </ion-button>  
-                  
-                  <!-- TESTER  -->
-                    <ion-button *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == false" shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                      <ion-icon name="heart"></ion-icon>
-                    </ion-button>
-
-                    <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'tester@gmail.com' && foto.votacion.votaTester == true"  shape="round" fill="outline" expand="block" >                
-                      <ion-icon name="heart-dislike"></ion-icon>
-                    </ion-button>  
+                            </ion-card-header>
                           
-                  <!-- ANONIMO  -->
-                    <ion-button  *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == false"  shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">                
-                      <ion-icon name="heart"></ion-icon>
-                    </ion-button>
+                            <ion-card-content >
+                              <label>Tipo {{foto.tipo}}</label><br>
+                                <label> Enviado por: {{foto.correo}}</label>
+                                <img [src]="foto.url" >
+                                <br>
+                                <label>Likes: {{foto.likes}}</label>
+                                <br>
+                                <ion-button color="dark"   shape="round" fill="outline" expand="block" (click)="like(foto.nombreFile)">
+                                  <ion-icon name="heart"></ion-icon>
+                                
+                                </ion-button>
+                            </ion-card-content>
+                        </ion-card> -->
+                     
+                       
 
-                  <ion-button color="danger" *ngIf="this.usuarioLogueado.correo == 'anonimo@gmail.com' && foto.votacion.votaAnonimo == true"  shape="round" fill="outline" expand="block" >                
-                    <ion-icon name="heart-dislike"></ion-icon>
-                  </ion-button>
+              </ion-item>
+              
+          </ion-slide>        
+        </ion-slides>
 
-            </ion-card-content>
-          </ion-card>
+        <ion-grid  *ngIf="spinner" style="height: 100%">
+            <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+            <ion-spinner name="lines"></ion-spinner>
+            <ion-spinner name="ios"></ion-spinner>
+              </ion-row>
+            </ion-grid>
 
-        
-        </ion-col>
-
-      
-    </ion-item>
-  </ion-list>
-</ion-content>
+      </ion-content>
