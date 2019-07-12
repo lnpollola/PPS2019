@@ -326,7 +326,7 @@ ionRefresh(event) {
 
 
 
-    this.subscription = this.deviceMotion.watchAcceleration({frequency:1500}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+    this.subscription = this.deviceMotion.watchAcceleration({frequency:2000}).subscribe((acceleration: DeviceMotionAccelerationData) => {
       console.log("esta es el watch: ",acceleration);
       this.accX=acceleration.x;
       this.accY=acceleration.y;
