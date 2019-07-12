@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from "../services/firebase.service";
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
+
+import { ToastController,NavParams } from "@ionic/angular";
 
 
 import * as firebase from 'firebase';
@@ -12,6 +18,21 @@ import * as firebase from 'firebase';
 })
 export class Tab2Page implements OnInit
 {
+  
+  @ViewChild('slideWithNav') slideWithNav: IonSlides;
+
+  public xOrient:any;
+  public yOrient:any;
+  public zOrient:any;
+  public timestamp:any;
+  public accX:any;
+  public accY:any;
+  public accZ:any;
+
+
+  public activar: boolean = true;
+  public subscription;
+  public estado;
 
   someTextUrl;
   selectedPhoto;
@@ -24,7 +45,7 @@ export class Tab2Page implements OnInit
   imagenesFeas : any;
   spinner:boolean ; 
 
- isenabled:boolean= false;
+ isenabled: boolean= false;
  cardColor: string;
 
    
@@ -36,11 +57,30 @@ export class Tab2Page implements OnInit
  galleryType = 'pinterest';
  imagenActual;
 
+ options: GyroscopeOptions = {
+  frequency: 1000
+};
+
+
+imagenMuestro: string;
+listaImagenes: any;
+slideOpts = {
+  initialSlide: 0,
+  speed: 200,
+  slidesPerView: 1
+  // autoplay:true
+};
+
+slideEspecifico: number = 0;
+
 
   constructor(public navCtrl: NavController,
-              public baseService: FirebaseService
+              public baseService: FirebaseService,
+              private gyroscope: Gyroscope,
+              private deviceMotion: DeviceMotion,
+              public toastController: ToastController
               ) {
-
+                this.Accelerometer();
                 // this.spinner = true;
                 // this.traerImagenesTodas();
                 // this.traerImagenesLindas();
@@ -53,8 +93,10 @@ export class Tab2Page implements OnInit
 
   ngOnInit() {
     // this.traerImagenesTodas();
-    this.traerImagenesLindas();
+    
     this.usuarioLogueado = JSON.parse(sessionStorage.getItem('Usuarios'));
+    this.traerImagenesLindas();
+    this.Accelerometer();
     // this.traerProductosPerfil();
     // this.traerPedidosActivosPorPerfil();
   }
@@ -62,6 +104,12 @@ export class Tab2Page implements OnInit
 
 // REFRESHER 
 
+activoWatch() {
+  this.gyroscope.watch()
+ .subscribe((orientation: GyroscopeOrientation) => {
+    console.log("Orientación Watch: ", orientation.x, orientation.y, orientation.z, orientation.timestamp);
+ });
+}
 
 
 ionRefresh(event) {
@@ -249,6 +297,105 @@ ionRefresh(event) {
     this.traerImagenesTodas();
    });
 
-}
+  }
+
+
+  desactivoAcelerometro()
+  {
+    this.subscription.unsubscribe();
+    this.activar = !this.activar;
+  }
+
+
+  Accelerometer(){
+    this.activar=false;
+    var flag = true;
+    // var flagIzq =  true;
+    // var flagDer = true;
+
+    this.deviceMotion.getCurrentAcceleration().then(
+      (acceleration: DeviceMotionAccelerationData) =>
+       console.log(acceleration),
+   
+    //  (error: any) => console.log(error)
+ 
+    );
+
+
+
+
+
+
+    this.subscription = this.deviceMotion.watchAcceleration({frequency:1500}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+      console.log("esta es el watch: ",acceleration);
+      this.accX=acceleration.x;
+      this.accY=acceleration.y;
+      this.accZ=acceleration.z;
+      let tap;
+      this.slideEspecifico;
+
+
+      //VERTICAL
+      if( this.accY >= 9 ) {
+         console.log("Está parado"); 
+         this.estado="PARADO";
+       
+        //  setTimeout(function() {this.luzFlash.switchOff();}, 3000);
+
+      
+     
+        }
+
+      //HORIZONTAL
+      // else if ( this.accZ >= 9) { 
+      //   console.log("Está horizontal"); 
+      //   this.estado="ACOSTADO";
+      //   // timer(3000).subscribe(() => {
+      //     // if(this.accY > 3){
+            
+      //     //YO LE AGREGO ESTA FUNCION, ES LA EXTRA QUE PIDE
+      //       this.slideWithNav.slideTo(0);
+         
+      //     // }
+      
+      //   // });
+      // }
+
+      //IZQ
+      else if ( this.accX >= 9) { 
+        console.log("Está de costado IZQ"); 
+        this.estado="IZQUIERDA";
+
+        this.slideWithNav.slidePrev(500).then(() => {
+          //this.checkIfNavDisabled(object, slideView);
+        });
+        // this.slideWithNav.slideTo(this.slideEspecifico-1);
+      
+      }
+ 
+      //DER
+      else if ( this.accX <= -9) {
+         console.log("Está de costado DER"); 
+         this.estado="DERECHA";
+         this.slideWithNav.slideNext(500).then(() => {
+          //this.checkIfNavDisabled(object, slideView);
+        });
+        // this.slideWithNav.slideTo(this.slideEspecifico+1);
+        }
+
+      //RESTO
+      else {
+        console.log("-----Registro de Watch------ ");
+    
+      
+      }
+    });
+    
+  }
+   
+  Frenar(){
+    this.subscription.unsubscribe();
+    this.activar = true;
+  }
 
 }
