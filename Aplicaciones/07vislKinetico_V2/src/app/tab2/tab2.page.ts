@@ -50,7 +50,8 @@ export class Tab2Page implements OnInit
 
 
   ngOnInit() {
-    this.traerImagenesTodas();
+    // this.traerImagenesTodas();
+    this.traerImagenesLindas();
     this.usuarioLogueado = JSON.parse(sessionStorage.getItem('Usuarios'));
     // this.traerProductosPerfil();
     // this.traerPedidosActivosPorPerfil();
@@ -72,6 +73,7 @@ ionRefresh(event) {
     // this.listIdPedidosAceptados = null ;
     // this.listProductos  = [];
     this.traerImagenesTodas();
+    this.traerImagenesLindas();
   }, 2000);
   }
   ionPull(event) {
@@ -134,21 +136,41 @@ ionRefresh(event) {
 
   }
 
-  traerImagenesLindas() {
-
-    this.baseService.getItems('cosasEdificio').then(ped => {
+  async traerImagenesLindas() {
+    this.spinner  = true; 
+    await this.baseService.getItems('cosasEdificio').then(ped => {
      this.imagenesLindas = ped;
-     this.imagenesLindas = this.imagenesLindas.filter(imagen => imagen.tipo == "cosalinda");
+     this.imagenesLindas = this.imagenesLindas.filter(imagen => imagen.tipo == "LINDAS");
    
    });  
+   if (this.imagenesLindas.length == 0) {
+    this.hayLista = false;
+  } else {
+    this.hayLista = true;
+  }
+
+  setTimeout(() => {
+    this.spinner = false;
+  }, 3000);
+
  }
  traerImagenesFeas() {
 
    this.baseService.getItems('cosasEdificio').then(ped => {
     this.imagenesFeas = ped;
-    this.imagenesFeas = this.imagenesFeas.filter(imagen => imagen.tipo == "cosafea");
+    this.imagenesFeas = this.imagenesFeas.filter(imagen => imagen.tipo == "FEAS");
   
   });  
+  if (this.imagenesFeas.length == 0) {
+    this.hayLista = false;
+  } else {
+    this.hayLista = true;
+  }
+
+  setTimeout(() => {
+    this.spinner = false;
+  }, 3000);
+
 }
 
 
