@@ -32,6 +32,8 @@ import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native
  
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCgZJJ4U7kzVVSbY8u2wODFSmUQCSEg36Y",
   authDomain: "ppsappvecinal.firebaseapp.com",

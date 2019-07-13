@@ -315,7 +315,7 @@ desactivoAcelerometro()
 
 
     this.subscription = this.deviceMotion.watchAcceleration({frequency:2000}).subscribe((acceleration: DeviceMotionAccelerationData) => {
-      console.log("esta es el watch: ",acceleration);
+      // console.log("esta es el watch: ",acceleration);
       this.accX=acceleration.x;
       this.accY=acceleration.y;
       this.accZ=acceleration.z;
@@ -325,7 +325,7 @@ desactivoAcelerometro()
 
       //VERTICAL
       if( this.accY >= 9 ) {
-         console.log("Está parado"); 
+        //  console.log("Está parado"); 
          this.estado="PARADO";
        
         //  setTimeout(function() {this.luzFlash.switchOff();}, 3000);
@@ -337,7 +337,7 @@ desactivoAcelerometro()
       // HORIZONTAL
       else if ( this.accZ >= 9) { 
 
-        console.log("Está horizontal"); 
+        // console.log("Está horizontal"); 
         this.estado="ACOSTADO";
             
           //YO LE AGREGO ESTA FUNCION, ES LA EXTRA QUE PIDE
@@ -354,7 +354,7 @@ desactivoAcelerometro()
    
       //IZQ
       else if ( this.accX >= 9) { 
-        console.log("Está de costado IZQ"); 
+        // console.log("Está de costado IZQ"); 
         this.estado="IZQUIERDA";
 
         this.slideWithNav.slidePrev(500).then(() => {
@@ -366,7 +366,7 @@ desactivoAcelerometro()
  
       //DER
       else if ( this.accX <= -9) {
-         console.log("Está de costado DER"); 
+        //  console.log("Está de costado DER"); 
          this.estado="DERECHA";
          this.slideWithNav.slideNext(500).then(() => {
           //this.checkIfNavDisabled(object, slideView);

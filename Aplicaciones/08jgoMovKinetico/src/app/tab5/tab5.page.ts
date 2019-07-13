@@ -1,18 +1,20 @@
-/**
-*
-* Copyright © 2019-present Enappd. All rights reserved.
-*
-* This source code is licensed as per the terms found in the
-* LICENSE.md file in the root directory of this source tree.
-*/
 
 import { Component, OnInit } from '@angular/core';
 import { MenuController} from '@ionic/angular';
 
 import { Router } from '@angular/router';
 
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+
 import { FirebaseService } from "../services/firebase.service";
 import { AlertController } from '@ionic/angular';
+// import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+
+
+import { ToastController,NavParams } from "@ionic/angular";
+
+
+import * as firebase from 'firebase';
 
 
 declare let Phaser;
@@ -43,6 +45,7 @@ let firingTimer = 0;
 let stateText;
 let livingEnemies = [];
 
+
 @Component({
   selector: 'app-tab5',
   templateUrl: './tab5.page.html',
@@ -55,24 +58,173 @@ export class Tab5Page implements OnInit {
   public reinicioText: any; 
   public reinicio: boolean;
 
+ 
+
+  public xOrient:any;
+  public yOrient:any;
+  public zOrient:any;
+  public timestamp:any;
+  public accX:any;
+  public accY:any;
+  public accZ:any;
+
+
+  public activar: boolean = true;
+  public subscription;
+  public estado;
+  
+  someTextUrl;
+  selectedPhoto;
+  loading;
+  imagen : any;
+  imagenes: [] = [];
+  // imgInfo: Array<string>;
+  imagenesLindas : any;
+  imagenesTodas : any;
+  imagenesFeas : any;
+  spinner:boolean ; 
+
+ isenabled: boolean = false;
+ cardColor: string;
+
+   
+ listaRecorreAux: any;
+ hayLista: any; 
+ usuarioLogueado: any; 
+
+ galleryType = 'pinterest';
+ imagenActual;
+
+
+
+imagenMuestro: string;
+listaImagenes: any;
+slideOpts = {
+  initialSlide: 0,
+  speed: 200,
+  slidesPerView: 1
+  // autoplay:true
+};
+
+slideEspecifico: number = 0;
+
+
   constructor(private menuCtrl: MenuController,
     private baseService: FirebaseService,
     public alertCtrl: AlertController,
     private router: Router,
+    // public baseService: FirebaseService,
+    // private gyroscope: Gyroscope,
+    private deviceMotion: DeviceMotion,
+    public toastController: ToastController
+    // private gyroscope: Gyroscope
     ) {
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'space-invaders',
       { preload: this.preload, create: this.create, update: this.update,  render: this.render });
-
+      
     that = Object.create(this.constructor.prototype);
+    // this.activoGiroscopio();
+    this.Accelerometer();
   }
+
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'start');
     this.menuCtrl.enable(false, 'end');
   }
 
   ngOnInit() {
-
+    this.Accelerometer();
+    // this.activoGiroscopio();
   }
+
+  
+
+  Accelerometer(){
+    this.activar = false;
+    var flag = true;
+    // var flagIzq =  true;
+    // var flagDer = true;
+
+    this.deviceMotion.getCurrentAcceleration().then(
+      (acceleration: DeviceMotionAccelerationData) =>
+       console.log(acceleration),
+   
+    //  (error: any) => console.log(error)
+ 
+    );
+
+    
+
+    this.subscription = this.deviceMotion.watchAcceleration({frequency:1000}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+      // console.log("esta es el watch: ",acceleration);
+      this.accX=acceleration.x;
+      this.accY=acceleration.y;
+      this.accZ=acceleration.z;
+      let tap;
+      this.slideEspecifico;
+
+
+      //VERTICAL
+      if( this.accY >= 9 ) {
+        //  console.log("Está parado"); 
+         this.estado="PARADO";
+       
+        //  setTimeout(function() {this.luzFlash.switchOff();}, 3000);
+
+      that.arribaStart();
+     
+        }
+
+      // HORIZONTAL
+      else if ( this.accZ >= 9) { 
+
+        // console.log("Está horizontal"); 
+        this.estado="ACOSTADO";
+            
+        that.abajoStart();
+      }
+   
+      //IZQ
+      else if ( this.accX >= 9) { 
+        // console.log("Está de costado IZQ"); 
+        this.estado="IZQUIERDA";
+        that.leftStart();
+      }
+ 
+      //DER
+      else if ( this.accX <= -9) {
+        //  console.log("Está de costado DER"); 
+         this.estado="DERECHA";
+         that.rightStart();
+        }
+
+      //RESTO
+      else {
+        // console.log("-----Registro de Watch------ ");
+    
+      
+      }
+    });
+  }
+
+  // activoGiroscopio() {
+
+
+  //   let options: GyroscopeOptions = {
+  //     frequency: 1000
+  //   };
+
+  //   this.gyroscope.getCurrent(options)
+  // .then((orientation: GyroscopeOrientation) => {
+  //    console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
+  //  })
+  // .catch();
+
+  //   this.gyroscope.watch()
+  //  .subscribe((orientation: GyroscopeOrientation) => {
+  //     console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
+  //  });
+  // }
 
   preload() {
     // game.load.image('bullet', 'assets/phaser/bullet.png');
@@ -144,18 +296,16 @@ export class Tab5Page implements OnInit {
     score = 0 ;
     scoreText.text = scoreString + score;
     
-    let timerReinicio = 5;
-
 
     setTimeout(() => {
       
       stateText.visible = false;
     this.estadoTexto = false;
-    }, 6000);
+    }, 8000);
 
     setTimeout(() => {
     this.create();
-    }, 2000);
+    }, 3000);
   }
 
 
@@ -168,13 +318,13 @@ export class Tab5Page implements OnInit {
       // player.body.velocity.setTo(0, 0);
       score += 1;
       scoreText.text = scoreString + score;
-     console.log(player.getBounds());
+    //  console.log(player.getBounds());
 
       if (cursors.left.isDown || mobileCursors.left) {
         // player.body.velocity.x = -200;
         // player.body.velocity.setTo(-1000, 0);
         
-        player.body.velocity.x -= 50 ;
+        player.body.velocity.x -= 25 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.left = false;
@@ -183,7 +333,7 @@ export class Tab5Page implements OnInit {
         // player.body.velocity.x = 200;
         // player.body.velocity.setTo(1000, 0);
         
-        player.body.velocity.x += 50 ;
+        player.body.velocity.x += 25 ;
 
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
@@ -191,7 +341,7 @@ export class Tab5Page implements OnInit {
       } else if ( mobileCursors.up) {
         // player.body.velocity.setTo(0, -1000);
         
-        player.body.velocity.y -= 50 ;
+        player.body.velocity.y -= 25 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.up = false;
@@ -199,7 +349,7 @@ export class Tab5Page implements OnInit {
       } else if (mobileCursors.down) {
         // player.body.velocity.setTo(0, 1000);
         
-        player.body.velocity.y += 50 ;
+        player.body.velocity.y += 25 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.down = false;
@@ -216,7 +366,7 @@ export class Tab5Page implements OnInit {
       // if (player.body.velocity.y === 0 || player.body.velocity.x === 0 ) {
         if (  player.getBounds().y == 0  ||  (varY >= 0 && varY < 3 )  ) {
 
-        console.log("Choco Arriba o abajo");
+        // console.log("Choco Arriba o abajo");
         player.body.velocity.setTo(0, 0);
         // game.restart();
         this.estadoTexto = true;
@@ -229,7 +379,7 @@ export class Tab5Page implements OnInit {
             
 
        } else if (player.getBounds().x == 0 ||  (varX >= 0 && varX < 3 )   ) {
-        console.log("Choco Costado");
+        // console.log("Choco Costado");
         player.body.velocity.setTo(0, 0);
         // game.restart();
           this.estadoTexto = true;
@@ -237,7 +387,7 @@ export class Tab5Page implements OnInit {
             stateText.visible = true;
            that.restart();
        } else {
-         console.log("esta en otro lado");
+        //  console.log("esta en otro lado");
        }
 
   }
@@ -252,7 +402,7 @@ export class Tab5Page implements OnInit {
   
   collisionHandler() {
     //  When a bullet hits an alien we kill them both
-    console.log("colision con bordes");
+    // console.log("colision con bordes");
 
   }
 

@@ -131,7 +131,8 @@ relevamiento visual --> CORREGIR
   --esta ok la base, falta lo demover la imagen con el celular
 ------------------------------------JUEGO MOV KINETICO------------------------------------
 --juego de movimiento kinetico --> NADA
-frenarlo al reiniciar y dar ok
+--frenarlo al reiniciar
+--hacer funcionar acelerometro
 cambiar estilo de login
 cambiar el efecto del logo
 subir el listado de ganadores top a FB
