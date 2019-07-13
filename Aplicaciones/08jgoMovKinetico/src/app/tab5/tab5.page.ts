@@ -153,15 +153,21 @@ export class Tab5Page {
       console.log("window height", window.innerHeight);
       console.log("window widht", window.innerWidth);
 
+      let varY = player.getBounds().y - (window.innerHeight - 158) ;
+      console.log("varY", varY);
+      let varX = player.getBounds().x - (window.innerWidth - 158) ;
+      console.log("varX", varX);
 
       // if (player.body.velocity.y === 0 || player.body.velocity.x === 0 ) {
-        if (  player.getBounds().y == 0  || player.getBounds().y == window.innerHeight  ) {
+        if (  player.getBounds().y == 0  ||  (varY >= 0 && varY < 3 )  ) {
 
-        console.log("Choco Arriba");
+        console.log("Choco Arriba o abajo");
         player.body.velocity.setTo(0, 0);
-       } else if (player.getBounds().x == 0 || player.getBounds().x == window.innerWidth) {
-        console.log("Choco Costado Izq");
+        
+       } else if (player.getBounds().x == 0 ||  (varX >= 0 && varX < 3 )   ) {
+        console.log("Choco Costado");
         player.body.velocity.setTo(0, 0);
+
        } else {
          console.log("esta en otro lado");
        }
