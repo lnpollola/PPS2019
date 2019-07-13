@@ -20,7 +20,9 @@ let bulletTime = 0;
 let cursors;
 let mobileCursors ={
   left: false,
-  right: false
+  right: false,
+  up: false,
+  down: false
 };
 let fireButton;
 let mobileFireButton = false;
@@ -45,7 +47,7 @@ export class Tab5Page {
 
   constructor(private menuCtrl: MenuController) {
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'space-invaders',
-      { preload: this.preload, create: this.create, update: this.update, render: this.render });
+      { preload: this.preload, create: this.create, update: this.update,  render: this.render });
 
     that = Object.create(this.constructor.prototype);
   }
@@ -58,7 +60,7 @@ export class Tab5Page {
     game.load.image('bullet', 'assets/phaser/bullet.png');
     game.load.image('enemyBullet', 'assets/phaser/enemy-bullet.png');
     game.load.spritesheet('invader', 'assets/phaser/invader32x32x4.png', 32, 32);
-    game.load.image('ship', 'assets/phaser/player.png');
+    game.load.image('ship', 'assets/personajes/marvel1.png');
     game.load.spritesheet('kaboom', 'assets/phaser/explode.png', 128, 128);
     game.load.image('starfield', 'assets/phaser/starfield.png');
     game.load.image('background', 'assets/phaser/background2.png');
@@ -72,35 +74,43 @@ export class Tab5Page {
     starfield = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'starfield');
 
     //  Our bullet group
-    bullets = game.add.group();
-    bullets.enableBody = true;
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    bullets.createMultiple(30, 'bullet');
-    bullets.setAll('anchor.x', 0.5);
-    bullets.setAll('anchor.y', 1);
-    bullets.setAll('outOfBoundsKill', true);
-    bullets.setAll('checkWorldBounds', true);
-    // The enemy's bullets
-    enemyBullets = game.add.group();
-    enemyBullets.enableBody = true;
-    enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
-    enemyBullets.createMultiple(30, 'enemyBullet');
-    enemyBullets.setAll('anchor.x', 0.5);
-    enemyBullets.setAll('anchor.y', 1);
-    enemyBullets.setAll('outOfBoundsKill', true);
-    enemyBullets.setAll('checkWorldBounds', true);
+    // bullets = game.add.group();
+    // bullets.enableBody = true;
+    // bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    // bullets.createMultiple(30, 'bullet');
+    // bullets.setAll('anchor.x', 0.5);
+    // bullets.setAll('anchor.y', 1);
+
+    // bullets.setAll('outOfBoundsKill', true);
+    // bullets.setAll('checkWorldBounds', true);
+    // // The enemy's bullets
+    // enemyBullets = game.add.group();
+    // enemyBullets.enableBody = true;
+    // enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    // enemyBullets.createMultiple(30, 'enemyBullet');
+    // enemyBullets.setAll('anchor.x', 0.5);
+    // enemyBullets.setAll('anchor.y', 1);
+    // enemyBullets.setAll('outOfBoundsKill', true);
+    // enemyBullets.setAll('checkWorldBounds', true);
 
     //  The hero!
     player = game.add.sprite(window.innerWidth / 2, window.innerHeight - 100, 'ship');
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
-    //  The baddies!
-    aliens = game.add.group();
-    aliens.enableBody = true;
-    aliens.physicsBodyType = Phaser.Physics.ARCADE;
+    player.body.collideWorldBounds = true;
+    
 
-    that.createAliens();
+    // player.setCollideWorldBounds(true);
+    // player.onWorldBounds = true;
+
+    //  The baddies!
+    // aliens = game.add.group();
+    // aliens.enableBody = true;
+    // aliens.physicsBodyType = Phaser.Physics.ARCADE;
+
+    // that.createAliens();
 
     //  The score
     scoreString = 'Score : ';
@@ -122,10 +132,10 @@ export class Tab5Page {
       ship.alpha = 0.4;
     }
 
-    //  An explosion pool
-    explosions = game.add.group();
-    explosions.createMultiple(30, 'kaboom');
-    explosions.forEach(that.setupInvader, this);
+    // //  An explosion pool
+    // explosions = game.add.group();
+    // explosions.createMultiple(30, 'kaboom');
+    // explosions.forEach(that.setupInvader, this);
 
     //  And some controls to play the game with
     // Useful if your game is web-based, where player can use a keyboard
@@ -134,63 +144,94 @@ export class Tab5Page {
 
   }
 
-  createAliens() {
+  // createAliens() {
 
-    for (let y = 0; y < 4; y++) {
-      for (let x = 0; x < 8; x++) {
-        let alien = aliens.create(x * ((window.innerWidth - 100) / 8), y * 50, 'invader');
-        alien.anchor.setTo(0.5, 0.5);
-        alien.animations.add('fly', [0, 1, 2, 3], 20, true);
-        alien.play('fly');
-        alien.body.moves = false;
-      }
-    }
+  //   for (let y = 0; y < 4; y++) {
+  //     for (let x = 0; x < 8; x++) {
+  //       let alien = aliens.create(x * ((window.innerWidth - 100) / 8), y * 50, 'invader');
+  //       alien.anchor.setTo(0.5, 0.5);
+  //       alien.animations.add('fly', [0, 1, 2, 3], 20, true);
+  //       alien.play('fly');
+  //       alien.body.moves = false;
+  //     }
+  //   }
 
-    aliens.x = 10;
-    aliens.y = 50;
+  //   aliens.x = 10;
+  //   aliens.y = 50;
 
-    //  All this does is basically start the invaders moving. 
-    // Notice we're moving the Group they belong to, rather than the invaders directly.
-    let tween = game.add.tween(aliens).to({ x: 90 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+  //   //  All this does is basically start the invaders moving. 
+  //   // Notice we're moving the Group they belong to, rather than the invaders directly.
+  //   let tween = game.add.tween(aliens).to({ x: 90 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
-    //  When the tween loops it calls descend
-    tween.onLoop.add(that.descend, this);
-  }
+  //   //  When the tween loops it calls descend
+  //   tween.onLoop.add(that.descend, this);
+  // }
 
-  setupInvader(invader) {
+  // setupInvader(invader) {
 
-    invader.anchor.x = 0.5;
-    invader.anchor.y = 0.5;
-    invader.animations.add('kaboom');
+  //   invader.anchor.x = 0.5;
+  //   invader.anchor.y = 0.5;
+  //   invader.animations.add('kaboom');
 
-  }
+  // }
 
-  descend() {
-    aliens.y += 10;
-  }
+  // descend() {
+  //   aliens.y += 10;
+  // }
 
   update() {
     //  Scroll the background
     starfield.tilePosition.y += 2;
-    if (player.alive) {
+    // if (player.alive) {
       //  Reset the player, then check for movement keys
       player.body.velocity.setTo(0, 0);
+      
       if (cursors.left.isDown || mobileCursors.left) {
-        player.body.velocity.x = -200;
+        // player.body.velocity.x = -200;
+        player.body.velocity.setTo(-200, 0);
+        player.body.bounce.set(1);
+        player.body.onWorldBounds = new Phaser.Signal();
       } else if (cursors.right.isDown || mobileCursors.right) {
-        player.body.velocity.x = 200;
+        // player.body.velocity.x = 200;
+        player.body.velocity.setTo(200, 0);
+        player.body.bounce.set(1);
+        player.body.onWorldBounds = new Phaser.Signal();
+      } else if ( mobileCursors.up) {
+        player.body.velocity.setTo(0, -200);
+        player.body.bounce.set(1);
+        player.body.onWorldBounds = new Phaser.Signal();
+
+      } else if (mobileCursors.down) {
+        player.body.velocity.setTo(0, 200);
+        player.body.bounce.set(1);
+        player.body.onWorldBounds = new Phaser.Signal();
       }
+      
       //  Firing?
-      if (fireButton.isDown || mobileFireButton) {
-        that.fireBullet();
-      }
-      if (game.time.now > firingTimer) {
-        that.enemyFires();
-      }
+      // if (fireButton.isDown || mobileFireButton) {
+      //   that.fireBullet();
+      // }
+      // if (game.time.now > firingTimer) {
+      //   that.enemyFires();
+      // }
       //  Run collision
-      game.physics.arcade.overlap(bullets, aliens, that.collisionHandler, null, this);
-      game.physics.arcade.overlap(enemyBullets, player, that.enemyHitsPlayer, null, this);
-    }
+      // game.physics.arcade.overlap(bullets, aliens, that.collisionHandler, null, this);
+      
+      // game.physics.arcade.overlap(player, game.schene.physics.world.bounds , that.collisionHandler, null, this);
+      
+      
+      // face.body.velocity.setTo(200, 200);
+      // face.body.bounce.set(1);
+      
+      // face.body.collideWorldBounds = true;
+  
+      // //  By default the Signal is empty, so we create it here:
+      // face.body.onWorldBounds = new Phaser.Signal();
+  
+      // //  And then listen for it
+      // face.body.onWorldBounds.add(hitWorldBounds, this);
+      // game.physics.arcade.overlap(enemyBullets, player, that.enemyHitsPlayer, null, this);
+    
   }
 
   render() {
@@ -199,29 +240,35 @@ export class Tab5Page {
     //     game.debug.body(aliens.children[i]);
     // }
   }
-
-  collisionHandler(bullet, alien) {
+  
+  collisionHandler() {
     //  When a bullet hits an alien we kill them both
-    bullet.kill();
-    alien.kill();
-    //  Increase the score
-    score += 20;
-    scoreText.text = scoreString + score;
-    //  And create an explosion :)
-    let explosion = explosions.getFirstExists(false);
-    explosion.reset(alien.body.x, alien.body.y);
-    explosion.play('kaboom', 30, false, true);
-    if (aliens.countLiving() === 0) {
-      score += 1000;
-      scoreText.text = scoreString + score;
-      enemyBullets.callAll('kill', this);
-      stateText.text = " You Won, \n Click to restart";
-      stateText.visible = true;
-      // the "click to restart" handler
-      game.input.onTap.addOnce(that.restart, this);
-    }
+    console.log("colision con bordes");
 
   }
+
+  // collisionHandler(bullet, alien) {
+  //   //  When a bullet hits an alien we kill them both
+  //   bullet.kill();
+  //   alien.kill();
+  //   //  Increase the score
+  //   score += 20;
+  //   scoreText.text = scoreString + score;
+  //   //  And create an explosion :)
+  //   let explosion = explosions.getFirstExists(false);
+  //   explosion.reset(alien.body.x, alien.body.y);
+  //   explosion.play('kaboom', 30, false, true);
+  //   if (aliens.countLiving() === 0) {
+  //     score += 1000;
+  //     scoreText.text = scoreString + score;
+  //     enemyBullets.callAll('kill', this);
+  //     stateText.text = " You Won, \n Click to restart";
+  //     stateText.visible = true;
+  //     // the "click to restart" handler
+  //     game.input.onTap.addOnce(that.restart, this);
+  //   }
+
+  // }
 
   enemyHitsPlayer(player, bullet) {
     bullet.kill();
@@ -320,15 +367,28 @@ export class Tab5Page {
   fireEnd(event){
     mobileFireButton = false;
   }
-  leftStart(event){
+  // leftStart(event){
+  //   mobileCursors.left = true;
+  // }
+  leftStart(){
     mobileCursors.left = true;
   }
+  arribaStart(){
+    mobileCursors.up = true;
+  }
+  abajoStart(){
+    mobileCursors.down = true;
+  }
+  rightStart() {
+    mobileCursors.right = true;
+  }
+
   leftEnd(event){
     mobileCursors.left = false;
   }
-  rightStart(event){
-    mobileCursors.right = true;
-  }
+  // rightStart(event){
+  //   mobileCursors.right = true;
+  // }
   rightEnd(event){
     mobileCursors.right = false;
   }
