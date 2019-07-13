@@ -73,29 +73,8 @@ export class Tab5Page {
     //  The scrolling starfield background
     starfield = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'starfield');
 
-    //  Our bullet group
-    // bullets = game.add.group();
-    // bullets.enableBody = true;
-    // bullets.physicsBodyType = Phaser.Physics.ARCADE;
-
-    // bullets.createMultiple(30, 'bullet');
-    // bullets.setAll('anchor.x', 0.5);
-    // bullets.setAll('anchor.y', 1);
-
-    // bullets.setAll('outOfBoundsKill', true);
-    // bullets.setAll('checkWorldBounds', true);
-    // // The enemy's bullets
-    // enemyBullets = game.add.group();
-    // enemyBullets.enableBody = true;
-    // enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
-    // enemyBullets.createMultiple(30, 'enemyBullet');
-    // enemyBullets.setAll('anchor.x', 0.5);
-    // enemyBullets.setAll('anchor.y', 1);
-    // enemyBullets.setAll('outOfBoundsKill', true);
-    // enemyBullets.setAll('checkWorldBounds', true);
-
     //  The hero!
-    player = game.add.sprite(window.innerWidth / 2, window.innerHeight - 100, 'ship');
+    player = game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'ship');
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
@@ -113,12 +92,12 @@ export class Tab5Page {
     // that.createAliens();
 
     //  The score
-    scoreString = 'Score : ';
+    scoreString = 'Record : ';
     scoreText = game.add.text(10, 10, scoreString + score, { font: '24px Arial', fill: '#fff' });
 
     //  Lives
     lives = game.add.group();
-    game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '24px Arial', fill: '#fff' });
+    game.add.text(game.world.width - 100, 10, 'Vidas : ', { font: '24px Arial', fill: '#fff' });
 
     //  Text
     stateText = game.add.text(game.world.centerX, game.world.centerY, ' ', { font: '34px Arial', fill: '#fff' });
@@ -126,7 +105,7 @@ export class Tab5Page {
     stateText.visible = false;
 
     for (let i = 0; i < 3; i++) {
-      let ship = lives.create(game.world.width - 100 + (30 * i), 60, 'ship');
+      let ship = lives.create(game.world.width - 100 + (30 * i), 60, 'invader');
       ship.anchor.setTo(0.5, 0.5);
       ship.angle = 90;
       ship.alpha = 0.4;
@@ -184,29 +163,54 @@ export class Tab5Page {
     starfield.tilePosition.y += 2;
     // if (player.alive) {
       //  Reset the player, then check for movement keys
-      player.body.velocity.setTo(0, 0);
-      
+      // player.body.velocity.setTo(0, 0);
+     
+
       if (cursors.left.isDown || mobileCursors.left) {
         // player.body.velocity.x = -200;
-        player.body.velocity.setTo(-200, 0);
+        // player.body.velocity.setTo(-1000, 0);
+        
+        player.body.velocity.x -= 1500 ;
         player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
+        mobileCursors.left = false;
       } else if (cursors.right.isDown || mobileCursors.right) {
         // player.body.velocity.x = 200;
-        player.body.velocity.setTo(200, 0);
+        // player.body.velocity.setTo(1000, 0);
+        
+        player.body.velocity.x += 1500 ;
+
         player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
+        mobileCursors.right = false;
       } else if ( mobileCursors.up) {
-        player.body.velocity.setTo(0, -200);
+        // player.body.velocity.setTo(0, -1000);
+        
+        player.body.velocity.y -= 1500 ;
         player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
+        mobileCursors.up = false;
 
       } else if (mobileCursors.down) {
-        player.body.velocity.setTo(0, 200);
+        // player.body.velocity.setTo(0, 1000);
+        
+        player.body.velocity.y += 1500 ;
         player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
+        mobileCursors.down = false;
       }
-      
+
+      // if (player.body.velocity.y === 0 || player.body.velocity.x === 0 ) {
+        if (  player.getBounds().y == 0) {
+
+        console.log("Choco Arriba");
+        player.body.velocity.setTo(0, 0);
+       } else if (player.getBounds().x == 0) {
+        console.log("Choco Costado Izq");
+        player.body.velocity.setTo(0, 0);
+       } else {
+         console.log("esta en otro lado");
+       }
       //  Firing?
       // if (fireButton.isDown || mobileFireButton) {
       //   that.fireBullet();
