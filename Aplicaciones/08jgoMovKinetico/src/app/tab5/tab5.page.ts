@@ -6,8 +6,9 @@
 * LICENSE.md file in the root directory of this source tree.
 */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController} from '@ionic/angular';
+
 
 declare let Phaser;
 
@@ -43,7 +44,9 @@ let livingEnemies = [];
   styleUrls: ['./tab5.page.scss'],
  
 })
-export class Tab5Page {
+export class Tab5Page implements OnInit {
+
+  public estadoTexto = false ; 
 
   constructor(private menuCtrl: MenuController) {
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'space-invaders',
@@ -54,6 +57,10 @@ export class Tab5Page {
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'start');
     this.menuCtrl.enable(false, 'end');
+  }
+
+  ngOnInit() {
+
   }
 
   preload() {
@@ -88,22 +95,46 @@ export class Tab5Page {
 
     //  Lives
     lives = game.add.group();
-    game.add.text(game.world.width - 100, 10, 'Vidas : ', { font: '24px Arial', fill: '#fff' });
+    // game.add.text(game.world.width - 100, 10, 'Vidas : ', { font: '24px Arial', fill: '#fff' });
 
     //  Text
     stateText = game.add.text(game.world.centerX, game.world.centerY, ' ', { font: '34px Arial', fill: '#fff' });
     stateText.anchor.setTo(0.5, 0.5);
     stateText.visible = false;
+    
 
-    for (let i = 0; i < 3; i++) {
-      let ship = lives.create(game.world.width - 100 + (30 * i), 60, 'invader');
-      ship.anchor.setTo(0.5, 0.5);
-      // ship.angle = 90;
-      ship.alpha = 0.4;
-    }
+    // for (let i = 0; i < 3; i++) {
+    //   let ship = lives.create(game.world.width - 100 + (30 * i), 60, 'invader');
+    //   ship.anchor.setTo(0.5, 0.5);
+    //   // ship.angle = 90;
+    //   ship.alpha = 0.4;
+    // }
 
     cursors = game.input.keyboard.createCursorKeys();
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+  }
+
+
+  restart() {
+
+    //  A new level starts
+
+    // resets the life count
+    lives.callAll('revive');
+    //  And brings the aliens back from the dead :)
+    // aliens.removeAll();
+    // that.createAliens();
+
+    // revives the player
+    player.revive();
+    // hides the text
+
+    stateText.visible = false;
+    this.estadoTexto = false;
+    score = 0 ;
+    scoreText.text = scoreString + score;
+    this.create();
 
   }
 
@@ -114,6 +145,8 @@ export class Tab5Page {
     // if (player.alive) {
       //  Reset the player, then check for movement keys
       // player.body.velocity.setTo(0, 0);
+      score += 1;
+      scoreText.text = scoreString + score;
      console.log(player.getBounds());
 
       if (cursors.left.isDown || mobileCursors.left) {
@@ -124,6 +157,7 @@ export class Tab5Page {
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.left = false;
+
       } else if (cursors.right.isDown || mobileCursors.right) {
         // player.body.velocity.x = 200;
         // player.body.velocity.setTo(1000, 0);
@@ -150,52 +184,40 @@ export class Tab5Page {
         mobileCursors.down = false;
       }
 
-      console.log("window height", window.innerHeight);
-      console.log("window widht", window.innerWidth);
+      // console.log("window height", window.innerHeight);
+      // console.log("window widht", window.innerWidth);
 
       let varY = player.getBounds().y - (window.innerHeight - 158) ;
-      console.log("varY", varY);
+      // console.log("varY", varY);
       let varX = player.getBounds().x - (window.innerWidth - 158) ;
-      console.log("varX", varX);
+      // console.log("varX", varX);
 
       // if (player.body.velocity.y === 0 || player.body.velocity.x === 0 ) {
         if (  player.getBounds().y == 0  ||  (varY >= 0 && varY < 3 )  ) {
 
         console.log("Choco Arriba o abajo");
         player.body.velocity.setTo(0, 0);
-        
+        // game.restart();
+        this.estadoTexto = true;
+        stateText.text = " Perdiste \n ¿Otra vez?";
+            stateText.visible = true;
+           that.restart();
+            // the "click to restart" handler
+            // game.input.onTap.addOnce(that.restart, {x: 1});
+            
+
        } else if (player.getBounds().x == 0 ||  (varX >= 0 && varX < 3 )   ) {
         console.log("Choco Costado");
         player.body.velocity.setTo(0, 0);
-
+        // game.restart();
+          this.estadoTexto = true;
+        stateText.text = " Perdiste \n ¿Otra vez?";
+            stateText.visible = true;
+           that.restart();
        } else {
          console.log("esta en otro lado");
        }
-      //  Firing?
-      // if (fireButton.isDown || mobileFireButton) {
-      //   that.fireBullet();
-      // }
-      // if (game.time.now > firingTimer) {
-      //   that.enemyFires();
-      // }
-      //  Run collision
-      // game.physics.arcade.overlap(bullets, aliens, that.collisionHandler, null, this);
-      
-      // game.physics.arcade.overlap(player, game.schene.physics.world.bounds , that.collisionHandler, null, this);
-      
-      
-      // face.body.velocity.setTo(200, 200);
-      // face.body.bounce.set(1);
-      
-      // face.body.collideWorldBounds = true;
-  
-      // //  By default the Signal is empty, so we create it here:
-      // face.body.onWorldBounds = new Phaser.Signal();
-  
-      // //  And then listen for it
-      // face.body.onWorldBounds.add(hitWorldBounds, this);
-      // game.physics.arcade.overlap(enemyBullets, player, that.enemyHitsPlayer, null, this);
-    
+
   }
 
   render() {
@@ -211,79 +233,7 @@ export class Tab5Page {
 
   }
 
-  // collisionHandler(bullet, alien) {
-  //   //  When a bullet hits an alien we kill them both
-  //   bullet.kill();
-  //   alien.kill();
-  //   //  Increase the score
-  //   score += 20;
-  //   scoreText.text = scoreString + score;
-  //   //  And create an explosion :)
-  //   let explosion = explosions.getFirstExists(false);
-  //   explosion.reset(alien.body.x, alien.body.y);
-  //   explosion.play('kaboom', 30, false, true);
-  //   if (aliens.countLiving() === 0) {
-  //     score += 1000;
-  //     scoreText.text = scoreString + score;
-  //     enemyBullets.callAll('kill', this);
-  //     stateText.text = " You Won, \n Click to restart";
-  //     stateText.visible = true;
-  //     // the "click to restart" handler
-  //     game.input.onTap.addOnce(that.restart, this);
-  //   }
 
-  // }
-
-  enemyHitsPlayer(player, bullet) {
-    bullet.kill();
-    let live = lives.getFirstAlive();
-    if (live) {
-      live.kill();
-    }
-    //  And create an explosion :)
-    let explosion = explosions.getFirstExists(false);
-    explosion.reset(player.body.x, player.body.y);
-    explosion.play('kaboom', 30, false, true);
-    // When the player dies
-    if (lives.countLiving() < 1) {
-      player.kill();
-      enemyBullets.callAll('kill');
-      stateText.text = " GAME OVER \n Click to restart";
-      stateText.visible = true;
-      //the "click to restart" handler
-      game.input.onTap.addOnce(that.restart, this);
-    }
-
-  }
-
-  enemyFires() {
-
-    //  Grab the first bullet we can from the pool
-    let enemyBullet = enemyBullets.getFirstExists(false);
-
-    livingEnemies.length = 0;
-
-    aliens.forEachAlive(function (alien) {
-
-      // put every living enemy in an array
-      livingEnemies.push(alien);
-    });
-
-
-    if (enemyBullet && livingEnemies.length > 0) {
-
-      let random = game.rnd.integerInRange(0, livingEnemies.length - 1);
-
-      // randomly select one of them
-      let shooter = livingEnemies[random];
-      // And fire the bullet from this enemy
-      enemyBullet.reset(shooter.body.x, shooter.body.y);
-
-      game.physics.arcade.moveToObject(enemyBullet, player, 120);
-      firingTimer = game.time.now + 2000;
-    }
-
-  }
 
   fireBullet() {
     //  To avoid them being allowed to fire too fast we set a time limit
@@ -308,22 +258,6 @@ export class Tab5Page {
 
   }
 
-  restart() {
-
-    //  A new level starts
-
-    // resets the life count
-    lives.callAll('revive');
-    //  And brings the aliens back from the dead :)
-    aliens.removeAll();
-    that.createAliens();
-
-    // revives the player
-    player.revive();
-    // hides the text
-    stateText.visible = false;
-
-  }
 
   fireStart(event){
     mobileFireButton = true
@@ -331,9 +265,6 @@ export class Tab5Page {
   fireEnd(event){
     mobileFireButton = false;
   }
-  // leftStart(event){
-  //   mobileCursors.left = true;
-  // }
   leftStart(){
     mobileCursors.left = true;
   }
@@ -350,9 +281,7 @@ export class Tab5Page {
   leftEnd(event){
     mobileCursors.left = false;
   }
-  // rightStart(event){
-  //   mobileCursors.right = true;
-  // }
+
   rightEnd(event){
     mobileCursors.right = false;
   }

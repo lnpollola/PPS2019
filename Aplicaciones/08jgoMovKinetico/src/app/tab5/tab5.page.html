@@ -2,14 +2,19 @@
   <!-- <ion-button class="menu-button" routerLink="/" color="danger">
     Close
   </ion-button> -->
-  <div id="space-invaders"></div>
+  <div id="space-invaders">
   <div class="buttons phone-only">
-    <!-- <ion-button color="danger" (touchstart)="fireStart($event)" (touchend)="fireEnd($event)">Fire</ion-button> -->
     
-    <ion-button (touchstart)="arribaStart()" >Arriba</ion-button>
-    <ion-button (touchstart)="abajoStart()" >Abajo</ion-button>
+    
+    <ion-button *ngIf= "!estadoTexto" (touchstart)="arribaStart()" >Arriba</ion-button>
+    <ion-button *ngIf= "!estadoTexto"(touchstart)="abajoStart()" >Abajo</ion-button>
 
-    <ion-button (touchstart)="leftStart()" >Left</ion-button>
-    <ion-button (touchstart)="rightStart()" >Right</ion-button>
+    <ion-button *ngIf= "!estadoTexto" (touchstart)="leftStart()" >Left</ion-button>
+    <ion-button *ngIf= "!estadoTexto" (touchstart)="rightStart()" >Right</ion-button>
+
+    <ion-button *ngIf= "estadoTexto" color="success" (touchstart)="create()" >Nuevo Juego</ion-button>
+
   </div>
+
+</div>
 </ion-content>
