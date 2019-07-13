@@ -133,6 +133,20 @@ relevamiento visual --> CORREGIR
 juego de movimiento kinetico --> NADA
 
 
+https://www.freecodecamp.org/news/how-to-build-a-simple-game-in-the-browser-with-phaser-3-and-typescript-bdc94719135/
+https://gamedevacademy.org/creating-mobile-games-with-phaser-3-and-cordova/
+https://medium.com/enappd/how-to-create-mobile-games-pwa-with-ionic4-and-phaser-7fb1e917678e
+https://phaser.io/examples/v3/view/game-objects/tilemap/static/grid-movement
+https://phaser.io/examples/v3/view/physics/arcade/asteroids-movement
+https://www.emanueleferonato.com/2015/01/10/playing-with-phaser-and-accelerometer-with-gyro-js/
+https://developer.mozilla.org/es/docs/Games/Workflows/HTML5_Gamedev_Phaser_Device_Orientation
+https://github.com/EnclaveGames/Cyber-Orb
+
+https://phaser.io/examples/v2/arcade-physics/one-way-collision
+https://phaser.io/examples/v3/view/physics/arcade/asteroids-movement
+https://phaser.io/examples/v3/view/game-objects/tilemap/static/grid-movement
+
+
 
 tengo
 relvisual --> Votación y visualización de imagenes
