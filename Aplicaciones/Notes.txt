@@ -130,7 +130,14 @@ relevamiento visual --> CORREGIR
 --visKinetico --> VERIFICAR
   --esta ok la base, falta lo demover la imagen con el celular
 ------------------------------------JUEGO MOV KINETICO------------------------------------
-juego de movimiento kinetico --> NADA
+--juego de movimiento kinetico --> NADA
+frenarlo al reiniciar y dar ok
+cambiar estilo de login
+cambiar el efecto del logo
+subir el listado de ganadores top a FB
+mostrar el listado de ganadores
+frontend para seleccionar personajes
+-----------------------------------APP METEGOL------------------------------------
 
 
 https://www.freecodecamp.org/news/how-to-build-a-simple-game-in-the-browser-with-phaser-3-and-typescript-bdc94719135/

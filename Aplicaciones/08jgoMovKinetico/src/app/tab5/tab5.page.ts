@@ -9,6 +9,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController} from '@ionic/angular';
 
+import { Router } from '@angular/router';
+
+import { FirebaseService } from "../services/firebase.service";
+import { AlertController } from '@ionic/angular';
+
 
 declare let Phaser;
 
@@ -47,8 +52,14 @@ let livingEnemies = [];
 export class Tab5Page implements OnInit {
 
   public estadoTexto = false ; 
+  public reinicioText: any; 
+  public reinicio: boolean;
 
-  constructor(private menuCtrl: MenuController) {
+  constructor(private menuCtrl: MenuController,
+    private baseService: FirebaseService,
+    public alertCtrl: AlertController,
+    private router: Router,
+    ) {
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'space-invaders',
       { preload: this.preload, create: this.create, update: this.update,  render: this.render });
 
@@ -129,14 +140,24 @@ export class Tab5Page implements OnInit {
     // revives the player
     player.revive();
     // hides the text
-
-    stateText.visible = false;
-    this.estadoTexto = false;
+    // this.presentAlertJuegoFinalizado();
     score = 0 ;
     scoreText.text = scoreString + score;
-    this.create();
+    
+    let timerReinicio = 5;
 
+
+    setTimeout(() => {
+      
+      stateText.visible = false;
+    this.estadoTexto = false;
+    }, 6000);
+
+    setTimeout(() => {
+    this.create();
+    }, 2000);
   }
+
 
 
   update() {
@@ -153,7 +174,7 @@ export class Tab5Page implements OnInit {
         // player.body.velocity.x = -200;
         // player.body.velocity.setTo(-1000, 0);
         
-        player.body.velocity.x -= 1500 ;
+        player.body.velocity.x -= 50 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.left = false;
@@ -162,7 +183,7 @@ export class Tab5Page implements OnInit {
         // player.body.velocity.x = 200;
         // player.body.velocity.setTo(1000, 0);
         
-        player.body.velocity.x += 1500 ;
+        player.body.velocity.x += 50 ;
 
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
@@ -170,7 +191,7 @@ export class Tab5Page implements OnInit {
       } else if ( mobileCursors.up) {
         // player.body.velocity.setTo(0, -1000);
         
-        player.body.velocity.y -= 1500 ;
+        player.body.velocity.y -= 50 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.up = false;
@@ -178,7 +199,7 @@ export class Tab5Page implements OnInit {
       } else if (mobileCursors.down) {
         // player.body.velocity.setTo(0, 1000);
         
-        player.body.velocity.y += 1500 ;
+        player.body.velocity.y += 50 ;
         // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.down = false;
@@ -199,7 +220,8 @@ export class Tab5Page implements OnInit {
         player.body.velocity.setTo(0, 0);
         // game.restart();
         this.estadoTexto = true;
-        stateText.text = " Perdiste \n ¿Otra vez?";
+        stateText.text = " Perdiste \n Reiniciando...";
+
             stateText.visible = true;
            that.restart();
             // the "click to restart" handler
@@ -211,7 +233,7 @@ export class Tab5Page implements OnInit {
         player.body.velocity.setTo(0, 0);
         // game.restart();
           this.estadoTexto = true;
-        stateText.text = " Perdiste \n ¿Otra vez?";
+        stateText.text = " Perdiste \n Reiniciando...";
             stateText.visible = true;
            that.restart();
        } else {
@@ -226,6 +248,7 @@ export class Tab5Page implements OnInit {
     //     game.debug.body(aliens.children[i]);
     // }
   }
+
   
   collisionHandler() {
     //  When a bullet hits an alien we kill them both
@@ -233,7 +256,9 @@ export class Tab5Page implements OnInit {
 
   }
 
-
+ vuelvoLogin(){
+  this.router.navigateByUrl('/login');
+ }
 
   fireBullet() {
     //  To avoid them being allowed to fire too fast we set a time limit
