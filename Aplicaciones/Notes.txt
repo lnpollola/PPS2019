@@ -146,6 +146,9 @@ https://phaser.io/examples/v2/arcade-physics/one-way-collision
 https://phaser.io/examples/v3/view/physics/arcade/asteroids-movement
 https://phaser.io/examples/v3/view/game-objects/tilemap/static/grid-movement
 
+https://phaser.io/examples/v3/view/physics/arcade/accelerate-to
+
+
 
 
 tengo
