@@ -57,8 +57,8 @@ export class Tab5Page {
   }
 
   preload() {
-    game.load.image('bullet', 'assets/phaser/bullet.png');
-    game.load.image('enemyBullet', 'assets/phaser/enemy-bullet.png');
+    // game.load.image('bullet', 'assets/phaser/bullet.png');
+    // game.load.image('enemyBullet', 'assets/phaser/enemy-bullet.png');
     game.load.spritesheet('invader', 'assets/phaser/invader32x32x4.png', 32, 32);
     game.load.image('ship', 'assets/personajes/marvel1.png');
     game.load.spritesheet('kaboom', 'assets/phaser/explode.png', 128, 128);
@@ -80,16 +80,7 @@ export class Tab5Page {
 
     player.body.collideWorldBounds = true;
     
-
-    // player.setCollideWorldBounds(true);
-    // player.onWorldBounds = true;
-
-    //  The baddies!
-    // aliens = game.add.group();
-    // aliens.enableBody = true;
-    // aliens.physicsBodyType = Phaser.Physics.ARCADE;
-
-    // that.createAliens();
+    
 
     //  The score
     scoreString = 'Record : ';
@@ -107,56 +98,15 @@ export class Tab5Page {
     for (let i = 0; i < 3; i++) {
       let ship = lives.create(game.world.width - 100 + (30 * i), 60, 'invader');
       ship.anchor.setTo(0.5, 0.5);
-      ship.angle = 90;
+      // ship.angle = 90;
       ship.alpha = 0.4;
     }
 
-    // //  An explosion pool
-    // explosions = game.add.group();
-    // explosions.createMultiple(30, 'kaboom');
-    // explosions.forEach(that.setupInvader, this);
-
-    //  And some controls to play the game with
-    // Useful if your game is web-based, where player can use a keyboard
     cursors = game.input.keyboard.createCursorKeys();
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   }
 
-  // createAliens() {
-
-  //   for (let y = 0; y < 4; y++) {
-  //     for (let x = 0; x < 8; x++) {
-  //       let alien = aliens.create(x * ((window.innerWidth - 100) / 8), y * 50, 'invader');
-  //       alien.anchor.setTo(0.5, 0.5);
-  //       alien.animations.add('fly', [0, 1, 2, 3], 20, true);
-  //       alien.play('fly');
-  //       alien.body.moves = false;
-  //     }
-  //   }
-
-  //   aliens.x = 10;
-  //   aliens.y = 50;
-
-  //   //  All this does is basically start the invaders moving. 
-  //   // Notice we're moving the Group they belong to, rather than the invaders directly.
-  //   let tween = game.add.tween(aliens).to({ x: 90 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
-  //   //  When the tween loops it calls descend
-  //   tween.onLoop.add(that.descend, this);
-  // }
-
-  // setupInvader(invader) {
-
-  //   invader.anchor.x = 0.5;
-  //   invader.anchor.y = 0.5;
-  //   invader.animations.add('kaboom');
-
-  // }
-
-  // descend() {
-  //   aliens.y += 10;
-  // }
 
   update() {
     //  Scroll the background
@@ -164,14 +114,14 @@ export class Tab5Page {
     // if (player.alive) {
       //  Reset the player, then check for movement keys
       // player.body.velocity.setTo(0, 0);
-     
+     console.log(player.getBounds());
 
       if (cursors.left.isDown || mobileCursors.left) {
         // player.body.velocity.x = -200;
         // player.body.velocity.setTo(-1000, 0);
         
         player.body.velocity.x -= 1500 ;
-        player.body.bounce.set(1);
+        // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.left = false;
       } else if (cursors.right.isDown || mobileCursors.right) {
@@ -180,14 +130,14 @@ export class Tab5Page {
         
         player.body.velocity.x += 1500 ;
 
-        player.body.bounce.set(1);
+        // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.right = false;
       } else if ( mobileCursors.up) {
         // player.body.velocity.setTo(0, -1000);
         
         player.body.velocity.y -= 1500 ;
-        player.body.bounce.set(1);
+        // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.up = false;
 
@@ -195,17 +145,21 @@ export class Tab5Page {
         // player.body.velocity.setTo(0, 1000);
         
         player.body.velocity.y += 1500 ;
-        player.body.bounce.set(1);
+        // player.body.bounce.set(1);
         player.body.onWorldBounds = new Phaser.Signal();
         mobileCursors.down = false;
       }
 
+      console.log("window height", window.innerHeight);
+      console.log("window widht", window.innerWidth);
+
+
       // if (player.body.velocity.y === 0 || player.body.velocity.x === 0 ) {
-        if (  player.getBounds().y == 0) {
+        if (  player.getBounds().y == 0  || player.getBounds().y == window.innerHeight  ) {
 
         console.log("Choco Arriba");
         player.body.velocity.setTo(0, 0);
-       } else if (player.getBounds().x == 0) {
+       } else if (player.getBounds().x == 0 || player.getBounds().x == window.innerWidth) {
         console.log("Choco Costado Izq");
         player.body.velocity.setTo(0, 0);
        } else {
