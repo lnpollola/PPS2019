@@ -133,11 +133,12 @@ relevamiento visual --> CORREGIR
 --juego de movimiento kinetico --> NADA
 --frenarlo al reiniciar
 --hacer funcionar acelerometro
-cambiar estilo de login
+--cambiar estilo de login
 cambiar el efecto del logo
+frontend para seleccionar personajes
 subir el listado de ganadores top a FB
 mostrar el listado de ganadores
-frontend para seleccionar personajes
+
 -----------------------------------APP METEGOL------------------------------------
 
 

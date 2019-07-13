@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css?family=Marvel&display=swap');
 
  #custom-overlay 
 {
@@ -13,22 +14,27 @@
 	background-size: contain;
 }
 
+.tituloDC {
+	font-family: 'Marvel', sans-serif;
+	text-align: center;
+	font-size: xx-large;
+}
 
 ion-content  {
-	--background: black;
+	--background: lightgray;
 }
 
 ion-card {
-	background-color: black;
+	background-color: lightgray;
 }
 
 ion-card-header {
-	background-color: black;
+	background-color: lightgray;
 }
 
 
 ion-card {
-	--background: black;
+	--background: lightgray;
 }
 
   .contenedorPresentacion {
@@ -111,7 +117,7 @@ ion-card-title.welcome-card
 
 .text {
 	margin-left: 20px;
-	color: #fff;
+	color: black;
 	display: none;
 	transition: all 0.5s ease-in-out;
 	transition-delay: 0.3s;

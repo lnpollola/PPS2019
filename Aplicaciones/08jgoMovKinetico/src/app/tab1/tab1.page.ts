@@ -1,6 +1,8 @@
 // import { Component } from '@angular/core';
 // import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+
+import { Router } from "@angular/router";
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
 import { ActionSheetController, ToastController, Platform, LoadingController } from '@ionic/angular';
 import { File, FileEntry } from '@ionic-native/File/ngx';
@@ -41,6 +43,8 @@ export class Tab1Page  implements OnInit {
     private file: File, 
     private http: HttpClient, 
     private webview: WebView,
+    
+    public router: Router,
     private actionSheetController: ActionSheetController, 
     private toastController: ToastController,
     private storage: Storage, 
@@ -62,6 +66,15 @@ export class Tab1Page  implements OnInit {
   
   }
  
+  
+  greenB(){
+    this.router.navigateByUrl('/tab5'); 
+
+  }
+  redB(){
+    this.router.navigateByUrl('/'); 
+
+  }
 
  
   async presentToast(text) {

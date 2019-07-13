@@ -1,42 +1,36 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+
+#tab1card{
+  --background: #fff;
 }
 
-.lindas 
-{
-    background-image:url("../../assets/icon/yes.png") !important;
-    background-repeat:no-repeat;
-    background-size:cover;
-    overflow:hidden;
-    // opacity: 0.6;
+ion-content{
+  // --background: #fff url('https://png.pngtree.com/element_origin_min_pic/16/08/19/1657b6c9722c4a4.jpg') no-repeat center center / cover;
+  // background-color: 
 }
 
-.feas 
-{
+.io{
 
-    background-image:url("../../assets/icon/not.png") !important;
-    background-repeat:no-repeat;
-    background-size:cover;
-    overflow:hidden;
-    // opacity: 0.6;
-
+  width: 43px;
+  height:40px; 
+  border-radius: 50%;
 }
 
+// .buttons{
+//   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+//   height: 100%;
+//   width: 49%;
+// }
 
-img
-{
-    max-height: 50%;
-    max-width: 50%;
-    padding: inherit;
-    margin-left: 20%;
-    border-radius: 15px 50px 30px;
-}
 
 ion-grid, ion-row, ion-col{
   height: 100%;
-  margin-top: 2px;
 }
-ion-card{
-  height: 40%;
+ion-button{
+  height: 95%;
 }
+
+img {
+  max-width: 122%;
+  border: 0;
+}
+
